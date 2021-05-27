@@ -15,9 +15,12 @@ function interact() {
     var paddleX = (canvas.width - paddleWidth) / 2; // paddle x 시작점
     var paddleY = canvas.height - paddleHeight-10;
     
+    //paddleMoving
     var rightPressed = false;
     var leftPressed = false;
-
+    var rocketShoot = false;
+    
+    //brick
     var brickRowCount = 3;
     var brickColumnCount = 6;
     var brickWidth = 80;
@@ -25,6 +28,14 @@ function interact() {
     var brickPadding = 10;
     var brickOffsetTop = 30;
     var brickOffsetLeft = 30;
+
+    //Rocket
+    var rocketWidth = 10;
+    var rocketHeight = 30;
+    var rocketLeftX = paddleX;
+    var rocketRigthX = paddleX + paddleWidth - rocketWidth;
+    var rocketY = paddleY - rocketHeight;
+    var rocketSpeed = -4;
 
     // brick 정의
     var bricks = [];
@@ -35,17 +46,28 @@ function interact() {
         }
     }
 
-    
-
     document.addEventListener("keydown", keyDownHandler, false);
     document.addEventListener("keyup", keyUpHandler, false);
+    document.addEventListener("keydown", rocketKeyHandler, false);
 
+    function drawRocket(){
+        ctx.beginPath();
+        ctx.fillStyle = "rgb(0, 0, 200)";
+        ctx.fillRect(rocketLeftX, rocketY, rocketWidth, rocketHeight);
+        ctx.moveTo(rocketRigthX, rocketY);
+        ctx.fillRect(rocketRigthX, rocketY, rocketWidth, rocketHeight);
+        ctx.closePath();
+    }
+
+    // 방향키
     function keyDownHandler(e) {
         console.log(e.keyCode);
         if (e.keyCode == 39) {
             rightPressed = true;
         } else if (e.keyCode == 37) {
             leftPressed = true;
+        } else if (e.keyCode == 70) {
+            rocketShoot = true;
         }
     }
 
@@ -57,6 +79,12 @@ function interact() {
         }
     }
 
+    // 미사일 발사
+    function rocketKeyHandler(e){
+        if(e.keyCode == 70) {
+            rocketShoot = true;
+        }
+    }
     function collisionDetection() {
         for (var c = 0; c < brickColumnCount; c++) {
             for (var r = 0; r < brickRowCount; r++) {
@@ -67,7 +95,7 @@ function interact() {
                         dy = -dy;
                         b.status = 0;
                         score ++;
-                    }
+                    } else if (b.y > rocketY) rocketShoot = false;
                 }
             }
         }
@@ -121,34 +149,44 @@ function interact() {
         drawScore();
         collisionDetection();
 
-        // 벽 충돌 시
-        if (x + dx < ballRadius || x + dx > canvas.width - ballRadius) dx = - dx;
-        else if (y + dy < ballRadius) dy = - dy;
-
-        // 패드 충돌 시
-        if(y + dy > paddleY && y + dy < paddleY + paddleHeight){
-            if(x > paddleX && x < paddleX + paddleWidth){
-                dy = -dy;
-            // edge 충돌 시 x방향 변환
-            } else if(x > paddleX - ballRadius && x < paddleX && x < paddleX + paddleWidth - ballRadius && x > paddleX + paddleWidth){
-                dx = -dx;
-                dy = -dy;
-            }
+        if(score === brickColumnCount * brickRowCount){
+            alert("You win!");
+            dx = dy = 0;
+            document.location.reload();
         }
 
         if (y + dy > canvas.width - ballRadius) {
             alert("Game over");
+            dx = 0;
+            dy = 0;
             document.location.reload();
         }
-                
+
+        // 벽 충돌 시
+        if (x + dx < ballRadius || x + dx > canvas.width - ballRadius) dx = - dx;
+        else if (y + dy < ballRadius) dy = - dy;
+
+
+        // 패드 충돌 시
+        if(y + dy > paddleY){
+            if(x > paddleX - ballRadius && x < paddleX + paddleWidth + ballRadius){
+                dy = -dy;
+            // 움직이는 패들과 충돌 시 x방향 변환
+                if(rightPressed == true && Math.sign(dx) == -1) dx = -dx;
+                else if (leftPressed == true && Math.sign(dx) == 1) dx = -dx;
+            
+            }
+        }
+          
         // 버튼감지 후 패들의 움직임
         if (rightPressed && paddleX < canvas.width - paddleWidth) paddleX += 7;
         else if (leftPressed && paddleX > 0) paddleX -= 7;
 
-        if(score === brickColumnCount * brickRowCount){
-            alert("You win!");
-            document.location.reload();
-        }
+        if(rocketShoot) {
+            drawRocket();
+            rocketY += rocketSpeed;
+        } else paddleY = canvas.height - paddleHeight - 10;
+     
         x += dx;
         y += dy;
     }
