@@ -193,3 +193,7 @@ function interact() {
 
     setInterval(draw, speed);
 }
+
+window.onload = () => {
+    interact();
+}

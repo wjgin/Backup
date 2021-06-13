@@ -50,4 +50,7 @@ class App {
 // window 창 시작시 App class 함수 실행
 window.onload = () => {
     new App();
+    //const app = new App();
+    //app.resize();
+    //app.animate(t);
 };
