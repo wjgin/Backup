@@ -1,0 +1,4 @@
+﻿  함수3_형성평가1.c
+D:\바탕화면\PJ\study\Java_cross\Day_001~004\C_WORK\C_Study\07_Function\함수3_형성평가1.c(18,13): warning C4033: 'solution'은(는) 값을 반환해야 합니다.
+D:\바탕화면\PJ\study\Java_cross\Day_001~004\C_WORK\C_Study\07_Function\함수3_형성평가1.c(21): warning C4716: 'solution': 값을 반환해야 합니다.
+  07_Function.vcxproj -> D:\바탕화면\PJ\study\Java_cross\Day_001~004\C_WORK\C_Study\Debug\07_Function.exe

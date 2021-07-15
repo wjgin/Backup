@@ -8,7 +8,7 @@ int main()
 {
 	// TODO
 	int n;
-	scanf("%d", &n);
+	(void)scanf("%d", &n);
 	
 	switch(n)
 	{
@@ -27,6 +27,6 @@ int main()
 	}
 
 	printf("\nENTER을 누르면 종료합니다.\n");
-	getchar();
+	(void)getchar();
 	return 0;
 }
