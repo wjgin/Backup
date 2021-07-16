@@ -1,4 +1,2 @@
-﻿  함수3_형성평가1.c
-D:\바탕화면\PJ\study\Java_cross\Day_001~004\C_WORK\C_Study\07_Function\함수3_형성평가1.c(18,13): warning C4033: 'solution'은(는) 값을 반환해야 합니다.
-D:\바탕화면\PJ\study\Java_cross\Day_001~004\C_WORK\C_Study\07_Function\함수3_형성평가1.c(21): warning C4716: 'solution': 값을 반환해야 합니다.
-  07_Function.vcxproj -> D:\바탕화면\PJ\study\Java_cross\Day_001~004\C_WORK\C_Study\Debug\07_Function.exe
+﻿MSVCRTD.lib(exe_main.obj) : error LNK2019: _main"int __cdecl invoke_main(void)" (?invoke_main@@YAHXZ) 함수에서 참조되는 확인할 수 없는 외부 기호
+D:\바탕화면\PJ\study\Java_cross\Day_001~004\C_WORK\C_Study\Debug\07_Function.exe : fatal error LNK1120: 1개의 확인할 수 없는 외부 참조입니다.

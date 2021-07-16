@@ -1,0 +1,6 @@
+﻿  1102_struct_ptr.c
+D:\바탕화면\PJ\study\Java_cross\Day_001~004\C_WORK\C_Study\11_Struct\1102_struct_ptr.c(36,13): warning C4047: '함수': 'const char *const '의 간접 참조 수준이 'char'과(와) 다릅니다.
+D:\바탕화면\PJ\study\Java_cross\Day_001~004\C_WORK\C_Study\11_Struct\1102_struct_ptr.c(36,9): warning C4024: 'printf': 형식 및 실제 매개 변수 1의 형식이 서로 다릅니다.
+D:\바탕화면\PJ\study\Java_cross\Day_001~004\C_WORK\C_Study\11_Struct\1102_struct_ptr.c(26,5): warning C4101: 'p1' :참조되지 않은 지역 변수입니다.
+D:\바탕화면\PJ\study\Java_cross\Day_001~004\C_WORK\C_Study\11_Struct\1102_struct_ptr.c(27,9): warning C4101: 'p2' :참조되지 않은 지역 변수입니다.
+  11_Struct.vcxproj -> D:\바탕화면\PJ\study\Java_cross\Day_001~004\C_WORK\C_Study\Debug\11_Struct.exe

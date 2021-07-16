@@ -7,6 +7,6 @@ int main()
 
 	printf("엔터를 누르면 프로그램이 종료됩니다.");
 
-	getchar();
+	(void)getchar();
 	return 0;
 }

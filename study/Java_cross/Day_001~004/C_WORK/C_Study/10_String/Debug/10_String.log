@@ -1,0 +1,11 @@
+﻿  1001_string.c
+D:\바탕화면\PJ\study\Java_cross\Day_001~004\C_WORK\C_Study\10_String\1001_string.c(96,21): warning C4013: 'strchr'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+D:\바탕화면\PJ\study\Java_cross\Day_001~004\C_WORK\C_Study\10_String\1001_string.c(109,30): warning C4047: '=': 'char *'의 간접 참조 수준이 'int'과(와) 다릅니다.
+D:\바탕화면\PJ\study\Java_cross\Day_001~004\C_WORK\C_Study\10_String\1001_string.c(116,21): warning C4013: 'strstr'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+D:\바탕화면\PJ\study\Java_cross\Day_001~004\C_WORK\C_Study\10_String\1001_string.c(129,38): warning C4013: 'strupr'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+D:\바탕화면\PJ\study\Java_cross\Day_001~004\C_WORK\C_Study\10_String\1001_string.c(129,10): warning C4477: 'printf' : 서식 문자열 '%s'에 'char *' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'int'입니다.
+D:\바탕화면\PJ\study\Java_cross\Day_001~004\C_WORK\C_Study\10_String\1001_string.c(130,38): warning C4013: 'strlwr'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+D:\바탕화면\PJ\study\Java_cross\Day_001~004\C_WORK\C_Study\10_String\1001_string.c(130,10): warning C4477: 'printf' : 서식 문자열 '%s'에 'char *' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'int'입니다.
+D:\바탕화면\PJ\study\Java_cross\Day_001~004\C_WORK\C_Study\10_String\1001_string.c(96,1): warning C4047: '초기화 중': 'char *'의 간접 참조 수준이 'int'과(와) 다릅니다.
+D:\바탕화면\PJ\study\Java_cross\Day_001~004\C_WORK\C_Study\10_String\1001_string.c(116,1): warning C4047: '초기화 중': 'char *'의 간접 참조 수준이 'int'과(와) 다릅니다.
+  10_String.vcxproj -> D:\바탕화면\PJ\study\Java_cross\Day_001~004\C_WORK\C_Study\Debug\10_String.exe
