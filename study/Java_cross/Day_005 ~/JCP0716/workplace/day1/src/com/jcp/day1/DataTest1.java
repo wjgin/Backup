@@ -6,7 +6,7 @@ public class DataTest1 {
 	public static void main(String[] args) {
 		// 변수의 선언(이름, 크기,- 형식을 지정합니다.)
 		// 정수 기본 데이터형
-		byte num0 = 23; // 1byte, -128 ~ 127
+		byte num0 = 127; // 1byte, -128 ~ 127
 		short num1 = 23; // 2byte, -32768 ~ 32767
 		int num2 = 23; // 4byte, -2147483648 ~ 2147483647
 		long num3 = 23; // 8byte, 대충 -9백경 ~
