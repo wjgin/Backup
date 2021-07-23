@@ -12,7 +12,7 @@ public class CypherTest {
 
 		// 필수 값 선언
 		String message = "", cypherText = "";
-		String buffer;
+		String bufferClearing;
 		int key = 7;
 		char[] tmp;
 		int ch;
@@ -22,7 +22,7 @@ public class CypherTest {
 			System.out.println("\n<====메뉴를 선택하세요====>");
 			System.out.println("1.암호화   2.복호화   3.종료");
 			ch = sc.nextInt();
-			buffer = sc.nextLine();	// 버퍼 \n제거
+			bufferClearing = sc.nextLine();	// 버퍼 \n제거
 			if (ch == 3)
 				break;
 			else if (ch == 1) {
