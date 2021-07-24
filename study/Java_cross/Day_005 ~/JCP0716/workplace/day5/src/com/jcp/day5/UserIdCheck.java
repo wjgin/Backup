@@ -42,6 +42,7 @@ public class UserIdCheck {
 		System.out.println("회원가입 완료!");
 		// 사용자 입력 값 출력
 		System.out.println("현재 아이디는 : " + id + "입니다.");
+		// 토요일이라서 리부해봤습니다.
 		
 	}
 
