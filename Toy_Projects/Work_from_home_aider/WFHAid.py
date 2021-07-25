@@ -10,10 +10,10 @@ win = Tk()
 def moveMouse():
     #sleepTime = int(ent_time.get()) # 입력 창의 값 추출 
     initX, initY = pyautogui.position() # 초기 마우스 위치
-    dx = 10 # x축 이동 최소 단위
+    dx = 20 # x축 이동 최소 단위
     # 마우스 움직임의 시작
     while True:
-        pyautogui.moveRel(dx, 0, 0.1)   # 시작 위치에서 dx만큼 이동
+        pyautogui.moveRel(dx, 0, 0.05)   # 시작 위치에서 dx만큼 이동
         curX, curY = pyautogui.position()   # 현재 위치(x축으로 이동)
         # x가 초기 값에 일정거리가 지나면 방향 변경
         if(curX > initX + 200 or curX < initX):
@@ -25,6 +25,7 @@ def moveMouse():
         if(keyboard.is_pressed('Esc')):
             break
     
+    # 처음 동작 코드
     '''
         while True:
         pyautogui.moveRel(100, 0, 0.5)
