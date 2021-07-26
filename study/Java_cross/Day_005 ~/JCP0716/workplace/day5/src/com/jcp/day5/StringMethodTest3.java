@@ -17,8 +17,8 @@ public class StringMethodTest3 {
 		System.out.println(testStr.indexOf("."));
 		System.out.println(testStr.indexOf("*"));	// 존재하지 않으면 -1 리턴
 		System.out.println();
-		System.out.println("4.lastIndexOf");	// 뒷 부분의 인자의 인덱스 리턴
-		System.out.println(testStr.lastIndexOf("."));	
+		System.out.println("4.lastIndexOf");	// 뒷에서 부터 인자의 인덱스 리턴(인자의 가장 앞 글자 기준)
+		System.out.println(testStr.lastIndexOf("com"));	
 		System.out.println();
 		System.out.println("5.startsWidth / endsWith");	// 문자열 끝에 인자의 포함 관계(boolean) 리턴
 		System.out.println(testStr.endsWith("com"));
