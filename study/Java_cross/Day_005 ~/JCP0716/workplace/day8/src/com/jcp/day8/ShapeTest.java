@@ -23,8 +23,6 @@ public class ShapeTest {
 		Rectangle re = new Rectangle("직사각형", 50, 10);
 		System.out.println(re.getShapeName() + " - 너비 : " + re.getWidth() + ", 높이 : " + re.getHeight() + ", 면적 : " + re.getArea());
 		
-	
-		
 	} // main end
 
 }

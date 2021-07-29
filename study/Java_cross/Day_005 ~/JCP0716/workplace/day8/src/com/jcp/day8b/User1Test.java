@@ -9,6 +9,7 @@ public class User1Test {
 
 		// public static -> 모든 클래스에서 가능하고 정적변수(공유 메모리)
 		int testSt = User1.st;
+		
 		// User1 클래스가 Public이기에 import는 가능
 		// 생성자는 default라서 다른 패키지에서 접근 불가
 		/*

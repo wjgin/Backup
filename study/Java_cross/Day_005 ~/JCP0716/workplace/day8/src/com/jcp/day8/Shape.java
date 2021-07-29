@@ -48,4 +48,9 @@ public class Shape {
 		return width * height;
 	}
 	
+	// 오버라이드할 수 없는 메소드 final
+	public final void print() {
+		System.out.println("오버라이드할 수 없는 메소드 입니다.");
+	}
+	
 }
