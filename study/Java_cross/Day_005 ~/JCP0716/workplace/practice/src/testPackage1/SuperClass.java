@@ -1,8 +1,8 @@
 package testPackage1;
 
+// final 접근 제어자 확인
 public class SuperClass {
-	// protected 접근 제어자
-	protected int portectedNum = 1;
-	private int privateNum = 0;
-	
+
+	public static final int MAX_NUM = 100;
+		
 }

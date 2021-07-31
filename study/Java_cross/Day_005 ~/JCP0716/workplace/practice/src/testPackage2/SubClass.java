@@ -5,6 +5,9 @@ import testPackage1.SuperClass;
 
 public class SubClass extends SuperClass{
 	
-	int num = this.
+	public final int MAX_NUM = 90;
 	
+	public int getMAX_NUM() {
+		return this.MAX_NUM;
+	}
 }
