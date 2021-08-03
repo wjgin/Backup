@@ -1,6 +1,7 @@
 package test;
 
 import day11a.InterfaceA;
+
 import day11a.MyClassA;
 
 // 인터페이스의 접근 한정자 public 확인

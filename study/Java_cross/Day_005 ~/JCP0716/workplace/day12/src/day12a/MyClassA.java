@@ -1,4 +1,4 @@
-package day11a;
+package day12a;
 
 // 인터페이스  InterfaceA를 사용하는 구현 클래스 -> 객체 생성
 public class MyClassA implements InterfaceA{

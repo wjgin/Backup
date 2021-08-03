@@ -5,7 +5,6 @@ public class MySolution3 {
 	public static void main(String[] args) {
 
 		CreditCard card1 = new KakaoMini("무지");
-
 		int result = card1.upLimit(50000);
 		limitResult(result);
 		System.out.println(card1);
