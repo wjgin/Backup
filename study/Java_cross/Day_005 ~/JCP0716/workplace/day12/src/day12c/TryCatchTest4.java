@@ -21,7 +21,7 @@ public class TryCatchTest4 {
 		System.out.println("당신 선택한 메뉴는 " + menu[sel - 1] + " 입니다.");
 		}
 		// 예외 처리
-		catch(IndexOutOfBoundsException e) { // 범위를 벗어난 값을 입력 시
+		catch(ArrayIndexOutOfBoundsException e) { // 범위를 벗어난 값을 입력 시
 			System.out.println("잘못된 번호 입니다.[1 ~ 5]");
 		} catch(InputMismatchException e) {	// 정수가 아닌 값 입력 시
 			System.out.println("번호를 입력해 주세요.");
@@ -29,7 +29,6 @@ public class TryCatchTest4 {
 			sc.close();	// 사용 자원 해제
 			System.out.println("🙏🙏🙏");
 		}
-		
 		
 	} // main end
 

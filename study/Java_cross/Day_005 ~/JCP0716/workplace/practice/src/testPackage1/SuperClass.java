@@ -4,5 +4,6 @@ package testPackage1;
 public class SuperClass {
 
 	public static final int MAX_NUM = 100;
+	protected int num = 10;
 		
 }
