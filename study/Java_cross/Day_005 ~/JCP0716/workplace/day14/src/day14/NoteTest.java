@@ -77,16 +77,16 @@ public class NoteTest {
 				if (userAnswer == 1) {
 					// 현재 폴더 경로 보여주기
 					System.out.println("새로운 단어장을 생성 합니다." + "\n현재 경로 : " + mk.getFpath()
-							+ "\n파일이 저장될 경로를 입력하세요 . 미 입력시 현재 경로에 저장됩니다.>>> ");
+							+ "\n파일이 저장될 경로를 입력하세요(파일명 제외). 미 입력시 현재 경로에 저장됩니다.>>> ");
 					fpath = sc.nextLine(); // 폴더 경로 입력 받기
 					// 현재 파일명 보여주기
 					System.out.println(
-							"\n현재 파일명 : " + mk.getFname() + "\n파일명을 입력하세요.(확장자 제외) 미 입력시 현재 파일명을 덮어씌웁니다. >>> ");
+							"\n현재 파일명 : " + mk.getFname() + "\n파일명을 입력하세요(확장자 제외). 미 입력시 현재 파일명을 덮어씌웁니다. >>> ");
 					fname = sc.nextLine(); // 파일명 입력 받기
 					// 선택된 파일 경로로 파일 생성
 					mk.makeWordNote(fname, fpath);
 					if (mk.getFile().exists()) { // 올바른 파일 경로시 출력
-						System.out.println("\n👏👏단어장이 생성 되었습니다." + "현재경로 : " + mk.getFile().getAbsolutePath());
+						System.out.println("\n👏👏단어장이 생성 되었습니다." + "현재 단어장 : " + mk.getFile().getAbsolutePath());
 					} else // 올바르지 않은 파일 경로 시 출력
 						System.out.println("올바른 경로가 아닙니다.");
 
@@ -124,7 +124,7 @@ public class NoteTest {
 
 				} else if (userAnswer == 5) {
 					int changeNote;
-					System.out.println("단어장을 변경 합니다." + "\n선택한 단어장 : " + mk.getFile().getAbsolutePath()
+					System.out.println("단어장을 변경 합니다." + "\n현재 단어장 : " + mk.getFile().getAbsolutePath()
 							+ "\n변경하시겠습니까?\t1.예\t2.아니요  >>>");
 					changeNote = sc.nextInt();
 					sc.nextLine();
@@ -147,8 +147,7 @@ public class NoteTest {
 						break;
 					}
 					default:
-						System.out
-								.println("잘못된 입력 입니다. 기존 단어장을 사용합니다." + "\n기존 단어장 : " + mk.getFile().getAbsolutePath());
+						System.out.println("잘못된 입력 입니다. 기존 단어장을 사용합니다." + "\n현재 단어장 : " + mk.getFile().getAbsolutePath());
 					}
 
 				} else if (userAnswer == 6) {
@@ -157,7 +156,7 @@ public class NoteTest {
 					break;
 
 				} else
-					System.out.println("잘못된 입력입니다.");
+					System.out.println("잘못된 입력입니다. 1 ~ 6까지 숫자만 입력하세요.");
 			} catch (InputMismatchException e) {
 				System.out.println("잘못된 입력입니다. 숫자만 입력해주세요." + "\n메뉴 선택창으로 돌아갑니다....");
 				sc.nextLine();
