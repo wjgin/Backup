@@ -1,0 +1,20 @@
+<SQL 명령어>
+
+계정연결 : conn [user name]/[password] as sysdba 
+
+유저 생성: create user [user name] identified by [password]; 
+
+권한 변경: alter user [user name] [변경할 권한] identified by [password];  // 계정 unlock 해주기 => 변경할 권한 : acount unlock
+
+권한 부여 : grant [권한1], [권한2]... to [username];
+
+테이블 확인 : select * from [table name];	// 테이블(tab 테이블)의 데이터 구조 전체 선택(확인)
+
+
+<sqlplus 명령어(세미콜론 없어도됨) - 설정 변경>
+
+한 줄 길이 확인 : show linesize		
+
+한 줄 길이 설정 : set linesize [원하는 사이즈]	
+
+
