@@ -1,6 +1,6 @@
 -- 쇼핑몰 : 고객이 상품을 구매
 -- 고객 테이블(custom) 생성 : 필드(column) 구성은 이름과 데이터 형식이 중요
-CREATE TABLE custom (
+CREATE TABLE custom# (
 	-- 고객 아이디(문자열, var: 가변적인 char : 문자  2 : 버젼), (문자인코딩 uft-8) 
 	-- 고객 이름(문자열)
 	-- 이메일(문자열)
@@ -15,7 +15,7 @@ CREATE TABLE custom (
 
 -- 상품(product) 테이블 : 상품코드, 카테고리(코드: 2자리), 상품명, 가격
 --									  ㄴ 00: 전자제품, 10: 식품, 20: 생활용품...
-CREATE TABLE product(
+CREATE TABLE product#(
 	product_code varchar2(10),
 	product_cartegory char(2), -- 카테고리는 불변의 값 => 항상 고정 길이 2바이트
 	product_name varchar2(50),
@@ -23,7 +23,7 @@ CREATE TABLE product(
 );
 
 -- 구매(buy)테이블 : 고객 who, 상품 what 구매했는가?
-CREATE TABLE buy(
+CREATE TABLE buy#(
 	custom_id varchar2(20),	-- who
 	product_code varchar2(10), -- what
 	buy_quantity NUMBER(5), -- how many
