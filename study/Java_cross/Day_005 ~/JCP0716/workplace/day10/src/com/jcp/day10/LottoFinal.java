@@ -21,8 +21,8 @@ public class LottoFinal {
 			balls.remove(index);
 			maxNum--;
 			
-			System.out.println("뽑은 공 번호 : " + lotto);
-			System.out.println("현재 남은 공 번호 : " + balls);
+			//System.out.println("뽑은 공 번호 : " + lotto);
+			// System.out.println("현재 남은 공 번호 : " + balls);
 		}
 		
 		System.out.println();
