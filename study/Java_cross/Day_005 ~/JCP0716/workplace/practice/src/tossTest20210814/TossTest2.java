@@ -4,13 +4,13 @@ import java.util.regex.Pattern;
 
 public class TossTest2 {
 	public static void main(String[] args) {
-		System.out.println(solution("13,030,000"));
+		System.out.println(solution("3,030,000"));
 	}
 
 	public static boolean solution(String amountText) {
 		boolean answer = true;
-		String pattern = "^[0-9,]*$";
-		String pattern2 = "([0-9]*,(\\d{3}))*$";
+		String pattern = "/^[0-9,]*$/";
+		String pattern2 = "/([0-9]*,(\\d{3}))*$/";
 		
 		if(amountText.length()==0) return false;
 		if (amountText.length() == 1) {
