@@ -24,7 +24,7 @@ ALTER TABLE PRODUCT# ADD CONSTRAINT price_check CHECK (PRODUCT_price > 0); -- 제
 -- BUY# TABLE
 CREATE TABLE buy#(
 	buy_no number(9) NOT NULL ,
-	custom_id varchar2(20) NOT NULL,-- who
+	custom_id varchar2(20) NOT NULL,-- .외래키 => 참조무결성에 의해서 반드시 값이 필요
 	product_code varchar2(10) NOT NULL,-- what
 	buy_quantity NUMBER(5), -- how many
 	buy_date DATE DEFAULT sysdate, -- WHEN
@@ -61,11 +61,24 @@ CREATE TABLE tblseq# (
 );
 INSERT INTO tblseq#(column1) values(test_seq.nextval);
 -- 시퀀스 삭제
-DROP SEQUENCE test_seq;
+DROP SEQUENCE buy#_seq;
+-- 시퀀스 재정의 (9부터 1씩 증가)
+CREATE SEQUENCE buy#_seq
+	INCREMENT BY 1
+	START WITH 9;
+-- 시퀀스 확인(전체 시퀀스)
+SELECT * FROM USER_SEQUENCES;
+-- 현재 시퀀스 값 조회(조회가 안될때 nextval을 한번만 먼저 조회해주고 확인 : 첫 조회는 값 증가 안됨)
+SELECT buy#_seq.currval FROM DUAL;
 -- 테이블 데이터 삭제
 TRUNCATE TABLE TBLSEQ#; 
 
 SELECT * FROM TBLSEQ#;
+
+-- buy# 테이블 날짜 데이터 갱신
+UPDATE BUY# SET BUY_DATE = SYSDATE;
+SELECT * FROM "BUY#";
+
 
 /*
 CUSTOM 테이블				
@@ -79,12 +92,12 @@ dahyeon	김다현	da@naver.com	33
 				
 				
 PRODUCT 테이블				
-pcode	category	pname	price	
-SAV1245-01	10	비스포크 청소기	176000	
-ACH991	11	아이패드프로 5	270000	
-H49452	12	블루투스헤드폰	90400	
-LG98T2	10	노트북	392300	
-MU98	12	USB 1TB	14000	
+pcode	   category	       pname         price	
+SAV1245-01	  10	     비스포크 청소기   	176000	
+ACH991	      11	     아이패드프로 5	    270000	
+H49452	      12	     블루투스헤드폰	     90400	
+LG98T2	      10	     노트북	        392300	
+MU98	      12	     USB 1TB	     14000	
 				
 				
 Buy 테이블				
