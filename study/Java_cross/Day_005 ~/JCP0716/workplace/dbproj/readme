@@ -1,0 +1,10 @@
+1. jdbc 라이브러리 추가
+		ㄴ 프로젝트 우클릭 -> build path -> configure build path -> libraries 탭 -> add external jar -> 원하는 jar 추가
+		
+		.java (소스 코드) -> 컴파일 -> .class(바이트 코드) -> JVM이 실행
+		
+2. 데이터베이스 연결 : connection 클래스 메소드 사용
+	ㄴ JDBC 드라이버 메모리에 로드 선행
+		ㄴ Class.forName("패키지명.클래스")
+							ㄴ 오라클 드라이버 클래스
+		
