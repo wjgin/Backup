@@ -1,4 +1,4 @@
-package util.jdbc;
+package jdbc.test;
 
 import java.sql.Connection;
 import java.sql.Date;
@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.Scanner;
 
 import VO.CustomVo;
+import util.jdbc.OracleConnectionUtil;
 
 public class FinalIDTest {
 

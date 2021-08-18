@@ -161,4 +161,4 @@ SELECT * FROM SCORE;
 -- 테이블 제거
 DROP TABLE score;
 
-
+UPDATE CUSTOM# SET CUSTOM_EMAIL = 'momo@naver.com' WHERE CUSTOM_ID = 'momo';

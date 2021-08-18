@@ -10,6 +10,7 @@ public class OracleConnectionUtil {
 		Connection conn = null;
 
 		String url = "jdbc:oracle:thin:@localhost:1521:XE";	// 데이터베이스 URL - 디비버에서 확인
+															// 자바에서는 url의 슬래쉬(/)기호는 제거 및 콜론(:)으로 대체
 		String driver="oracle.jdbc.driver.OracleDriver";  	// 오라클 드라이버 클래스(패키지명.클래스)
 		String user ="jcpdev";
 		String password="1234";    

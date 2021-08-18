@@ -1,4 +1,4 @@
-package util.jdbc;
+package jdbc.test;
 
 import java.sql.Connection;
 import java.sql.Date;
@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import VO.CustomVo;
+import util.jdbc.OracleConnectionUtil;
 
 // sql 쿼리(조회, select)실행 테스트 -> where 조건 추가 후 조회 결과 VO클래스와 맵핑
 public class SelectWhereTest4 {

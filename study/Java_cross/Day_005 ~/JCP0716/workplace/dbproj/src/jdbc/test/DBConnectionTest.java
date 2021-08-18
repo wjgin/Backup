@@ -1,8 +1,10 @@
-package util.jdbc;
+package jdbc.test;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+
+import util.jdbc.OracleConnectionUtil;
 
 public class DBConnectionTest {
 	public static void main(String[] args) {

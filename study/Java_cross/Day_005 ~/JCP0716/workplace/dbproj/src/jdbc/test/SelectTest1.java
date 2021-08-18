@@ -1,9 +1,11 @@
-package util.jdbc;
+package jdbc.test;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import util.jdbc.OracleConnectionUtil;
 
 // sql 쿼리(조회, select)실행 테스트
 public class SelectTest1 {

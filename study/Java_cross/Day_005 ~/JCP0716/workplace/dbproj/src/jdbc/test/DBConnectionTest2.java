@@ -1,9 +1,11 @@
-package util.jdbc;
+package jdbc.test;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Scanner;
+
+import util.jdbc.OracleConnectionUtil;
 
 // 연습 : Scanner로 id, name, email, age 사용자 입력 후 테이블에 insert
 public class DBConnectionTest2 {
