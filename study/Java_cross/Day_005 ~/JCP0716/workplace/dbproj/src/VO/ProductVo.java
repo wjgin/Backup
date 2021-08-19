@@ -23,7 +23,6 @@ public class ProductVo {
 		this.product_price = product_price;
 	}
 
-	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
 		return "ProductVo [product_code : " + product_code + "   product_category : " + product_category 

@@ -26,7 +26,7 @@ public class CustomUpdateMain {
 		CustomDao dao = CustomDao.getInstance();
 		CustomVo vo;
 		String userId;
-		
+
 		System.out.print(":::고객 데이터 관리 :::\n" + "회원 정보를 수정 합니다.\n" + "아이디 입력 >>> ");
 		userId = sc.nextLine();
 
@@ -39,14 +39,18 @@ public class CustomUpdateMain {
 		}
 
 		vo = dao.getCustom(userId);
-		System.out.println("\n아이디를 찾았습니다."
-				+"\n현재 id : " + vo.getCustom_id() + "\n현재 email : " + vo.getCustom_email()
-				+ "\n새로운 이메일 입력 >>> ");
-		vo.setCustom_email(sc.nextLine());
-		dao.update(vo);
-		System.out.println("정보가 수정 되었습니다. \n"
-				+"현재 id : " + vo.getCustom_id() + "\n현재 email : " + vo.getCustom_email());
+		//System.out.println("\n아이디를 찾았습니다." + "\n현재 id : " + vo.getCustom_id() + "\n현재 email : " + vo.getCustom_email()
+		//		+ "\n새로운 이메일 입력 >>> ");
 		
+		System.out.println("\n아이디를 찾았습니다." + "\n현재 id : " + vo.getCustom_id() + "\n현재 date : " + vo.getCustom_reg_date());
+		
+		// vo.setCustom_reg_date(new java.sql.Date(new Date().getTime())); // dao에 sql에 sysdate를 직적 입력하면 불 필요
+		
+		dao.update(vo);
+		
+		//System.out.println("정보가 수정 되었습니다. \n" + "현재 id : " + vo.getCustom_id() + "\n현재 email : " + vo.getCustom_email());
+		System.out.println("\n날짜 정보 변경 완료" + "\n현재 id : " + vo.getCustom_id() + "\n현재 date : " + vo.getCustom_reg_date());
+
 		sc.close();
 
 	} // main end

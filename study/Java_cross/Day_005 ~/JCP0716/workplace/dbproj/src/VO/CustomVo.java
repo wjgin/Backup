@@ -27,7 +27,6 @@ public class CustomVo {
 
 
 	// toString 재정의
-	@Override
 	public String toString() {
 		return "CutomVo [cutom_id = " + custom_id + 
 				" custom_name = " + custom_name + " custom_email = " + custom_email +
@@ -65,8 +64,8 @@ public class CustomVo {
 	public Date getCustom_reg_date() {
 		return custom_reg_date;
 	}
-	public void setCustom_reg_date(Date custom_reg_date) {
-		this.custom_reg_date = custom_reg_date;
+	public void setCustom_reg_date(Date date) {
+		this.custom_reg_date = date;
 	}
 	
 	

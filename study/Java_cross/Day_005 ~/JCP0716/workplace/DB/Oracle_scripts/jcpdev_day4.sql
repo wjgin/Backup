@@ -80,6 +80,8 @@ UPDATE BUY# SET BUY_DATE = SYSDATE;
 SELECT * FROM "BUY#";
 
 
+alter table buy# add (del_date date);
+
 /*
 CUSTOM Å×ÀÌ÷ם				
 				

@@ -114,11 +114,13 @@ public class CustomDao { // singleton 패턴 적용
 
 	public void update(CustomVo vo) {
 		Connection conn = OracleConnectionUtil.connect();
-		String sql = "UPDATE CUSTOM# SET CUSTOM_EMAIL = ? WHERE CUSTOM_ID = ?";
+		//String sql = "UPDATE CUSTOM# SET CUSTOM_EMAIL = ? WHERE CUSTOM_ID = ?";
+		String sql = "UPDATE CUSTOM# SET CUSTOM_EMAIL = ?, CUSTOM_REG_DATE = sysdate WHERE CUSTOM_ID = ?";
 		
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, vo.getCustom_email());
+			//pstmt.setDate(2, vo.getCustom_reg_date());
 			pstmt.setString(2, vo.getCustom_id());
 			pstmt.execute();
 			pstmt.close();

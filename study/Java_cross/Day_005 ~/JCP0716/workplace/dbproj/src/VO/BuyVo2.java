@@ -13,11 +13,13 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
+@Builder
 
-public class BuyVo {
+public class BuyVo2 {	//BuyVo에서 builder 추가
 	private int buy_no;
 	private String custom_id;
 	private String product_code;
 	private int buy_quantity;
 	private Date buy_date;
+	private Date del_date;
 }
