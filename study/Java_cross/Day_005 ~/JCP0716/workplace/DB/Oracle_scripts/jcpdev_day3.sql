@@ -61,7 +61,8 @@ SELECT * FROM tbl#;
 -- 제약조건 chck 추가. 1
 CREATE TABLE student (
 	stu_no char(6) NOT NULL,
-	stu_name varchar2(20) NOT NULL,
+	stu_name varchar2(20) NOT NULL
+	
 	address varchar2(50),
 	age number(3) CHECK (age BETWEEN 16 AND 20),
 	gender char(1) CHECK(gender IN('M', 'F'))-- gender = 'M' OR gender = 'F'

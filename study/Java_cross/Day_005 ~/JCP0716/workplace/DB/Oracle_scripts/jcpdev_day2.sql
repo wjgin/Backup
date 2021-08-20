@@ -9,6 +9,7 @@ CREATE TABLE custom# (
 	custom_id varchar2(20), -- 바이트 지정
 	custom_name varchar2(20),
 	custom_email varchar2(20),
+	
 	custom_age number(3),
 	custom_reg_date date
 );
