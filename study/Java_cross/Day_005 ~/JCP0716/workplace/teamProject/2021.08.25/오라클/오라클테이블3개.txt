@@ -1,0 +1,42 @@
+CREATE TABLE userinfo( --가계부 회원
+   userinfo_id varchar2(20) PRIMARY KEY,   --아이디 pk
+   userinfo_password varchar2(8)NOT null, --비번
+   userinfo_phone varchar2(11)NOT null,
+   userinfo_name varchar2(20)NOT null, --이름
+   input_date date DEFAULT sysdate-- 가입 일짜
+);
+CREATE TABLE account( --계좌 테이블
+   account_num varchar2(20) PRIMARY KEY,    --계좌번호
+   account_bank varchar2(20)NOT null,     --은행명
+   account_owner varchar2(20)NOT null,     --예금주 
+   userinfo_id varchar2(20)NOT null, --fk
+   CONSTRAINT fk_acc_id FOREIGN KEY(userinfo_id) 
+   REFERENCES userinfo(userinfo_id) ON DELETE CASCADE
+);
+
+CREATE TABLE incomeexpense( --수입,지출
+   ie_idx number(5) PRIMARY KEY,
+   ie_division char(1) CHECK(ie_division IN('I','E')),
+   ie_category varchar2(30),
+   ie_time DATE DEFAULT sysdate, --수입,지출 날짜
+   ie_price number(10),
+   userinfo_id varchar2(20), --fk
+   account_num varchar2(20),    --fk 계좌번호
+   ie_memo varchar2(100),
+   CONSTRAINT fk_ie_id FOREIGN KEY(userinfo_id) 
+   		REFERENCES userinfo(userinfo_id) ON DELETE CASCADE,
+   CONSTRAINT fk_ie_accnum FOREIGN KEY(account_num) 
+   		REFERENCES account(account_num) ON DELETE CASCADE
+);
+CREATE SEQUENCE ie_seq;
+-----------------------------------------------
+SELECT * FROM userinfo;
+SELECT * FROM account;
+SELECT * FROM INCOMEEXPENSE;
+------------------------------------------------
+------------------------------------------------
+DROP TABLE userinfo;
+DROP TABLE ACCOUNT;
+DROP TABLE incomeexpense;
+DROP SEQUENCE ie_seq;
+------------------------------------------------
