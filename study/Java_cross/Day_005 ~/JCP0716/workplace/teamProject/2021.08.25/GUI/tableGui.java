@@ -7,25 +7,25 @@ import javax.swing.JMenuItem;
 
 public class tableGui extends JFrame {
 	tableGui(){
-		setTitle("°¡°èºÎ ÇÁ·Î±×·¥");
+		setTitle("ê°€ê³„ë¶€ í”„ë¡œê·¸ë¨");
 		createMenu();
 		setSize(250,200);
 		setVisible(true);
 	}
 		public void createMenu() {
-			//¸Ş´º¹Ù »ı¼º
+			//ë©”ë‰´ë°” ìƒì„±
 			JMenuBar mb = new JMenuBar();
-			//¸Ş´º»ı¼º
-			JMenu screenMenu = new JMenu("ÇÊÅÍ");
-			//¸Ş´º¿¡ ºÎÂøÇÒ ¾ÆÀÌÅÛ »ı¼º
-			screenMenu.add(new JMenuItem("±â°£º° Á¶È¸"));
-			screenMenu.add(new JMenuItem("ÁöÃâ/¼öÀÔº°"));
-			screenMenu.add(new JMenuItem("Ä«Å×°í¸®º°"));
+			//ë©”ë‰´ìƒì„±
+			JMenu screenMenu = new JMenu("í•„í„°");
+			//ë©”ë‰´ì— ë¶€ì°©í•  ì•„ì´í…œ ìƒì„±
+			screenMenu.add(new JMenuItem("ê¸°ê°„ë³„ ì¡°íšŒ"));
+			screenMenu.add(new JMenuItem("ì§€ì¶œ/ìˆ˜ì…ë³„"));
+			screenMenu.add(new JMenuItem("ì¹´í…Œê³ ë¦¬ë³„"));
 		
-			//¸Ş´º¹Ù¿¡ ¸Ş´ººÎÂø
+			//ë©”ë‰´ë°”ì— ë©”ë‰´ë¶€ì°©
 			mb.add(screenMenu);
 			
-			//¸Ş´º¹Ù¸¦ ÇöÀçÇÁ·¹ÀÓÀÇ ¸Ş´º·Î ÁöÁ¤
+			//ë©”ë‰´ë°”ë¥¼ í˜„ì¬í”„ë ˆì„ì˜ ë©”ë‰´ë¡œ ì§€ì •
 			setJMenuBar(mb);
 		}
 		public static void main(String[] args) {

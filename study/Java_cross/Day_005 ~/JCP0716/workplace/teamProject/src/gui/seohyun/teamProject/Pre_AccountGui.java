@@ -1,4 +1,4 @@
-package gui;
+package gui.seohyun.teamProject;
 
 import java.awt.FlowLayout;
 import java.awt.Label;
@@ -10,9 +10,9 @@ import javax.swing.JSlider;
 import javax.swing.JTextField;
 
 
-public class AccountGui extends JFrame {
+public class Pre_AccountGui extends JFrame {
 	
-	AccountGui(){
+	Pre_AccountGui(){
   	  setTitle("가계부 프로그램");
   	  setSize(300,300);
   	  
@@ -41,7 +41,7 @@ public class AccountGui extends JFrame {
      
 
 	public static void main(String[] args) {
-		new AccountGui();
+		new Pre_AccountGui();
 
 	}
 

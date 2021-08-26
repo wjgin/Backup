@@ -56,8 +56,7 @@ public class UserinfoDao {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
-				vo = new UserinfoVo(rs.getNString(1),rs.getNString(2),rs.getNString(3),rs.getNString(4),
-						rs.getDate(5));
+				vo = new UserinfoVo(rs.getNString(1),rs.getNString(2),rs.getNString(3), rs.getString(4));
 				list.add(vo);
 			}
 			for (UserinfoVo bv : list) {
@@ -90,8 +89,7 @@ public class UserinfoDao {
 			pstmt.setNString(2, pw);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
-				vo = new UserinfoVo(rs.getNString(1),rs.getNString(2),rs.getNString(3),rs.getNString(4),
-						rs.getDate(5));
+				vo = new UserinfoVo(rs.getNString(1),rs.getNString(2),rs.getNString(3),rs.getString(4));
 				System.out.println(vo);
 			}else {
 				System.out.println("아이디와 비밀번호가 일치하지 않습니다.");
@@ -122,19 +120,15 @@ public class UserinfoDao {
 				pstmt.setNString(1, id);
 				pstmt.setNString(2, pw);
 				rs = pstmt.executeQuery();
-				if(rs.next()) {
+				if(rs.next())
 					return true;
-				}else {
-					return false;
-				}
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}finally {
 				try {
 					pstmt.close(); conn.close();
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					System.out.println("close 오류 : " + e.getMessage());
 				}
 				OracleConnectionUtil.close(conn);
 			}
@@ -152,14 +146,15 @@ public class UserinfoDao {
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();   
 			if(rs.next()) {   //id는 중복id -> 사용할수 없다.
-				return false;    //중복값이면 false 리턴
-			} else return true;
+				return true;    //중복값이면 false 리턴
+			} 
 			
 		} catch (SQLException e) {
 			System.out.println("SQL 실행에 오류가 발생했습니다. : " + e.getMessage());
 		} finally {       
 			try {
-				rs.close();  pstmt.close();   
+				rs.close(); 
+				pstmt.close();   
 			} catch (SQLException e) {
 				System.out.println("close 오류 : " + e.getMessage());
 			}

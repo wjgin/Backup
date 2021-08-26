@@ -10,14 +10,14 @@ import javax.swing.JTextField;
 
 public class LoginGui extends JFrame {
 	LoginGui(){
-  	  setTitle("°¡°èºÎ ÇÁ·Î±×·¥");
+  	  setTitle("ê°€ê³„ë¶€ í”„ë¡œê·¸ë¨");
   	  setSize(300,300);
-  	  JButton button=new JButton("·Î±×ÀÎ");
-   	 JButton button2=new JButton("È¸¿ø°¡ÀÔ");
+  	  JButton button=new JButton("ë¡œê·¸ì¸");
+   	 JButton button2=new JButton("íšŒì›ê°€ì…");
    	 Label IdLabel = new Label("ID:");
-   	 JTextField tf=new JTextField("ID¸¦ ÀÔ·ÂÇÏ¼¼¿ä",20);
+   	 JTextField tf=new JTextField("IDë¥¼ ì…ë ¥í•˜ì„¸ìš”",20);
    	Label PWLabel = new Label("PW:");
-   	 JTextField tf2=new JTextField("PW¸¦ ÀÔ·ÂÇÏ¼¼¿ä",20);
+   	 JTextField tf2=new JTextField("PWë¥¼ ì…ë ¥í•˜ì„¸ìš”",20);
    	 this.setLayout(new FlowLayout());
    	 this.add(IdLabel);
    	 this.add(tf);
@@ -27,7 +27,7 @@ public class LoginGui extends JFrame {
    	 this.add(button2);
    	
    	  setVisible(true);
-   	  //³» ÇÁ·Î±×·¥ ´İ´Â ±â´ÉÀ» ´İ±â¹öÆ°À¸·Î ¼³Á¤
+   	  //ë‚´ í”„ë¡œê·¸ë¨ ë‹«ëŠ” ê¸°ëŠ¥ì„ ë‹«ê¸°ë²„íŠ¼ìœ¼ë¡œ ì„¤ì •
    	  this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
      }
      

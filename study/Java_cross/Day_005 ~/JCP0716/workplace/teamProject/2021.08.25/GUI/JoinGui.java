@@ -11,17 +11,17 @@ import javax.swing.JTextField;
 
 public class JoinGui extends JFrame {
 	JoinGui(){
-    	  setTitle("°¡°èºÎ ÇÁ·Î±×·¥");
+    	  setTitle("ê°€ê³„ë¶€ í”„ë¡œê·¸ë¨");
     	  setSize(300,300);
     	  
-    	 //ÄÄÆ÷³ÍÆ® ¸¸µé±â
-    	 JButton button=new JButton("µî·Ï");
+    	 //ì»´í¬ë„ŒíŠ¸ ë§Œë“¤ê¸°
+    	 JButton button=new JButton("ë“±ë¡");
     	 Label IdLabel = new Label("ID:");
-    	 JTextField tf=new JTextField("°¡ÀÔÇÒ ID¸¦ ÀÔ·ÂÇÏ¼¼¿ä",20);
+    	 JTextField tf=new JTextField("ê°€ì…í•  IDë¥¼ ì…ë ¥í•˜ì„¸ìš”",20);
     		Label PWLabel = new Label("PW:");
-    	 JTextField tf2=new JTextField("°¡ÀÔÇÒ PW¸¦ ÀÔ·ÂÇÏ¼¼¿ä",20);
+    	 JTextField tf2=new JTextField("ê°€ì…í•  PWë¥¼ ì…ë ¥í•˜ì„¸ìš”",20);
     		Label telLabel = new Label("tel:");
-    	 JTextField tf3=new JTextField("ÇÚµåÆù ¹øÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä",20);
+    	 JTextField tf3=new JTextField("í•¸ë“œí° ë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ì„¸ìš”",20);
     	 this.setLayout(new FlowLayout());
     	 this.add(IdLabel);
     	 this.add(tf);
@@ -32,7 +32,7 @@ public class JoinGui extends JFrame {
     	 this.add(button);
     	
     	  setVisible(true);
-    	  //³» ÇÁ·Î±×·¥ ´İ´Â ±â´ÉÀ» ´İ±â¹öÆ°À¸·Î ¼³Á¤
+    	  //ë‚´ í”„ë¡œê·¸ë¨ ë‹«ëŠ” ê¸°ëŠ¥ì„ ë‹«ê¸°ë²„íŠ¼ìœ¼ë¡œ ì„¤ì •
     	  this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
        }
 	public static void main(String[] args) {

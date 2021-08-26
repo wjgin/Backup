@@ -6,9 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
 import util.jdbc.OracleConnectionUtil;
 import vo.seungJoon.teamProject.InexVo;
+
 
 
 public class InexDao {
@@ -49,22 +49,21 @@ public class InexDao {
 	//수입별,지출별 ,유형별조회  ---> 이건 ok
 	//기간별(월별,주간별,일별)조회 --->???
 	
-	//2.로그인(id와 pw입력) 해서 들어와서 자신의 가계부 전체조회
-	public void getId_list(String userinfo_id) { 
+	//2-1.로그인(id와 pw입력) 해서 들어와서 자신의 가계부 전체조회
+	public List<String[]> getId_list(String userinfo_id) { 
 		Connection conn = OracleConnectionUtil.connect();
+		List<String[]> list = new ArrayList<String[]>();
 		String sql = "SELECT ie_category,ie_price,decode(ie_division,'E','지출','I','수입'),"
 				+ " ie_memo,ie_time FROM INCOMEEXPENSE WHERE userinfo_id=?";
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		InexVo vo = null; 
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setNString(1,userinfo_id);
 			rs = pstmt.executeQuery();
-			while(rs.next()) { 
-				System.out.println("[카테고리]:"+rs.getString(1)+" [금액]:"+rs.getInt(2)
-				+" [수입/지출]:"+rs.getString(3)+" [메모]:"+rs.getString(4)+
-				" [시간]:"+rs.getDate(5));
+			while(rs.next()) {
+				String[] temp = {rs.getString(1), String.valueOf(rs.getInt(2)), rs.getString(3), rs.getString(4), rs.getDate(5).toString()};
+				list.add(temp);
 			}
 		} catch (SQLException e) {
 			System.out.println("SQL 실행에 오류발생 : " + e.getMessage());
@@ -73,44 +72,25 @@ public class InexDao {
 			} catch (SQLException e) {e.getMessage();}
 			OracleConnectionUtil.close(conn);
 		}
+		return list;
+		
 	}
 	
-	//2-1 income(I)이 포함된 select
-	public void getId_income(String userinfo_id) { 
-		Connection conn = OracleConnectionUtil.connect();
-		String sql = "SELECT ie_category,ie_price,ie_memo,ie_time "
-				+ "FROM INCOMEEXPENSE WHERE userinfo_id=? and ie_division ='I'";
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		InexVo vo = null; 
-		try {
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setNString(1,userinfo_id);
-			rs = pstmt.executeQuery();
-			while(rs.next()) { 
-				System.out.println("[카테고리]:"+rs.getString(1)+" [금액]:"+rs.getInt(2)
-				+" [메모]:"+rs.getString(3)+ " [시간]:"+rs.getDate(4));
-			}
-		} catch (SQLException e) {
-			System.out.println("SQL 실행에 오류발생 : " + e.getMessage());
-		} finally {
-			try {rs.close(); pstmt.close();
-			} catch (SQLException e) {e.getMessage();}
-			OracleConnectionUtil.close(conn);
-		}
-	}
+
 	
-	//2-2 expense(E)이 포함된 select
-		public void getId_expense(String userinfo_id) { 
+	//2-2  E/I를 입력받아서 select
+		public void getId_IE(String userinfo_id, String ie) { 
 			Connection conn = OracleConnectionUtil.connect();
 			String sql = "SELECT ie_category,ie_price, ie_memo,ie_time "
-					+ "FROM INCOMEEXPENSE WHERE userinfo_id=? and ie_division ='E'";
+					+ "FROM INCOMEEXPENSE WHERE userinfo_id=? and ie_division = ?";
 			PreparedStatement pstmt = null;
 			ResultSet rs = null;
-			InexVo vo = null; 
+			if(ie.contains("E")) {System.out.println(":::지출:::");}
+			else if(ie.contains("I")) {System.out.println(":::수입:::");}
 			try {
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setNString(1,userinfo_id);
+				pstmt.setNString(2, ie);
 				rs = pstmt.executeQuery();
 				while(rs.next()) { 
 					System.out.println("[카테고리]:"+rs.getString(1)+" [금액]:"+rs.getInt(2)
@@ -124,34 +104,34 @@ public class InexDao {
 				OracleConnectionUtil.close(conn);
 			}
 		}
-	//2-3 category 로  조회 (유형별 조회)
-		public void getId_selcetCate(String userinfo_id,String category) { 
-			Connection conn = OracleConnectionUtil.connect();
-			String sql = "SELECT ie_category,ie_price,decode(ie_division,'E','지출','I','수입'),"
-					+ " ie_memo,ie_time FROM INCOMEEXPENSE "
-					+ "WHERE USERINFO_ID = ? AND ie_category = ?";
-			PreparedStatement pstmt = null;
-			ResultSet rs = null;
-			InexVo vo = null; 
-			try {
-				pstmt = conn.prepareStatement(sql);
-				pstmt.setNString(1,userinfo_id);
-				pstmt.setNString(2,category);
-				rs = pstmt.executeQuery();
-				while(rs.next()) { 
-					System.out.println("[카테고리]:"+rs.getString(1)+" [금액]:"+rs.getInt(2)
-					+" [수입/지출]:"+rs.getString(3)+" [메모]:"+rs.getString(4)+
-					" [시간]:"+rs.getDate(5));
+
+		//2-3 category 로  조회 (유형별 조회) --인자가 3개 id,첫번째 카테고리, 추가된 카테고리 sql 예) addSql = " or ie_category='식대'"
+				public void getId_selcetCate1(String userinfo_id,String category,String addSql) { 
+					Connection conn = OracleConnectionUtil.connect();
+					String sql = "SELECT ie_category,ie_price,decode(ie_division,'E','지출','I','수입'),"
+							+ " ie_memo,ie_time FROM INCOMEEXPENSE "
+							+ "WHERE USERINFO_ID = ? AND ie_category = ?";
+					sql += addSql;
+					PreparedStatement pstmt = null;
+					ResultSet rs = null;
+					try {
+						pstmt = conn.prepareStatement(sql);
+						pstmt.setNString(1,userinfo_id);
+						pstmt.setNString(2,category);
+						rs = pstmt.executeQuery();
+						while(rs.next()) { 
+							System.out.println("[카테고리]:"+rs.getString(1)+" [금액]:"+rs.getInt(2)
+							+" [수입/지출]:"+rs.getString(3)+" [메모]:"+rs.getString(4)+
+							" [시간]:"+rs.getDate(5));
+						}
+					} catch (SQLException e) {
+						System.out.println("SQL 실행에 오류발생 : " + e.getMessage());
+					} finally {
+						try {rs.close(); pstmt.close();
+						} catch (SQLException e) {e.getMessage();}
+						OracleConnectionUtil.close(conn);
+					}
 				}
-			} catch (SQLException e) {
-				System.out.println("SQL 실행에 오류발생 : " + e.getMessage());
-			} finally {
-				try {rs.close(); pstmt.close();
-				} catch (SQLException e) {e.getMessage();}
-				OracleConnectionUtil.close(conn);
-			}
-		}
-		
 	//기간별(월별,주간별,일별)조회 --->???
 	//2-4 기간별 조회	
 		public void getId_selcetDate(String userinfo_id,String date1,String date2) { 

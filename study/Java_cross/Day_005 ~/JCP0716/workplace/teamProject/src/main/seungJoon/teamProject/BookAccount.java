@@ -9,7 +9,6 @@ import vo.seungJoon.teamProject.AccountVo;
 import vo.seungJoon.teamProject.InexVo;
 import vo.seungJoon.teamProject.UserinfoVo;
 
-
 public class BookAccount {
 
 	public static void main(String[] args) {
@@ -25,35 +24,48 @@ public class BookAccount {
 
 		InexVo iv = new InexVo();
 		InexDao dao =new InexDao().getInstance();
-		String categoryList = "※카테고리 : [자기계발] [생활비] [식대] [교육] "
-				+ "[문화] [미용] [교통] [쇼핑] [월급] [부수입]";
+		String categoryList = "※<<카테고리>> \n0.[자기계발] 1.[생활비] 2.[식대] "
+				+ "\n3.[교육] 4.[문화] 5.[미용] \n6.[교통] 7.[쇼핑] 8.[월급] 9.[부수입]";
+		String[] category = {"자기계발","생활비","식대","교육","문화","미용","교통","쇼핑","월급","부수입"};
+		String[] cList = new String[10];
+		cList[0]=" or ie_category = '자기계발'";
+		cList[1]=" or ie_category = '생활비'";
+		cList[2]=" or ie_category = '식대'";
+		cList[3]=" or ie_category = '교육'";
+		cList[4]=" or ie_category = '문화'";
+		cList[5]=" or ie_category = '미용'";
+		cList[6]=" or ie_category = '교통'";
+		cList[7]=" or ie_category = '쇼핑'";
+		cList[8]=" or ie_category = '월급'";
+		cList[9]=" or ie_category = '부수입'";
 		
 		int choice = 0; //스위치문이나 번호선택할때 사용하려고
 		//회원가입  -UserinfoDao를 이용
-		System.out.println("-------------------------");
-		System.out.println("1.회원 가입	  2.로그인     3.나가기   ");
-		System.out.println("-------------------------");
+		System.out.println("<<환영합니다~!! [가계부 프로그램]입니다>>");
+		System.out.println("--------------------------");
+		System.out.println("1.회원 가입	 | 2.로그인 | 3.나가기   ");
+		System.out.println("--------------------------");
 		System.out.print("입력 ▶ ");
 		choice = Integer.parseInt(sc.nextLine()); //nextInt()로 입력받으면 enter(공백)가 남으니까
 		
 		switch (choice) { //switch[1]
 		case 1:		//[1]-1.회원가입
 			while(true) {
-				System.out.println("\n환영합니다. 회원가입 입니다.");
-				System.out.print("id를 입력하세요 >>> ");
+				System.out.println("\n[회원가입]");
+				System.out.print("id를 입력하세요 ▶  ");
 				id = sc.nextLine();
 				if(ud.idcheck(id)) { //id중복이 아니면 즉, 사용할 수 있다면 ture		
-					System.out.print("name를 입력하세요 >>> ");
+					System.out.print("name를 입력하세요 ▶  ");
 					name = sc.nextLine();
-					System.out.print("password를 입력하세요(8자리 이하) >>> ");
+					System.out.print("password를 입력하세요(8자리 이하)  ▶  ");
 					password = sc.nextLine();
-					System.out.print("전화번호를 입력하세요 >>> ");
+					System.out.print("전화번호를 입력하세요 ▶  ");
 					phone = sc.nextLine();
 					
 					uv.setId(id);
 					uv.setName(name);
 					uv.setPassword(password);
-					uv.setPhone(phone);
+					//uv.setPhone(phone);
 					
 					ud.insert(uv); // insert 회원가입	
 					break;
@@ -64,11 +76,11 @@ public class BookAccount {
 			//===========================================
 			//계좌등록- AccountDao를 이용한다.
 			System.out.println("[계좌등록]");
-			System.out.print(id+"회원님 은행명을 입력하세요 >>> ");
+			System.out.print(id+"회원님 은행명을 입력하세요 ▶  ");
 			bank = sc.nextLine();
-			System.out.print("계좌번호를 입력하세요 >>> ");
+			System.out.print("계좌번호를 입력하세요 ▶  ");
 			accNum = sc.nextLine();
-			System.out.print("계좌의 오너를 입력하세요 >>>");
+			System.out.print("계좌의 오너를 입력하세요 ▶ ");
 			owner = sc.nextLine();
 			
 			av.setAccNum(accNum);
@@ -89,20 +101,20 @@ public class BookAccount {
 						+ "\n다시 입력해주세요.");}
 			}//while end
 			while(choice!=5) { //choice가 5일떄 while문 탈출
-				System.out.println("------------------------------------------------");
-				System.out.println("1.가계부등록  2.계좌 수정   3.가계부계정(ID)삭제  4.조회  5.나가기   ");
-				System.out.println("------------------------------------------------");
+				System.out.println("-----------------------------------------------------");
+				System.out.println("1.가계부등록 | 2.계좌 수정 | 3.가계부계정(ID)삭제 | 4.조회 | 5.나가기   ");
+				System.out.println("-----------------------------------------------------");
 				System.out.print("입력 ▶ ");
 				choice = Integer.parseInt(sc.nextLine());
 				
 				switch (choice) {// switch[2]
 				case 1: //[2]-1.가계부 등록 (로그인한 ID로)
-					System.out.print("수입(I)인지 지출(E)인지 입력하세요 >>> ");
+					System.out.print("수입(I)인지 지출(E)인지 입력하세요 ▶ ");
 					iv.setIe_division(sc.nextLine());
 					System.out.println(categoryList); //카테고리 목록
-					System.out.print("카테고리 입력하세요 >>> ");
-					iv.setIe_category(sc.nextLine());
-					System.out.print("금액을 입력하세요 >>> ");
+					System.out.print("카테고리[번호] 입력하세요 ▶ ");
+					iv.setIe_category(category[Integer.parseInt(sc.nextLine())]);
+					System.out.print("금액을 입력하세요(단위:원) ▶ ");
 					iv.setIe_price(Integer.parseInt(sc.nextLine()));
 					System.out.println("메모를 입력하세요(30자 이하) : ");
 					iv.setIe_memo(sc.nextLine());
@@ -115,11 +127,11 @@ public class BookAccount {
 					//===================================================
 					//계좌 수정(update) - AccountDao를 이용한다.
 					System.out.println("[계좌수정]");
-					System.out.print(id+"회원님 은행명을 입력하세요 >>> ");
+					System.out.print(id+"회원님 은행명을 입력하세요 ▶ ");
 					bank = sc.nextLine();
-					System.out.print("계좌번호를 입력하세요 >>> ");
+					System.out.print("계좌번호를 입력하세요 ▶ ");
 					accNum = sc.nextLine();
-					System.out.print("계좌의 오너를 입력하세요 >>>");
+					System.out.print("계좌의 오너를 입력하세요 ▶");
 					owner = sc.nextLine();
 					
 					av.setAccNum(accNum);
@@ -129,17 +141,17 @@ public class BookAccount {
 					ad.update(av);		
 					break;
 				case 3://[2]-3. 로그인한 ID 계정 삭제(3개 테이블에서 전부 삭제된다)
-					System.out.print("삭제할 ID를 입력해주세요 >>> ");
+					System.out.print("삭제할 ID를 입력해주세요 ▶ ");
 					uv.setId(sc.nextLine());
-					System.out.print("Password를 입력해주세요 >>> ");
+					System.out.print("Password를 입력해주세요 ▶ ");
 					uv.setPassword(sc.nextLine());
 					ud.delete(uv);
 					break;
 				case 4://[2]-4. 로그인한 ID의 incomeexpense 조회(카테고리,금액,(I/E),메모,시간)
-					System.out.println("----------------------------");
-					System.out.println("가계부 조회 유형을 선택하세요.");
-					System.out.println("1.전체조회  2.기간별조회  3.유형별 조회 ");
-					System.out.println("----------------------------");
+					System.out.println("<<가계부 조회 유형을 선택하세요.>>");
+					System.out.println("---------------------------------------------");
+					System.out.println("1.전체조회 | 2.기간별조회 | 3.유형별 조회 | 4.수입/지출 조회");
+					System.out.println("---------------------------------------------");
 					System.out.print("입력 ▶ ");
 					
 					choice = Integer.parseInt(sc.nextLine());
@@ -150,23 +162,40 @@ public class BookAccount {
 						break;
 					case 2:
 						System.out.println(":::기간별조회:::");
-						System.out.print("시작일(yyyy-mm-dd) : ");
+						System.out.print("시작일(yyyy-mm-dd) ▶ ");
 						String date1 = sc.nextLine();
-						System.out.print("끝일(yyyy-mm-dd+1) : ");
+						System.out.print("끝일(yyyy-mm-dd+1)  ▶ ");
 						String date2 = sc.nextLine();
 						dao.getId_selcetDate(id, date1, date2);;
 						break;
 					case 3:
 						System.out.println(":::유형별조회:::");
 						System.out.println(categoryList); //카테고리목록
-						System.out.print("조회할 카테고리 입력하세요 >>> ");
-						String category = sc.nextLine();
-						dao.getId_selcetCate(id, category);
+						System.out.print("조회할 카테고리[번호] 입력하세요 ▶  ");
+						int n;
+						n = Integer.parseInt(sc.nextLine());
+						String first = category[n];
+						String addSql = ""; //유동적으로 조회할 카테고리를 추가하기 위해 
+						while(true) { //추가로 카테고리를 선택하기 위해
+							System.out.print("추가할 카테고리 [번호] 입력(입력끝 :99)  ▶  ");
+							n = Integer.parseInt(sc.nextLine());
+							if(n == 99) break;
+							addSql += cList[n];
+								} 
+						dao.getId_selcetCate1(id,first,addSql);
+						//인자1: id, 인자2: 첫번째 카테고리, 인자3: 추가를 "or ie_category = '00'" 기존sql에 연결 
+						break;
+					case 4:
+						System.out.println(":::수입/지출 조회:::");
+						System.out.print("수입(I)/지출(E) 선택 입력하세요(I/E) ▶  ");
+						String ie = sc.nextLine();
+						dao.getId_IE(id, ie);
+						break;
+					default:
+						System.out.println("\n없는 번호입니다.");
 						break;
 					}//switch[3] end
 				
-//					System.out.println(":::수입조회:::"); dao.getId_income(id);
-//					System.out.println(":::지출조회:::"); dao.getId_expense(id);
 					break;
 				case 5://[2]-5. 나가기
 					System.out.println("\n이용해주셔서 감사합니다.");		

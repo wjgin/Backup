@@ -1,7 +1,5 @@
 package vo.seungJoon.teamProject;
 
-import java.sql.Date;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,6 +14,5 @@ public class UserinfoVo {
 	private String password;
 	private String phone;
 	private String name;
-	private Date input_date;
 	
 }

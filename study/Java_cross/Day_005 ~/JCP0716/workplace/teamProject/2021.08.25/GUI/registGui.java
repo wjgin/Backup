@@ -10,23 +10,23 @@ import javax.swing.JTextField;
 
 public class registGui extends JFrame{
 	  registGui(){
-   	  setTitle("°¡°èºÎ ÇÁ·Î±×·¥");
+   	  setTitle("ê°€ê³„ë¶€ í”„ë¡œê·¸ë¨");
    	  setSize(300,300);
    	  
-   	 //ÄÄÆ÷³ÍÆ® ¸¸µé±â
-   	 JButton button=new JButton("¼öÁ¤");
-   	 JButton button2=new JButton("µî·Ï");
-   	 JButton button3=new JButton("»èÁ¦");
+   	 //ì»´í¬ë„ŒíŠ¸ ë§Œë“¤ê¸°
+   	 JButton button=new JButton("ìˆ˜ì •");
+   	 JButton button2=new JButton("ë“±ë¡");
+   	 JButton button3=new JButton("ì‚­ì œ");
 //   	 JCheckBox box = new JCheckBox("checkBox");
 //   	 JSlider slide = new JSlider();
-	 Label eLabel = new Label("°¡°èºÎ µî·Ï");
-   	 JTextField tf=new JTextField("³¯Â¥",20);
-   	 JTextField tf2=new JTextField("±İ¾×",20);
-   	 JTextField tf3=new JTextField("Ä«Å×°í¸®",20);
-   	 JTextField tf4=new JTextField("ÁöÃâ|¼öÀÔ",20);
-   	 JTextField tf5=new JTextField("¸Ş¸ğ",20);
+	 Label eLabel = new Label("ê°€ê³„ë¶€ ë“±ë¡");
+   	 JTextField tf=new JTextField("ë‚ ì§œ",20);
+   	 JTextField tf2=new JTextField("ê¸ˆì•¡",20);
+   	 JTextField tf3=new JTextField("ì¹´í…Œê³ ë¦¬",20);
+   	 JTextField tf4=new JTextField("ì§€ì¶œ|ìˆ˜ì…",20);
+   	 JTextField tf5=new JTextField("ë©”ëª¨",20);
    	 JTextField tf6=new JTextField("ID",20);
-   	 JTextField tf7=new JTextField("°èÁÂ¹øÈ£",20);
+   	 JTextField tf7=new JTextField("ê³„ì¢Œë²ˆí˜¸",20);
    	 this.setLayout(new FlowLayout());
    	 this.add(eLabel);
    	 this.add(tf);
@@ -44,7 +44,7 @@ public class registGui extends JFrame{
    	
    	
    	  setVisible(true);
-   	  //³» ÇÁ·Î±×·¥ ´İ´Â ±â´ÉÀ» ´İ±â¹öÆ°À¸·Î ¼³Á¤
+   	  //ë‚´ í”„ë¡œê·¸ë¨ ë‹«ëŠ” ê¸°ëŠ¥ì„ ë‹«ê¸°ë²„íŠ¼ìœ¼ë¡œ ì„¤ì •
    	  this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       }
       
