@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import dao.seungJoon.teamProject.UserinfoDao;
 import vo.seungJoon.teamProject.UserinfoVo;
 
+// 회원가입 클래스
 @SuppressWarnings("serial")
 public class JoinGui extends javax.swing.JFrame {
 
@@ -13,7 +14,15 @@ public class JoinGui extends javax.swing.JFrame {
 	}
 
 	private void initComponents() {
-
+		/* Create and display the form */
+		java.awt.EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				setVisible(true);
+			}
+		});
+		
+		//setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+		
 		try {
 			for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
 				if ("Nimbus".equals(info.getName())) {
@@ -30,14 +39,6 @@ public class JoinGui extends javax.swing.JFrame {
 		} catch (javax.swing.UnsupportedLookAndFeelException ex) {
 			java.util.logging.Logger.getLogger(JoinGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 		}
-		// </editor-fold>
-
-		/* Create and display the form */
-		java.awt.EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				setVisible(true);
-			}
-		});
 
 		jTextField1 = new javax.swing.JTextField();
 		jTextField2 = new javax.swing.JTextField();
@@ -51,7 +52,6 @@ public class JoinGui extends javax.swing.JFrame {
 		jButton1 = new javax.swing.JButton();
 		jButton2 = new javax.swing.JButton();
 
-		//setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
 		jLabel1.setText("가입할 ID  :");
 

@@ -7,6 +7,7 @@ package gui.seohyun.teamProject;
 
 import vo.seungJoon.teamProject.InexVo;
 
+// 가계부 등록 클래스
 @SuppressWarnings("serial")
 public class RegistGui extends javax.swing.JFrame {
 
@@ -89,9 +90,8 @@ public class RegistGui extends javax.swing.JFrame {
 				jButton1ActionPerformed(evt);
 			}
 		});
-		
 
-		jButton2.setText("취소");
+		jButton2.setText("초기화");
 		jButton2.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				jButton2ActionPerformed(evt);
@@ -156,26 +156,57 @@ public class RegistGui extends javax.swing.JFrame {
 						.addGap(24, 24, 24)));
 
 		pack();
+		setLocationRelativeTo(null);
 	}// </editor-fold>
 
 	private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {
 		System.out.println("jCheckBox1");
+		if (jCheckBox1Checked) {
+			ie_division = "";
+			jCheckBox1Checked = false;
+			System.out.println("ie_division : " + ie_division + "  jCheckBox1 : " + jCheckBox1Checked);
+		} else {
+			ie_division = "수입";
+			jCheckBox1Checked = true;
+			System.out.println("ie_division : " + ie_division + "  jCheckBox1 : " + jCheckBox1Checked);
+		}
 	}
 
 	private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {
 		System.out.println("jCheckBox2");
+		if (jCheckBox2Checked) {
+			ie_division = "";
+			jCheckBox1Checked = false;
+			System.out.println("ie_division : " + ie_division + "  jCheckBox2 : " + jCheckBox2Checked);
+		} else {
+			ie_division = "지출";
+			jCheckBox2Checked = true;
+			System.out.println("ie_division : " + ie_division + "  jCheckBox2 : " + jCheckBox2Checked);
+		}
 	}
 
+	// 등록 버튼
 	private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
 		System.out.println("jBotton1");
 		InexVo vo = new InexVo();
+		vo.setIe_division(ie_division);
 		vo.setIe_price(Integer.parseInt(jTextField2.getText()));
 		vo.setIe_category(jTextField3.getText());
 		vo.setIe_memo(jTextField4.getText());
 	}
-	
+
+	// 초기화 버튼
 	private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
 		System.out.println("jBotton2");
+		jTextField1.setText("");
+		jTextField2.setText("");
+		jTextField3.setText("");
+		jTextField4.setText("");
+//		if(jCheckBox1Checked)
+//			jButton1ActionPerformed(evt);
+//		if(jCheckBox2Checked)
+//			jButton2ActionPerformed(evt);
+
 	}
 
 	private javax.swing.JButton jButton1;
@@ -191,5 +222,8 @@ public class RegistGui extends javax.swing.JFrame {
 	private javax.swing.JTextField jTextField2;
 	private javax.swing.JTextField jTextField3;
 	private javax.swing.JTextField jTextField4;
+	private String ie_division = "";
+	private boolean jCheckBox1Checked = false;
+	private boolean jCheckBox2Checked = false;
 	// End of variables declaration
 }
