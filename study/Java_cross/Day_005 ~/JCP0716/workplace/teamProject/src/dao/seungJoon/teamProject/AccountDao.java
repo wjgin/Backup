@@ -45,10 +45,11 @@ public class AccountDao {
 		}	
 	}
 	
-	//2.id로 account_num 리턴하기 -->가계부등록할때 쓰임 (따로 계좌번호 입력안하기 위함)
-	public String accoutNum(String id) {
+	//2.id로 account_num 리턴하기 
+	public List<String> getAccoutNum(String id) {
 		Connection conn = OracleConnectionUtil.connect();
-		String sql = "SELECT * FROM ACCOUNT WHERE USERINFO_ID = ?";
+		List<String> list = new ArrayList<String>();
+		String sql = "SELECT ACCOUNT_NUM FROM ACCOUNT WHERE USERINFO_ID = ?";
 		ResultSet rs = null;
 		PreparedStatement pstmt = null;
 		AccountVo vo = null;
@@ -56,10 +57,9 @@ public class AccountDao {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setNString(1, id);
 			rs = pstmt.executeQuery();
-			if(rs.next()) {
-				vo = new AccountVo(rs.getNString(1), rs.getNString(2), rs.getNString(3),rs.getNString(4));
+			while(rs.next()) {
+				list.add(rs.getString(1));
 			}
-			return vo.getAccNum();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
@@ -70,7 +70,7 @@ public class AccountDao {
 			}
 			OracleConnectionUtil.close(conn);
 		}
-		return null;
+		return list;
 	}
 	
 	//3.id로  조회해서 계좌 수정

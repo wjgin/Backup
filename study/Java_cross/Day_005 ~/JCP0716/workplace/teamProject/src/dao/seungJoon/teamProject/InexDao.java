@@ -53,7 +53,7 @@ public class InexDao {
 	public List<String[]> getId_list(String userinfo_id) { 
 		Connection conn = OracleConnectionUtil.connect();
 		List<String[]> list = new ArrayList<String[]>();
-		String sql = "SELECT decode(ie_division,'E','지출','I','수입'), ie_time, ie_price, ie_category, ie_memo, account_num"
+		String sql = "SELECT decode(ie_division,'E','지출','I','수입'), ie_time, ie_price, ie_category, ie_memo, account_num, ie_idx"
 				+ "  FROM INCOMEEXPENSE WHERE userinfo_id=?";
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -62,7 +62,7 @@ public class InexDao {
 			pstmt.setNString(1,userinfo_id);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
-				String[] temp = {rs.getString(1), rs.getTimestamp(2).toString(), String.valueOf(rs.getInt(3)), rs.getString(4), rs.getString(5), rs.getString(6)};
+				String[] temp = {rs.getString(1), rs.getTimestamp(2).toString(), String.valueOf(rs.getInt(3)), rs.getString(4), rs.getString(5), rs.getString(6),String.valueOf(rs.getInt(7))};
 				list.add(temp);
 			}
 		} catch (SQLException e) {
@@ -136,17 +136,17 @@ public class InexDao {
 	//3.insert
 	public void insert(InexVo vo) {
 		Connection conn = OracleConnectionUtil.connect();
-		String sql = "INSERT INTO incomeexpense (ie_idx,ie_division,ie_category,"
-				+ "ie_price,userInfo_id,account_num,ie_memo) VALUES(ie_seq.nextval,?,?,?,?,?,?)";
+		String sql = "INSERT INTO incomeexpense VALUES(ie_seq.nextval,?,?,?,?,?,?,?)";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 
 			pstmt.setString(1, vo.getIe_division());
 			pstmt.setString(2, vo.getIe_category());
-			pstmt.setInt(3, vo.getIe_price()); 
-			pstmt.setString(4, vo.getUserinfo_id()); 
-			pstmt.setString(5, vo.getAccount_num()); 
-			pstmt.setString(6, vo.getIe_memo()); 
+			pstmt.setDate(3, vo.getIe_time());
+			pstmt.setInt(4, vo.getIe_price()); 
+			pstmt.setString(5, vo.getUserinfo_id()); 
+			pstmt.setString(6, vo.getAccount_num()); 
+			pstmt.setString(7, vo.getIe_memo()); 
 
 			pstmt.execute();   
 			pstmt.close(); 
@@ -157,20 +157,37 @@ public class InexDao {
 			OracleConnectionUtil.close(conn); 
 		}
 	}
+	
+	//==========================================================================================
+		// delet
+		public void delete(int idx) {
+			Connection conn = OracleConnectionUtil.connect();
+			String sql = "DELETE FROM INCOMEEXPENSE WHERE IE_IDX  = ?";
+			try {
+				PreparedStatement pstmt = conn.prepareStatement(sql);
+
+				pstmt.setInt(1, idx);
+				pstmt.execute();   
+				pstmt.close(); 
+			} catch (SQLException e) {
+				 e.printStackTrace();
+			} finally {
+				OracleConnectionUtil.close(conn); 
+			}
+		}
+	
 // =======================================================================================
 	
 	// 일자별 조회
     public List<String[]> getId_selcetDate(String userinfo_id,String date1,String date2) { 
        Connection conn = OracleConnectionUtil.connect();
        List<String[]> list = new ArrayList<String[]>();
-       String sql = " SELECT decode(ie_division,'E','지출','I','수입'), TO_CHAR(ie_time,'mm/dd'), ie_price, ie_category, ie_memo, account_num"
-       		+ "FROM INCOMEEXPENSE "
-             + "WHERE USERINFO_ID = ? "
-             + "AND TO_NUMBER(TO_CHAR(ie_time,'mmdd')) BETWEEN TO_NUMBER(?) AND TO_NUMBER(?)"
-             + " order by TO_CHAR(ie_time,'mm/dd')";
+       String sql = " SELECT decode(ie_division,'E','지출','I','수입'), ie_time, ie_price, ie_category, ie_memo, account_num" 
+       		+"FROM INCOMEEXPENSE" 
+       		+"WHERE USERINFO_ID = ?"  
+       		+"AND IE_TIME BETWEEN ? AND ?";
        PreparedStatement pstmt = null;
        ResultSet rs = null;
-       int income=0, expense=0;
       
        try {
           pstmt = conn.prepareStatement(sql);
@@ -179,10 +196,9 @@ public class InexDao {
           pstmt.setNString(3,date2);
           rs = pstmt.executeQuery();
           while(rs.next()) { 
-             String[] temp = {rs.getString(1)};
+             String[] temp = {rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6)};
              list.add(temp);
           }
-          System.out.println("[수입] : "+income + "원  ,[지출] : "+ expense+"원");
        } catch (SQLException e) {
           System.out.println("SQL 실행에 오류발생 : " + e.getMessage());
        } finally {

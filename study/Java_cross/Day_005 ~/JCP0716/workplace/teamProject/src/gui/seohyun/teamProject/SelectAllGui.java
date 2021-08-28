@@ -11,6 +11,7 @@ import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
 import dao.seungJoon.teamProject.InexDao;
+import vo.seungJoon.teamProject.InexVo;
 
 /**
  *
@@ -45,18 +46,24 @@ public class SelectAllGui extends javax.swing.JFrame {
 				}
 			}
 		} catch (ClassNotFoundException ex) {
-			java.util.logging.Logger.getLogger(SelectAllGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+			java.util.logging.Logger.getLogger(SelectAllGui.class.getName()).log(java.util.logging.Level.SEVERE, null,
+					ex);
 		} catch (InstantiationException ex) {
-			java.util.logging.Logger.getLogger(SelectAllGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+			java.util.logging.Logger.getLogger(SelectAllGui.class.getName()).log(java.util.logging.Level.SEVERE, null,
+					ex);
 		} catch (IllegalAccessException ex) {
-			java.util.logging.Logger.getLogger(SelectAllGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+			java.util.logging.Logger.getLogger(SelectAllGui.class.getName()).log(java.util.logging.Level.SEVERE, null,
+					ex);
 		} catch (javax.swing.UnsupportedLookAndFeelException ex) {
-			java.util.logging.Logger.getLogger(SelectAllGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+			java.util.logging.Logger.getLogger(SelectAllGui.class.getName()).log(java.util.logging.Level.SEVERE, null,
+					ex);
 		}
 
 		jScrollPane1 = new javax.swing.JScrollPane();
-		
+
 		jButton1 = new javax.swing.JButton();
+		jButton2 = new javax.swing.JButton();
+		jButton3 = new javax.swing.JButton();
 		jLabel1 = new javax.swing.JLabel();
 		jMenuBar1 = new javax.swing.JMenuBar();
 		jMenu1 = new javax.swing.JMenu();
@@ -67,28 +74,39 @@ public class SelectAllGui extends javax.swing.JFrame {
 		jMenuItem3 = new javax.swing.JMenuItem();
 		jMenuItem4 = new javax.swing.JMenuItem();
 		jMenuItem5 = new javax.swing.JMenuItem();
+		
+		vo = new InexVo();
+		vo.setUserinfo_id(id);
 
 		// 로그인 후 사용자 id를 받아서 전체 가게부 리스트 가져오기
 		InexDao dao = InexDao.getInstance();
 
 		// 가게부 리스트를 2차원 배열 data로 매핑
 		rows = dao.getId_list(id);
-		columns = new String [] { "수입|지출", "날짜", "금액", "분류", "메모", "계좌번호"};
+		columns = new String[] { "수입|지출", "날짜", "금액", "분류", "메모", "계좌번호" , "IDX"};
 		data = rows.stream().toArray(String[][]::new);
-		
+
 		// jTable1 생성
 		model = new DefaultTableModel(data, columns);
 		jTable1 = new javax.swing.JTable(model);
 		// jTable1 sort
 		TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(jTable1.getModel());
 		jTable1.setRowSorter(sorter);
-		
+
 		jScrollPane1.setViewportView(jTable1);
 
 		jButton1.setText("등록");
 		jButton1.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				jButton1ActionPerformed(evt);
+			}
+		});
+
+		jButton2.setText("수정");
+		jButton3.setText("삭제");
+		jButton3.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				jButton3ActionPerformed(evt);
 			}
 		});
 
@@ -126,7 +144,7 @@ public class SelectAllGui extends javax.swing.JFrame {
 				jMenuItem4ActionPerformed(evt, id);
 			}
 		});
-		
+
 		jMenuItem5.setText("계좌확인");
 		jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -137,7 +155,7 @@ public class SelectAllGui extends javax.swing.JFrame {
 		jMenu2.add(jMenuItem4);
 		jMenu2.add(jMenuItem5);
 		jMenuBar1.add(jMenu2);
-		
+
 		jMenu3.setText("exit");
 		jMenu3.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -147,33 +165,36 @@ public class SelectAllGui extends javax.swing.JFrame {
 
 		jMenuBar1.add(jMenu3);
 		setJMenuBar(jMenuBar1);
-		
+
 		javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
 		getContentPane().setLayout(layout);
-		layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(layout
-				.createSequentialGroup()
-				.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-						.addGroup(layout.createSequentialGroup().addContainerGap().addComponent(jScrollPane1,
-								javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
-						.addGroup(layout.createSequentialGroup().addGap(168, 168, 168).addComponent(jButton1)))
-				.addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-				.addGroup(javax.swing.GroupLayout.Alignment.TRAILING,
-						layout.createSequentialGroup().addGap(0, 0, Short.MAX_VALUE).addComponent(jLabel1,
-								javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
-								.addGap(77, 77, 77)));
+		layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+				.addGroup(layout.createSequentialGroup()
+						.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+								.addGroup(layout.createSequentialGroup().addGap(188, 188, 188).addComponent(jButton2)
+										.addGap(39, 39, 39).addComponent(jButton1).addGap(38, 38, 38)
+										.addComponent(jButton3).addGap(0, 0, Short.MAX_VALUE))
+								.addGroup(javax.swing.GroupLayout.Alignment.TRAILING,
+										layout.createSequentialGroup().addGap(0, 12, Short.MAX_VALUE).addComponent(
+												jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 601,
+												javax.swing.GroupLayout.PREFERRED_SIZE)))
+						.addContainerGap())
+				.addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE,
+						javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE));
 		layout.setVerticalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(
 				javax.swing.GroupLayout.Alignment.TRAILING,
-				layout.createSequentialGroup().addContainerGap(32, Short.MAX_VALUE)
-						.addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 36,
-								javax.swing.GroupLayout.PREFERRED_SIZE)
+				layout.createSequentialGroup().addContainerGap(57, Short.MAX_VALUE).addComponent(jLabel1)
 						.addGap(18, 18, 18)
-						.addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 92,
+						.addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 137,
 								javax.swing.GroupLayout.PREFERRED_SIZE)
-						.addGap(18, 18, 18).addComponent(jButton1).addGap(74, 74, 74)));
+						.addGap(33, 33, 33)
+						.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+								.addComponent(jButton2).addComponent(jButton1).addComponent(jButton3))
+						.addGap(27, 27, 27)));
 
 		pack();
-		setLocationRelativeTo(null); 
-		
+		setLocationRelativeTo(null);
+
 	}// </editor-fold>
 
 	private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {
@@ -181,13 +202,27 @@ public class SelectAllGui extends javax.swing.JFrame {
 	}
 
 	private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt, String id) {
+		new InputDateGui(id);
 	}
+	
+	// "삭제" 이벤트
+	private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {
+		int row = jTable1.getSelectedRow();
+		int idx = Integer.valueOf((String)jTable1.getValueAt(row, 6));
+		InexDao dao = new InexDao();
+		
+		model.removeRow(row);
+		dao.delete(idx);
+		
+		System.out.println(row +"  "+ idx);
+	}
+
 
 	// "계좌등록" 이벤트
 	private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt, String id) {
 		new AddAccountGui(id);
 	}
-	
+
 	// "계좌확인" 이벤트
 	private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt, String id) {
 		new MyAccountGui(id);
@@ -195,7 +230,7 @@ public class SelectAllGui extends javax.swing.JFrame {
 
 	// "가계등록" 이벤트
 	private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
-		new RegistGui();
+		new RegistGui(vo);
 	}
 
 	// "exit" 이벤트
@@ -206,6 +241,8 @@ public class SelectAllGui extends javax.swing.JFrame {
 
 	// Variables declaration - do not modify
 	private javax.swing.JButton jButton1;
+	private javax.swing.JButton jButton2;
+	private javax.swing.JButton jButton3;
 	private javax.swing.JLabel jLabel1;
 	private javax.swing.JMenu jMenu1;
 	private javax.swing.JMenu jMenu2;
@@ -220,7 +257,8 @@ public class SelectAllGui extends javax.swing.JFrame {
 	private javax.swing.JTable jTable1;
 	List<String[]> rows;
 	String[][] data;
-	private TableModel model;
-	private String [] columns;
+	private DefaultTableModel model;
+	private String[] columns;
+	private InexVo vo;
 	// End of variables declaration
 }

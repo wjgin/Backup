@@ -5,8 +5,13 @@
  */
 package gui.seohyun.teamProject;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+
 import dao.seungJoon.teamProject.UserinfoDao;
 
 @SuppressWarnings("serial")
@@ -45,6 +50,57 @@ public class LoginGui extends javax.swing.JFrame {
 		jButton1 = new javax.swing.JButton();
 		jButton2 = new javax.swing.JButton();
 		jButton3 = new javax.swing.JButton();
+
+		Font gainFont = new Font("Tahoma", Font.PLAIN, 11);
+		Font lostFont = new Font("Tahoma", Font.ITALIC, 11);
+
+		String idHint = "아이디 입력";
+		textField1.setText(idHint);
+		textField1.setForeground(Color.GRAY);
+		textField1.addFocusListener(new FocusListener() {
+
+			@Override
+			public void focusLost(FocusEvent e) {
+				if (textField1.getText().equals("")) {
+					textField1.setText(idHint);
+					textField1.setFont(lostFont);
+					textField1.setForeground(Color.GRAY);
+				}
+			}
+
+			@Override
+			public void focusGained(FocusEvent e) {
+				if (textField1.getText().equals(idHint)) {
+					textField1.setText("");
+					textField1.setFont(gainFont);
+					textField1.setForeground(Color.BLACK);
+				}
+			}
+		});
+
+		String pwHint = "패스워드 입력";
+		textField2.setText(pwHint);
+		textField2.setForeground(Color.GRAY);
+		textField2.addFocusListener(new FocusListener() {
+
+			@Override
+			public void focusLost(FocusEvent e) {
+				if (textField2.getText().equals("")) {
+					textField2.setText(pwHint);
+					textField2.setFont(lostFont);
+					textField2.setForeground(Color.GRAY);
+				}
+			}
+
+			@Override
+			public void focusGained(FocusEvent e) {
+				if (textField2.getText().equals(pwHint)) {
+					textField2.setText("");
+					textField2.setFont(gainFont);
+					textField2.setForeground(Color.BLACK);
+				}
+			}
+		});
 
 		jLabel1.setText("ID  :");
 
