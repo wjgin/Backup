@@ -1,9 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package gui.seohyun.teamProject;
+
 
 import java.awt.Color;
 import java.awt.Font;
@@ -13,6 +9,10 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
 import dao.seungJoon.teamProject.UserinfoDao;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.GroupLayout;
+import javax.swing.SwingConstants;
 
 @SuppressWarnings("serial")
 public class LoginGui extends javax.swing.JFrame {
@@ -44,9 +44,12 @@ public class LoginGui extends javax.swing.JFrame {
 		textField1 = new java.awt.TextField();
 		textField2 = new java.awt.TextField();
 		jLabel1 = new javax.swing.JLabel();
+		jLabel1.setHorizontalAlignment(SwingConstants.CENTER);
 		jLabel2 = new javax.swing.JLabel();
+		jLabel2.setHorizontalAlignment(SwingConstants.CENTER);
 		jLabel3 = new javax.swing.JLabel();
 		jLabel4 = new javax.swing.JLabel();
+		jLabel4.setHorizontalAlignment(SwingConstants.CENTER);
 		jButton1 = new javax.swing.JButton();
 		jButton2 = new javax.swing.JButton();
 		jButton3 = new javax.swing.JButton();
@@ -110,7 +113,7 @@ public class LoginGui extends javax.swing.JFrame {
 				"D:\\Desktop\\PJ\\study\\Java_cross\\Day_005 ~\\JCP0716\\workplace\\teamProject\\2021.08.27\\loginlogo.png")); // NOI18N
 
 		jLabel4.setFont(new java.awt.Font("휴먼둥근헤드라인", 0, 14)); // NOI18N
-		jLabel4.setText("로그인에 실패하셨습니다");
+		jLabel4.setText("아이디 혹은 비밀번호를 확인해주세요.");
 		jLabel4.setVisible(false);
 
 		jButton1.setText("로그인");
@@ -128,43 +131,56 @@ public class LoginGui extends javax.swing.JFrame {
 		});
 
 		javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-		getContentPane().setLayout(layout);
-		layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(layout
-				.createSequentialGroup().addGap(0, 37, Short.MAX_VALUE)
-				.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-						.addGroup(layout.createSequentialGroup().addComponent(jLabel1)
-								.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-								.addComponent(textField1, javax.swing.GroupLayout.PREFERRED_SIZE, 98,
-										javax.swing.GroupLayout.PREFERRED_SIZE)
-								.addGap(25, 25, 25).addComponent(jLabel2).addGap(18, 18, 18).addComponent(textField2,
-										javax.swing.GroupLayout.PREFERRED_SIZE, 98,
-										javax.swing.GroupLayout.PREFERRED_SIZE))
-						.addGroup(layout.createSequentialGroup().addGap(36, 36, 36).addComponent(jButton1)
-								.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+		layout.setHorizontalGroup(
+			layout.createParallelGroup(Alignment.LEADING)
+				.addGroup(layout.createSequentialGroup()
+					.addGap(0, 37, Short.MAX_VALUE)
+					.addGroup(layout.createParallelGroup(Alignment.LEADING)
+						.addGroup(layout.createSequentialGroup()
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(jLabel1)
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addComponent(textField1, GroupLayout.PREFERRED_SIZE, 98, GroupLayout.PREFERRED_SIZE)
+							.addGap(25)
+							.addComponent(jLabel2)
+							.addGap(18)
+							.addComponent(textField2, GroupLayout.PREFERRED_SIZE, 98, GroupLayout.PREFERRED_SIZE))
+						.addGroup(layout.createSequentialGroup()
+							.addGap(36)
+							.addComponent(jButton1)
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addComponent(jButton2)
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addComponent(jButton3))
+						.addComponent(jLabel3, GroupLayout.PREFERRED_SIZE, 288, GroupLayout.PREFERRED_SIZE))
+					.addGap(58))
+				.addComponent(jLabel4, GroupLayout.DEFAULT_SIZE, 393, Short.MAX_VALUE)
+		);
+		layout.setVerticalGroup(
+			layout.createParallelGroup(Alignment.LEADING)
+				.addGroup(layout.createSequentialGroup()
+					.addGap(34)
+					.addComponent(jLabel3, GroupLayout.PREFERRED_SIZE, 199, GroupLayout.PREFERRED_SIZE)
+					.addGroup(layout.createParallelGroup(Alignment.LEADING)
+						.addGroup(layout.createSequentialGroup()
+							.addGap(3)
+							.addGroup(layout.createParallelGroup(Alignment.BASELINE)
+								.addComponent(textField2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addComponent(jLabel2)
+								.addComponent(textField1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+							.addGap(29)
+							.addGroup(layout.createParallelGroup(Alignment.BASELINE)
 								.addComponent(jButton2)
-								.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-								.addComponent(jButton3))
-						.addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 288,
-								javax.swing.GroupLayout.PREFERRED_SIZE))
-				.addGap(58, 58, 58))
-				.addGroup(layout.createSequentialGroup().addGap(109, 109, 109).addComponent(jLabel4)
-						.addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
-		layout.setVerticalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(layout
-				.createSequentialGroup().addGap(34, 34, 34)
-				.addComponent(
-						jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-				.addGap(3, 3, 3)
-				.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-						.addComponent(textField2, javax.swing.GroupLayout.PREFERRED_SIZE,
-								javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-						.addComponent(jLabel2)
-						.addComponent(textField1, javax.swing.GroupLayout.PREFERRED_SIZE,
-								javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-						.addComponent(jLabel1))
-				.addGap(29, 29, 29)
-				.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE).addComponent(jButton2)
-						.addComponent(jButton3).addComponent(jButton1))
-				.addGap(18, 18, 18).addComponent(jLabel4).addContainerGap(35, Short.MAX_VALUE)));
+								.addComponent(jButton3)
+								.addComponent(jButton1)))
+						.addGroup(layout.createSequentialGroup()
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(jLabel1)))
+					.addGap(18)
+					.addComponent(jLabel4)
+					.addContainerGap(35, Short.MAX_VALUE))
+		);
+		getContentPane().setLayout(layout);
 
 		pack();
 		setLocationRelativeTo(null);

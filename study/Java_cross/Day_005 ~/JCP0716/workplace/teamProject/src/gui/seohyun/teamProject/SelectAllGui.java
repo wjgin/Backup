@@ -1,28 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package gui.seohyun.teamProject;
 
+import java.awt.event.ActionEvent;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
-
 import dao.seungJoon.teamProject.InexDao;
 import vo.seungJoon.teamProject.InexVo;
+import javax.swing.SwingConstants;
 
-/**
- *
- * @author ITCS
- */
 @SuppressWarnings("serial")
 public class SelectAllGui extends javax.swing.JFrame {
 
-	/**
-	 * Creates new form TableGui
-	 */
 	public SelectAllGui(String id) {
 		initComponents(id);
 	}
@@ -35,7 +24,7 @@ public class SelectAllGui extends javax.swing.JFrame {
 			}
 		});
 
-		// 종료 버튼
+		// x버튼 클릭시 프로그램 종료
 		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
 		try {
@@ -60,11 +49,13 @@ public class SelectAllGui extends javax.swing.JFrame {
 		}
 
 		jScrollPane1 = new javax.swing.JScrollPane();
+		jScrollPane1.setEnabled(false);
 
 		jButton1 = new javax.swing.JButton();
 		jButton2 = new javax.swing.JButton();
 		jButton3 = new javax.swing.JButton();
 		jLabel1 = new javax.swing.JLabel();
+		jLabel1.setHorizontalAlignment(SwingConstants.CENTER);
 		jMenuBar1 = new javax.swing.JMenuBar();
 		jMenu1 = new javax.swing.JMenu();
 		jMenu2 = new javax.swing.JMenu();
@@ -82,7 +73,7 @@ public class SelectAllGui extends javax.swing.JFrame {
 		InexDao dao = InexDao.getInstance();
 
 		// 가게부 리스트를 2차원 배열 data로 매핑
-		rows = dao.getId_list(id);
+		rows = dao.getListById(id);
 		columns = new String[] { "수입|지출", "날짜", "금액", "분류", "메모", "계좌번호" , "IDX"};
 		data = rows.stream().toArray(String[][]::new);
 
@@ -102,7 +93,13 @@ public class SelectAllGui extends javax.swing.JFrame {
 			}
 		});
 
-		jButton2.setText("수정");
+		jButton2.setText("새로고침");
+		jButton2.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				jButton2ActionPerformed(evt, id);
+			}
+		});
+		
 		jButton3.setText("삭제");
 		jButton3.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -118,7 +115,7 @@ public class SelectAllGui extends javax.swing.JFrame {
 		jMenuItem1.setText("기간별 조회");
 		jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
-				jMenuItem1ActionPerformed(evt);
+				jMenuItem1ActionPerformed(evt, id);
 			}
 		});
 		jMenu1.add(jMenuItem1);
@@ -132,6 +129,12 @@ public class SelectAllGui extends javax.swing.JFrame {
 		jMenu1.add(jMenuItem2);
 
 		jMenuItem3.setText("카테고리별조회");
+		jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				jMenuItem3ActionPerformed(evt, id);
+			}
+		});
+		
 		jMenu1.add(jMenuItem3);
 
 		jMenuBar1.add(jMenu1);
@@ -194,15 +197,38 @@ public class SelectAllGui extends javax.swing.JFrame {
 
 		pack();
 		setLocationRelativeTo(null);
+		
 
 	}// </editor-fold>
 
-	private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {
-		// TODO add your handling code here:
+	
+		// "기간별 조회" 이벤트
+	private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt, String id) {
+		new InputDateGui(id);
+
 	}
 
 	private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt, String id) {
-		new InputDateGui(id);
+		new ChoiceIE(id);
+	}
+	
+	// "새로고침" 이벤트
+	private void jButton2ActionPerformed(java.awt.event.ActionEvent evt, String id) {
+		InexDao dao = InexDao.getInstance();
+
+		// 가게부 리스트를 2차원 배열 data로 매핑
+		rows = dao.getListById(id);
+		columns = new String[] { "수입|지출", "날짜", "금액", "분류", "메모", "계좌번호" , "IDX"};
+		data = rows.stream().toArray(String[][]::new);
+
+		// jTable1 생성
+		model = new DefaultTableModel(data, columns);
+		jTable1 = new javax.swing.JTable(model);
+		// jTable1 sort
+		TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(jTable1.getModel());
+		jTable1.setRowSorter(sorter);
+
+		jScrollPane1.setViewportView(jTable1);
 	}
 	
 	// "삭제" 이벤트
@@ -217,7 +243,11 @@ public class SelectAllGui extends javax.swing.JFrame {
 		System.out.println(row +"  "+ idx);
 	}
 
-
+	// "카테고리별 조회" 이벤트
+	private void jMenuItem3ActionPerformed(ActionEvent evt, String id) {
+		new InputCategoryGui(id);
+	}
+	
 	// "계좌등록" 이벤트
 	private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt, String id) {
 		new AddAccountGui(id);

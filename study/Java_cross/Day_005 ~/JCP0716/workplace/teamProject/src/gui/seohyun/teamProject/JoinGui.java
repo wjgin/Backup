@@ -4,12 +4,17 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import dao.seungJoon.teamProject.UserinfoDao;
 import vo.seungJoon.teamProject.UserinfoVo;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.SwingConstants;
+import javax.swing.JLabel;
 
 // 회원가입 클래스
 @SuppressWarnings("serial")
 public class JoinGui extends javax.swing.JFrame {
 
 	public JoinGui() {
+		setResizable(false);
 		initComponents();
 	}
 
@@ -45,10 +50,18 @@ public class JoinGui extends javax.swing.JFrame {
 		jTextField3 = new javax.swing.JTextField();
 		jTextField4 = new javax.swing.JTextField();
 		jLabel1 = new javax.swing.JLabel();
+		jLabel1.setHorizontalAlignment(SwingConstants.CENTER);
 		jLabel2 = new javax.swing.JLabel();
+		jLabel2.setHorizontalAlignment(SwingConstants.CENTER);
 		jLabel3 = new javax.swing.JLabel();
+		jLabel3.setHorizontalAlignment(SwingConstants.CENTER);
 		jLabel4 = new javax.swing.JLabel();
+		jLabel4.setHorizontalAlignment(SwingConstants.CENTER);
 		jLabel5 = new javax.swing.JLabel();
+		jLabel5.setHorizontalAlignment(SwingConstants.CENTER);
+		jLabel6 = new JLabel("모든 항목을 기입해주세요.");
+		jLabel6.setHorizontalAlignment(SwingConstants.CENTER);
+		jLabel6.setVisible(false);
 		jButton1 = new javax.swing.JButton();
 		jButton2 = new javax.swing.JButton();
 
@@ -59,10 +72,10 @@ public class JoinGui extends javax.swing.JFrame {
 
 		jLabel3.setText("전화번호   :");
 
-		jLabel4.setText("성명       :");
+		jLabel4.setText("성명 :");
 
 		jLabel5.setFont(new java.awt.Font("휴먼둥근헤드라인", 0, 24)); // NOI18N
-		jLabel5.setText("    회원가입");
+		jLabel5.setText("회원가입");
 
 		jButton1.setText("등록");
 		jButton1.addActionListener(userJoin); // 유저 정보 등록 이벤트 리스너
@@ -74,67 +87,78 @@ public class JoinGui extends javax.swing.JFrame {
 
 		jButton2.setText("초기화");
 		jButton2.addActionListener(initTextField);
-
-		javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-		getContentPane().setLayout(layout);
-		layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(
-				javax.swing.GroupLayout.Alignment.TRAILING,
-				layout.createSequentialGroup().addContainerGap(86, Short.MAX_VALUE).addGroup(layout
-						.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-						.addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING,
-								javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-						.addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING,
-								javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-						.addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING,
-								javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-						.addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING,
-								javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
-						.addGap(18, 18, 18)
-						.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-								.addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 149,
-										javax.swing.GroupLayout.PREFERRED_SIZE)
-								.addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 149,
-										javax.swing.GroupLayout.PREFERRED_SIZE)
-								.addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 149,
-										javax.swing.GroupLayout.PREFERRED_SIZE)
-								.addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 149,
-										javax.swing.GroupLayout.PREFERRED_SIZE))
-						.addGap(81, 81, 81))
-				.addGroup(layout.createSequentialGroup().addGroup(layout
-						.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-						.addGroup(layout.createSequentialGroup().addGap(94, 94, 94).addComponent(jLabel5,
-								javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
-						.addGroup(layout.createSequentialGroup().addGap(134, 134, 134).addComponent(jButton1)
-								.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-								.addComponent(jButton2)))
-						.addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
-		layout.setVerticalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-				.addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup().addGap(42, 42, 42)
-						.addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
-						.addGap(18, 18, 18)
-						.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-								.addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE,
-										javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-								.addComponent(jLabel1))
-						.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-						.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-								.addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE,
-										javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-								.addComponent(jLabel2))
-						.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-						.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-								.addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE,
-										javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-								.addComponent(jLabel3))
-						.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-						.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-								.addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE,
-										javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-								.addComponent(jLabel4))
-						.addGap(31, 31, 31)
-						.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-								.addComponent(jButton1).addComponent(jButton2))
-						.addGap(28, 28, 28)));
+		
+		GroupLayout groupLayout = new GroupLayout(getContentPane());
+		groupLayout.setHorizontalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(12)
+					.addComponent(jLabel5, GroupLayout.PREFERRED_SIZE, 268, GroupLayout.PREFERRED_SIZE))
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(12)
+					.addComponent(jLabel1, GroupLayout.PREFERRED_SIZE, 66, GroupLayout.PREFERRED_SIZE)
+					.addGap(5)
+					.addComponent(jTextField1, GroupLayout.PREFERRED_SIZE, 149, GroupLayout.PREFERRED_SIZE))
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(12)
+					.addComponent(jLabel2, GroupLayout.PREFERRED_SIZE, 66, GroupLayout.PREFERRED_SIZE)
+					.addGap(5)
+					.addComponent(jTextField2, GroupLayout.PREFERRED_SIZE, 149, GroupLayout.PREFERRED_SIZE))
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(12)
+					.addComponent(jLabel3, GroupLayout.PREFERRED_SIZE, 66, GroupLayout.PREFERRED_SIZE)
+					.addGap(5)
+					.addComponent(jTextField3, GroupLayout.PREFERRED_SIZE, 149, GroupLayout.PREFERRED_SIZE))
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(12)
+					.addComponent(jLabel4, GroupLayout.PREFERRED_SIZE, 66, GroupLayout.PREFERRED_SIZE)
+					.addGap(5)
+					.addComponent(jTextField4, GroupLayout.PREFERRED_SIZE, 149, GroupLayout.PREFERRED_SIZE))
+				.addComponent(jLabel6, GroupLayout.PREFERRED_SIZE, 272, GroupLayout.PREFERRED_SIZE)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(54)
+					.addComponent(jButton1)
+					.addGap(59)
+					.addComponent(jButton2))
+		);
+		groupLayout.setVerticalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(24)
+					.addComponent(jLabel5, GroupLayout.PREFERRED_SIZE, 47, GroupLayout.PREFERRED_SIZE)
+					.addGap(36)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(3)
+							.addComponent(jLabel1))
+						.addComponent(jTextField1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(10)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(3)
+							.addComponent(jLabel2))
+						.addComponent(jTextField2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(10)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(3)
+							.addComponent(jLabel3))
+						.addComponent(jTextField3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(13)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(3)
+							.addComponent(jLabel4))
+						.addComponent(jTextField4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(10)
+					.addComponent(jLabel6)
+					.addGap(18)
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+						.addComponent(jButton2)
+						.addComponent(jButton1))
+					.addGap(19))
+		);
+		getContentPane().setLayout(groupLayout);
 
 		pack();
 	}// </editor-fold>
@@ -147,6 +171,7 @@ public class JoinGui extends javax.swing.JFrame {
 	private javax.swing.JLabel jLabel3;
 	private javax.swing.JLabel jLabel4;
 	private javax.swing.JLabel jLabel5;
+	private javax.swing.JLabel jLabel6;
 	private javax.swing.JTextField jTextField1;
 	private javax.swing.JTextField jTextField2;
 	private javax.swing.JTextField jTextField3;
@@ -169,7 +194,7 @@ public class JoinGui extends javax.swing.JFrame {
 					jTextField2.getText().length() == 0 ||
 					jTextField3.getText().length() == 0 ||
 					jTextField4.getText().length() == 0 ) {
-				System.out.println("입력되지 않은 항목이 있습니다.");
+				jLabel6.setVisible(true);
 			} else {
 				if (!bd.idcheck(vo.getId())) {
 					bd.insert(vo);

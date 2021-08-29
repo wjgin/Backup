@@ -1,6 +1,7 @@
 package dao.seungJoon.teamProject;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -50,7 +51,7 @@ public class InexDao {
 	//기간별(월별,주간별,일별)조회 --->???
 	
 	//2-1.로그인(id와 pw입력) 해서 들어와서 자신의 가계부 전체조회
-	public List<String[]> getId_list(String userinfo_id) { 
+	public List<String[]> getListById(String userinfo_id) { 
 		Connection conn = OracleConnectionUtil.connect();
 		List<String[]> list = new ArrayList<String[]>();
 		String sql = "SELECT decode(ie_division,'E','지출','I','수입'), ie_time, ie_price, ie_category, ie_memo, account_num, ie_idx"
@@ -76,6 +77,98 @@ public class InexDao {
 		
 	}
 	
+	// 기간별  조회
+	public List<String[]> getListByDate(String userinfo_id, String startDate, String endDate) { 
+		Connection conn = OracleConnectionUtil.connect();
+		List<String[]> list = new ArrayList<String[]>();
+		String sql = "SELECT decode(ie_division,'E','지출','I','수입'), ie_time, ie_price, ie_category, ie_memo, account_num, ie_idx"  
+					+ " FROM INCOMEEXPENSE WHERE userinfo_id= ? AND IE_TIME BETWEEN ? AND ?";
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		Date sDate = Date.valueOf(startDate);
+		Date eDate = Date.valueOf(endDate);
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1,userinfo_id);
+			pstmt.setDate(2,sDate);
+			pstmt.setDate(3,eDate);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				String[] temp = {rs.getString(1), rs.getTimestamp(2).toString(), String.valueOf(rs.getInt(3)), rs.getString(4), rs.getString(5), rs.getString(6),String.valueOf(rs.getInt(7))};
+				list.add(temp);
+			}
+		} catch (SQLException e) {
+			System.out.println("SQL 실행에 오류발생 : " + e.getMessage());
+		} finally {
+			try {rs.close(); pstmt.close();
+			} catch (SQLException e) {e.getMessage();}
+			OracleConnectionUtil.close(conn);
+		}
+		return list;
+	}
+	
+	// 카테고리별  조회
+	public List<String[]> getListByCategory(String id, String category) { 
+		Connection conn = OracleConnectionUtil.connect();
+		List<String[]> list = new ArrayList<String[]>();
+		String sql = "SELECT decode(ie_division,'E','지출','I','수입'), ie_time, ie_price, ie_category, ie_memo, account_num, ie_idx "
+				+ "FROM INCOMEEXPENSE WHERE USERINFO_ID = ? AND IE_CATEGORY LIKE ?";
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		category = "%" + category + "%";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1,id);
+			pstmt.setString(2,category);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				String[] temp = {rs.getString(1), rs.getTimestamp(2).toString(), String.valueOf(rs.getInt(3)), rs.getString(4), rs.getString(5), rs.getString(6),String.valueOf(rs.getInt(7))};
+				list.add(temp);
+			}
+		} catch (SQLException e) {
+			System.out.println("SQL 실행에 오류발생 : " + e.getMessage());
+		} finally {
+			try {rs.close(); pstmt.close();
+			} catch (SQLException e) {e.getMessage();}
+			OracleConnectionUtil.close(conn);
+		}
+		return list;
+	}
+	
+	// 수입지출별  조회
+	public List<String[]> getListByDivision(String id, String division) { 
+		Connection conn = OracleConnectionUtil.connect();
+		List<String[]> list = new ArrayList<String[]>();
+		String sql = "SELECT decode(ie_division,'E','지출','I','수입'), ie_time, ie_price, ie_category, ie_memo, account_num, ie_idx "
+				+ "FROM INCOMEEXPENSE WHERE USERINFO_ID = ? AND IE_DIVISION = ?";
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		if(division.equals("수입")) {
+			division = "I";
+		} else if(division.equals("지출")) {
+			division = "E";
+		}
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1,id);
+			pstmt.setString(2,division);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				String[] temp = {rs.getString(1), rs.getTimestamp(2).toString(), String.valueOf(rs.getInt(3)), rs.getString(4), rs.getString(5), rs.getString(6),String.valueOf(rs.getInt(7))};
+				list.add(temp);
+			}
+		} catch (SQLException e) {
+			System.out.println("SQL 실행에 오류발생 : " + e.getMessage());
+		} finally {
+			try {rs.close(); pstmt.close();
+			} catch (SQLException e) {e.getMessage();}
+			OracleConnectionUtil.close(conn);
+		}
+		return list;
+	}
 	
 	//2-2  E/I를 입력받아서 select
 		public void getId_IE(String userinfo_id, String ie) { 

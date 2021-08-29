@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package gui.seohyun.teamProject;
 
 import java.awt.Color;
@@ -10,14 +5,13 @@ import java.awt.Font;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.sql.Date;
-
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
-
 import dao.seungJoon.teamProject.AccountDao;
 import dao.seungJoon.teamProject.InexDao;
 import vo.seungJoon.teamProject.InexVo;
+import javax.swing.SwingConstants;
 
 // 가계부 등록 클래스
 @SuppressWarnings("serial")
@@ -57,9 +51,13 @@ public class RegistGui extends javax.swing.JFrame {
 		new javax.swing.ButtonGroup();
 		jLabel1 = new javax.swing.JLabel();
 		jTextField1 = new javax.swing.JTextField();
+		jTextField1.setHorizontalAlignment(SwingConstants.CENTER);
 		jTextField2 = new javax.swing.JTextField();
+		jTextField2.setHorizontalAlignment(SwingConstants.CENTER);
 		jTextField3 = new javax.swing.JTextField();
+		jTextField3.setHorizontalAlignment(SwingConstants.CENTER);
 		jTextField4 = new javax.swing.JTextField();
+		jTextField4.setHorizontalAlignment(SwingConstants.CENTER);
 		jLabel2 = new javax.swing.JLabel();
 		jLabel3 = new javax.swing.JLabel();
 		jLabel4 = new javax.swing.JLabel();
@@ -67,6 +65,7 @@ public class RegistGui extends javax.swing.JFrame {
 		jLabel6 = new javax.swing.JLabel();
 		jLabel7 = new javax.swing.JLabel();
 		jLabel8 = new javax.swing.JLabel();
+		jLabel8.setHorizontalAlignment(SwingConstants.CENTER);
 		jButton1 = new javax.swing.JButton();
 		jButton2 = new javax.swing.JButton();
 		jComboBox1 = new javax.swing.JComboBox<>();
@@ -87,11 +86,11 @@ public class RegistGui extends javax.swing.JFrame {
 		jLabel8.setVisible(false);
 
 		// ================== textFields edit
-		Font gainFont = new Font("Tahoma", Font.PLAIN, 11);
+		Font gainFont = new Font("Glum12", Font.PLAIN, 11);
 		Font lostFont = new Font("Tahoma", Font.ITALIC, 11);
 		jTextField1.setText(dateHint);
 		jTextField1.setForeground(Color.GRAY);
-		jTextField1.setFont(lostFont);
+		jTextField1.setFont(new Font("THE명품명조2B", Font.ITALIC, 11));
 		jTextField2.setText(priceHint);
 		jTextField2.setForeground(Color.GRAY);
 		jTextField2.setFont(lostFont);
@@ -203,74 +202,88 @@ public class RegistGui extends javax.swing.JFrame {
 		jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(accountNums));
 
 		javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-		layout.setHorizontalGroup(layout.createParallelGroup(Alignment.LEADING).addGroup(layout.createSequentialGroup()
-				.addGap(18)
-				.addGroup(layout.createParallelGroup(Alignment.LEADING)
-						.addGroup(layout.createSequentialGroup().addGroup(layout.createParallelGroup(Alignment.TRAILING)
-								.addGroup(layout.createSequentialGroup().addComponent(jLabel7).addGap(18))
-								.addGroup(layout.createSequentialGroup().addComponent(jLabel6)
-										.addPreferredGap(ComponentPlacement.UNRELATED))
+		layout.setHorizontalGroup(
+			layout.createParallelGroup(Alignment.LEADING)
+				.addGroup(layout.createSequentialGroup()
+					.addGap(18)
+					.addGroup(layout.createParallelGroup(Alignment.LEADING)
+						.addGroup(layout.createSequentialGroup()
+							.addGroup(layout.createParallelGroup(Alignment.TRAILING)
 								.addGroup(layout.createSequentialGroup()
-										.addGroup(layout.createParallelGroup(Alignment.TRAILING).addComponent(jLabel3)
-												.addComponent(jLabel4, Alignment.LEADING).addComponent(jLabel2))
-										.addGap(18))
-								.addGroup(layout.createSequentialGroup().addComponent(jLabel5).addGap(18)))
-								.addGroup(layout.createParallelGroup(Alignment.LEADING).addGroup(layout
-										.createParallelGroup(Alignment.TRAILING).addComponent(jLabel1)
-										.addGroup(layout.createSequentialGroup()
-												.addGroup(layout.createParallelGroup(Alignment.LEADING)
-														.addComponent(jTextField2, 165, 165, 165)
-														.addGroup(layout.createSequentialGroup()
-																.addPreferredGap(ComponentPlacement.UNRELATED)
-																.addComponent(jTextField3, GroupLayout.DEFAULT_SIZE,
-																		165, Short.MAX_VALUE))
-														.addComponent(jTextField4, 165, 165, 165)
-														.addComponent(jComboBox1, 0, 165, Short.MAX_VALUE)
-														.addComponent(jComboBox2, 0, 165, Short.MAX_VALUE))
-												.addPreferredGap(ComponentPlacement.RELATED)))
-										.addComponent(jTextField1, 165, 165, 165)))
-						.addGroup(layout.createSequentialGroup().addGap(56).addGroup(layout
-								.createParallelGroup(Alignment.LEADING)
-								.addComponent(jLabel8, GroupLayout.PREFERRED_SIZE, 178, GroupLayout.PREFERRED_SIZE)
-								.addGroup(layout.createSequentialGroup().addComponent(jButton1)
-										.addPreferredGap(ComponentPlacement.UNRELATED).addComponent(jButton2)))
-								.addGap(1)))
-				.addGap(40)));
-		layout.setVerticalGroup(layout.createParallelGroup(Alignment.LEADING)
-				.addGroup(layout.createSequentialGroup().addGap(33).addComponent(jLabel1).addGap(18)
-						.addGroup(layout.createParallelGroup(Alignment.BASELINE)
-								.addComponent(jComboBox2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
-										GroupLayout.PREFERRED_SIZE)
-								.addComponent(jLabel7))
-						.addPreferredGap(ComponentPlacement.RELATED)
-						.addGroup(layout.createParallelGroup(Alignment.BASELINE)
-								.addComponent(jComboBox1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
-										GroupLayout.PREFERRED_SIZE)
-								.addComponent(jLabel6))
-						.addGap(9)
-						.addGroup(layout.createParallelGroup(Alignment.BASELINE)
-								.addComponent(jTextField1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
-										GroupLayout.PREFERRED_SIZE)
-								.addComponent(jLabel2))
-						.addPreferredGap(ComponentPlacement.RELATED)
-						.addGroup(layout.createParallelGroup(Alignment.BASELINE)
-								.addComponent(jTextField2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
-										GroupLayout.PREFERRED_SIZE)
-								.addComponent(jLabel3))
-						.addPreferredGap(ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
-						.addGroup(layout.createParallelGroup(Alignment.BASELINE)
-								.addComponent(jTextField3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
-										GroupLayout.PREFERRED_SIZE)
-								.addComponent(jLabel4))
-						.addGap(31)
-						.addGroup(
-								layout.createParallelGroup(Alignment.BASELINE)
-										.addComponent(jTextField4, GroupLayout.PREFERRED_SIZE, 49,
-												GroupLayout.PREFERRED_SIZE)
-										.addComponent(jLabel5))
-						.addPreferredGap(ComponentPlacement.RELATED).addComponent(jLabel8).addGap(7).addGroup(layout
-								.createParallelGroup(Alignment.BASELINE).addComponent(jButton1).addComponent(jButton2))
-						.addGap(18)));
+									.addComponent(jLabel7)
+									.addGap(18))
+								.addGroup(layout.createSequentialGroup()
+									.addComponent(jLabel6)
+									.addPreferredGap(ComponentPlacement.UNRELATED))
+								.addGroup(layout.createSequentialGroup()
+									.addGroup(layout.createParallelGroup(Alignment.TRAILING)
+										.addComponent(jLabel3)
+										.addComponent(jLabel4, Alignment.LEADING)
+										.addComponent(jLabel2))
+									.addGap(18))
+								.addGroup(layout.createSequentialGroup()
+									.addComponent(jLabel5)
+									.addGap(18)))
+							.addGroup(layout.createParallelGroup(Alignment.LEADING)
+								.addGroup(layout.createParallelGroup(Alignment.TRAILING)
+									.addComponent(jLabel1)
+									.addGroup(layout.createSequentialGroup()
+										.addGroup(layout.createParallelGroup(Alignment.LEADING)
+											.addComponent(jTextField2, 165, 165, 165)
+											.addGroup(layout.createSequentialGroup()
+												.addPreferredGap(ComponentPlacement.UNRELATED)
+												.addComponent(jTextField3, GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE))
+											.addComponent(jTextField4, 165, 165, 165)
+											.addComponent(jComboBox1, 0, 165, Short.MAX_VALUE)
+											.addComponent(jComboBox2, 0, 165, Short.MAX_VALUE))
+										.addPreferredGap(ComponentPlacement.RELATED)))
+								.addComponent(jTextField1, 165, 165, 165)))
+						.addGroup(layout.createSequentialGroup()
+							.addGap(56)
+							.addComponent(jButton1)
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addComponent(jButton2)
+							.addGap(45)))
+					.addGap(40))
+				.addComponent(jLabel8, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 293, Short.MAX_VALUE)
+		);
+		layout.setVerticalGroup(
+			layout.createParallelGroup(Alignment.LEADING)
+				.addGroup(layout.createSequentialGroup()
+					.addGap(33)
+					.addComponent(jLabel1)
+					.addGap(18)
+					.addGroup(layout.createParallelGroup(Alignment.BASELINE)
+						.addComponent(jComboBox2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(jLabel7))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGroup(layout.createParallelGroup(Alignment.BASELINE)
+						.addComponent(jComboBox1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(jLabel6))
+					.addGap(9)
+					.addGroup(layout.createParallelGroup(Alignment.BASELINE)
+						.addComponent(jTextField1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(jLabel2))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGroup(layout.createParallelGroup(Alignment.BASELINE)
+						.addComponent(jTextField2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(jLabel3))
+					.addPreferredGap(ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+					.addGroup(layout.createParallelGroup(Alignment.BASELINE)
+						.addComponent(jTextField3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(jLabel4))
+					.addGap(31)
+					.addGroup(layout.createParallelGroup(Alignment.BASELINE)
+						.addComponent(jTextField4, GroupLayout.PREFERRED_SIZE, 49, GroupLayout.PREFERRED_SIZE)
+						.addComponent(jLabel5))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(jLabel8)
+					.addGap(7)
+					.addGroup(layout.createParallelGroup(Alignment.BASELINE)
+						.addComponent(jButton1)
+						.addComponent(jButton2))
+					.addGap(18))
+		);
 		getContentPane().setLayout(layout);
 
 		pack();
@@ -303,6 +316,7 @@ public class RegistGui extends javax.swing.JFrame {
 				ieVo.setIe_memo(jTextField4.getText());
 			}
 			dao.insert(ieVo);
+			dispose();
 		}
 	}
 
