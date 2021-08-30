@@ -18,39 +18,8 @@ public class InexDao {
 	public static InexDao getInstance() {
 		return dao;
 		}
-	
-	//1.전체 조회
-	public void getList() { 
-		Connection conn = OracleConnectionUtil.connect();
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		String sql = "SELECT * FROM INCOMEEXPENSE"; 
-		InexVo vo;
-		List<InexVo> list = new ArrayList<InexVo>();
-		try {
-			pstmt = conn.prepareStatement(sql);
-			rs = pstmt.executeQuery();
-			while (rs.next()) {
-				vo = new InexVo(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDate(4),
-						rs.getInt(5),rs.getString(6),rs.getNString(7),rs.getNString(8));
-				list.add(vo); 
-			}
-			for (InexVo bv : list) 
-				System.out.println(bv);		
-		} catch (SQLException e) {
-			System.out.println("오류 : " + e.getMessage());
-		} finally {
-			try { rs.close();pstmt.close();
-			} catch (SQLException e) {System.out.println("close 오류 : " + e.getMessage());}
-			OracleConnectionUtil.close(conn);
-		}
-	}
-//=========================================================================================
-	//기존적으로 로그인해서 조회하는것이기 때문에 회원별(ID) 조회는 항상 포함됨
-	//수입별,지출별 ,유형별조회  ---> 이건 ok
-	//기간별(월별,주간별,일별)조회 --->???
-	
-	//2-1.로그인(id와 pw입력) 해서 들어와서 자신의 가계부 전체조회
+
+	// 아이디로 전체 목록 가져오기
 	public List<String[]> getListById(String userinfo_id) { 
 		Connection conn = OracleConnectionUtil.connect();
 		List<String[]> list = new ArrayList<String[]>();

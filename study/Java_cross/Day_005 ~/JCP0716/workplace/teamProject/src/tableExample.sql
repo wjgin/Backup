@@ -45,22 +45,37 @@ INSERT INTO ACCOUNT values('35902380825','우리','김모모','momo');
 INSERT INTO ACCOUNT values('4994493827','농협','김사나아빠','sana');   
 INSERT INTO ACCOUNT values('3294973967','국민','이미나','mina');   
       
-INSERT INTO incomeexpense (ie_idx,ie_division,ie_category,ie_price,userInfo_id,account_num,ie_memo) 
-VALUES(ie_seq.nextval,'E','생활비',300000,'momo','35902380825','월세');
-INSERT INTO incomeexpense (ie_idx,ie_division,ie_category,ie_price,userInfo_id,account_num,ie_memo) 
-VALUES(ie_seq.nextval,'E','미용',200000,'momo','35902380825','염색');
-INSERT INTO incomeexpense (ie_idx,ie_division,ie_category,ie_price,userInfo_id,account_num,ie_memo) 
-VALUES(ie_seq.nextval,'E','식대',7000,'momo','35902380825','점심 메밀국수');
-INSERT INTO incomeexpense (ie_idx,ie_division,ie_category,ie_price,userInfo_id,account_num,ie_memo) 
-VALUES(ie_seq.nextval,'I','월급',3000000,'momo','35902380825','7월 월급');
-INSERT INTO incomeexpense (ie_idx,ie_division,ie_category,ie_price,userInfo_id,account_num,ie_memo) 
-VALUES(ie_seq.nextval,'E','자기계발',20000,'momo','35902380825','영어인강');
-INSERT INTO incomeexpense (ie_idx,ie_division,ie_category,ie_price,userInfo_id,account_num,ie_memo) 
-VALUES(ie_seq.nextval,'E','문화',12000,'momo','35902380825','영화관람');
-INSERT INTO incomeexpense (ie_idx,ie_division,ie_category,ie_price,userInfo_id,account_num,ie_memo) 
-VALUES(ie_seq.nextval,'E','생활비',30000,'momo','35902380825','전기세');
+INSERT INTO incomeexpense (ie_idx,ie_division,ie_category,IE_TIME ,ie_price,userInfo_id,account_num,ie_memo) 
+VALUES(ie_seq.nextval,'E','생활비','2021-06-12',300000,'momo','35902380825','월세');
+INSERT INTO incomeexpense (ie_idx,ie_division,ie_category,IE_TIME ,ie_price,userInfo_id,account_num,ie_memo) 
+VALUES(ie_seq.nextval,'E','미용', '2021-06-12',200000,'momo','35902380825','염색');
+INSERT INTO incomeexpense (ie_idx,ie_division,ie_category,IE_TIME ,ie_price,userInfo_id,account_num,ie_memo) 
+VALUES(ie_seq.nextval,'E','식대','2021-06-13',7000,'sana','4994493827','점시 값 송금');
+INSERT INTO incomeexpense (ie_idx,ie_division,ie_category,IE_TIME ,ie_price,userInfo_id,account_num,ie_memo) 
+VALUES(ie_seq.nextval,'E','식대','2021-06-13',7000,'mina','3294973967','점시 값 송금');
+INSERT INTO incomeexpense (ie_idx,ie_division,ie_category,IE_TIME ,ie_price,userInfo_id,account_num,ie_memo) 
+VALUES(ie_seq.nextval,'E','식대','2021-06-13',7000,'momo','35902380825','점심 메밀국수');
+INSERT INTO incomeexpense (ie_idx,ie_division,ie_category,IE_TIME ,ie_price,userInfo_id,account_num,ie_memo) 
+VALUES(ie_seq.nextval,'I','월급','2021-06-15',3000000,'momo','35902380825','7월 월급');
+INSERT INTO incomeexpense (ie_idx,ie_division,ie_category,IE_TIME ,ie_price,userInfo_id,account_num,ie_memo) 
+VALUES(ie_seq.nextval,'E','자기계발','2021-06-30',20000,'momo','35902380825','영어인강');
+INSERT INTO incomeexpense (ie_idx,ie_division,ie_category,IE_TIME ,ie_price,userInfo_id,account_num,ie_memo) 
+VALUES(ie_seq.nextval,'E','문화','2021-07-02',12000,'momo','35902380825','영화관람');
+INSERT INTO incomeexpense (ie_idx,ie_division,ie_category,IE_TIME ,ie_price,userInfo_id,account_num,ie_memo) 
+VALUES(ie_seq.nextval,'I','환불','2021-07-02',3250,'momo','35902380825','체크카드 취소 환불');
+INSERT INTO incomeexpense (ie_idx,ie_division,ie_category,IE_TIME ,ie_price,userInfo_id,account_num,ie_memo) 
+VALUES(ie_seq.nextval,'E','생활비','2021-07-03',30000,'momo','35902380825','전기세');
+INSERT INTO incomeexpense (ie_idx,ie_division,ie_category,IE_TIME ,ie_price,userInfo_id,account_num,ie_memo) 
+VALUES(ie_seq.nextval,'E','생활비','2021-07-05',30000,'momo','35902380825','전기세');
+INSERT INTO incomeexpense (ie_idx,ie_division,ie_category,IE_TIME ,ie_price,userInfo_id,account_num,ie_memo) 
+VALUES(ie_seq.nextval,'I','환불','2021-07-05',3250,'momo','35902380825','체크카드 환불');
 
 --==================================
+
+DROP TABLE INCOMEEXPENSE ; 
+DROP TABLE ACCOUNT; 
+DROP TABLE USERINFO ;
+DROP SEQUENCE ie_seq;
 
 SELECT * FROM INCOMEEXPENSE WHERE USERINFO_ID = 'momo' AND IE_CATEGORY LIKE '생활비';
 SELECT decode(ie_division,'E','지출','I','수입'), ie_time, ie_price, ie_category, ie_memo, account_num, ie_idx FROM INCOMEEXPENSE WHERE USERINFO_ID = 'momo' AND IE_CATEGORY LIKE '%생%';

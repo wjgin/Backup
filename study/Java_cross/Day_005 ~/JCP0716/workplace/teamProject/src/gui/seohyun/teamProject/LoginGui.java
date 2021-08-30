@@ -1,18 +1,18 @@
 package gui.seohyun.teamProject;
 
-
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.JOptionPane;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.SwingConstants;
 
 import dao.seungJoon.teamProject.UserinfoDao;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.LayoutStyle.ComponentPlacement;
-import javax.swing.GroupLayout;
-import javax.swing.SwingConstants;
 
 @SuppressWarnings("serial")
 public class LoginGui extends javax.swing.JFrame {
@@ -53,6 +53,8 @@ public class LoginGui extends javax.swing.JFrame {
 		jButton1 = new javax.swing.JButton();
 		jButton2 = new javax.swing.JButton();
 		jButton3 = new javax.swing.JButton();
+		
+		
 
 		Font gainFont = new Font("Tahoma", Font.PLAIN, 11);
 		Font lostFont = new Font("Tahoma", Font.ITALIC, 11);
@@ -110,10 +112,10 @@ public class LoginGui extends javax.swing.JFrame {
 		jLabel2.setText("PW :");
 
 		jLabel3.setIcon(new javax.swing.ImageIcon(
-				"D:\\Desktop\\PJ\\study\\Java_cross\\Day_005 ~\\JCP0716\\workplace\\teamProject\\2021.08.27\\loginlogo.png")); // NOI18N
+				"D:\\Desktop\\PJ\\study\\Java_cross\\Day_005 ~\\JCP0716\\workplace\\teamProject\\2021.08.27\\loginlogo.png")); // NOI18N)); // NOI18N
 
 		jLabel4.setFont(new java.awt.Font("휴먼둥근헤드라인", 0, 14)); // NOI18N
-		jLabel4.setText("아이디 혹은 비밀번호를 확인해주세요.");
+//		jLabel4.setText("아이디 혹은 비밀번호를 확인해주세요.");
 		jLabel4.setVisible(false);
 
 		jButton1.setText("로그인");
@@ -129,6 +131,8 @@ public class LoginGui extends javax.swing.JFrame {
 				System.exit(0);
 			}
 		});
+		
+		
 
 		javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
 		layout.setHorizontalGroup(
@@ -199,6 +203,8 @@ public class LoginGui extends javax.swing.JFrame {
 	private javax.swing.JLabel jLabel4;
 	private java.awt.TextField textField1;
 	private java.awt.TextField textField2;
+	
+	
 
 	// "로그인" 버튼 클릭 이벤트
 	private ActionListener login = new ActionListener() {
@@ -215,6 +221,7 @@ public class LoginGui extends javax.swing.JFrame {
 			} else {
 				System.out.println("로그인 오류");
 				jLabel4.setVisible(true);
+				JOptionPane.showMessageDialog(null,"아이디 또는 비밀번호를 확인하세요!");
 			}
 		}
 	}; // end login trigger

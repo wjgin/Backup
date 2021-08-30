@@ -2,18 +2,24 @@ package gui.seohyun.teamProject;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import dao.seungJoon.teamProject.UserinfoDao;
-import vo.seungJoon.teamProject.UserinfoVo;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
-import javax.swing.SwingConstants;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
+import dao.seungJoon.teamProject.UserinfoDao;
+import vo.seungJoon.teamProject.UserinfoVo;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.JButton;
+import javax.swing.JFrame;
 
 // 회원가입 클래스
 @SuppressWarnings("serial")
 public class JoinGui extends javax.swing.JFrame {
 
 	public JoinGui() {
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		setAutoRequestFocus(false);
 		setResizable(false);
 		initComponents();
 	}
@@ -59,11 +65,11 @@ public class JoinGui extends javax.swing.JFrame {
 		jLabel4.setHorizontalAlignment(SwingConstants.CENTER);
 		jLabel5 = new javax.swing.JLabel();
 		jLabel5.setHorizontalAlignment(SwingConstants.CENTER);
-		jLabel6 = new JLabel("모든 항목을 기입해주세요.");
+		jLabel6 = new JLabel("");
 		jLabel6.setHorizontalAlignment(SwingConstants.CENTER);
-		jLabel6.setVisible(false);
 		jButton1 = new javax.swing.JButton();
 		jButton2 = new javax.swing.JButton();
+		jButton3 = new javax.swing.JButton();
 
 
 		jLabel1.setText("가입할 ID  :");
@@ -88,12 +94,21 @@ public class JoinGui extends javax.swing.JFrame {
 		jButton2.setText("초기화");
 		jButton2.addActionListener(initTextField);
 		
+		jButton3.setText("나가기");
+		jButton3.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
+		
+		
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(12)
-					.addComponent(jLabel5, GroupLayout.PREFERRED_SIZE, 268, GroupLayout.PREFERRED_SIZE))
+					.addGap(16)
+					.addComponent(jLabel5, GroupLayout.PREFERRED_SIZE, 244, GroupLayout.PREFERRED_SIZE))
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(12)
 					.addComponent(jLabel1, GroupLayout.PREFERRED_SIZE, 66, GroupLayout.PREFERRED_SIZE)
@@ -114,12 +129,16 @@ public class JoinGui extends javax.swing.JFrame {
 					.addComponent(jLabel4, GroupLayout.PREFERRED_SIZE, 66, GroupLayout.PREFERRED_SIZE)
 					.addGap(5)
 					.addComponent(jTextField4, GroupLayout.PREFERRED_SIZE, 149, GroupLayout.PREFERRED_SIZE))
-				.addComponent(jLabel6, GroupLayout.PREFERRED_SIZE, 272, GroupLayout.PREFERRED_SIZE)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(54)
+					.addGap(34)
 					.addComponent(jButton1)
-					.addGap(59)
-					.addComponent(jButton2))
+					.addGap(7)
+					.addComponent(jButton2)
+					.addGap(7)
+					.addComponent(jButton3))
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(12)
+					.addComponent(jLabel6, GroupLayout.PREFERRED_SIZE, 236, GroupLayout.PREFERRED_SIZE))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -150,22 +169,23 @@ public class JoinGui extends javax.swing.JFrame {
 							.addGap(3)
 							.addComponent(jLabel4))
 						.addComponent(jTextField4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addGap(10)
-					.addComponent(jLabel6)
-					.addGap(18)
-					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+					.addGap(26)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(jButton1)
 						.addComponent(jButton2)
-						.addComponent(jButton1))
-					.addGap(19))
+						.addComponent(jButton3))
+					.addGap(6)
+					.addComponent(jLabel6, GroupLayout.PREFERRED_SIZE, 47, GroupLayout.PREFERRED_SIZE))
 		);
 		getContentPane().setLayout(groupLayout);
-
 		pack();
+		setLocationRelativeTo(null);
 	}// </editor-fold>
 
 	// Variables declaration - do not modify
 	private javax.swing.JButton jButton1;
 	private javax.swing.JButton jButton2;
+	private javax.swing.JButton jButton3;
 	private javax.swing.JLabel jLabel1;
 	private javax.swing.JLabel jLabel2;
 	private javax.swing.JLabel jLabel3;
@@ -194,13 +214,13 @@ public class JoinGui extends javax.swing.JFrame {
 					jTextField2.getText().length() == 0 ||
 					jTextField3.getText().length() == 0 ||
 					jTextField4.getText().length() == 0 ) {
-				jLabel6.setVisible(true);
+				jLabel6.setText("모든 항목을 입력해주세요");
 			} else {
 				if (!bd.idcheck(vo.getId())) {
 					bd.insert(vo);
 					dispose();
 				} else {
-					System.out.println("이미 존재하는 아이디");
+					JOptionPane.showMessageDialog(null,"이미 존재하는 아이디입니다");
 				}
 			}
 
@@ -218,4 +238,5 @@ public class JoinGui extends javax.swing.JFrame {
 			jTextField4.setText("");
 		}
 	}; // init end
+	
 }

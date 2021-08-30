@@ -12,7 +12,7 @@ import lombok.ToString;
 
 public class AccountVo {
 	private String accNum;
-	private String Bank;
+	private String bank;
 	private String owner;
 	private String id;
 	

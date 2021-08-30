@@ -265,8 +265,7 @@ public class SelectAllGui extends javax.swing.JFrame {
 
 	// "exit" 이벤트
 	private void jMenu3ActionPerformed(java.awt.event.ActionEvent evt) {
-		new LoginGui();
-		dispose();
+		System.exit(0);
 	}
 
 	// Variables declaration - do not modify
