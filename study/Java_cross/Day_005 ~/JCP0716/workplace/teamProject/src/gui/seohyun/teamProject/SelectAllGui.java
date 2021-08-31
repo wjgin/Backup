@@ -24,8 +24,6 @@ public class SelectAllGui extends javax.swing.JFrame {
 			}
 		});
 
-		// x버튼 클릭시 프로그램 종료
-		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
 		try {
 			for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -108,7 +106,7 @@ public class SelectAllGui extends javax.swing.JFrame {
 		});
 
 		jLabel1.setFont(new java.awt.Font("휴먼둥근헤드라인", 0, 24)); // NOI18N
-		jLabel1.setText("    나의 가계부");
+		jLabel1.setText("나의 가계부");
 
 		jMenu1.setText("필터");
 
@@ -197,6 +195,8 @@ public class SelectAllGui extends javax.swing.JFrame {
 
 		pack();
 		setLocationRelativeTo(null);
+		setResizable(false);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
 
 	}// </editor-fold>

@@ -37,7 +37,7 @@ public class InputCategoryGui extends javax.swing.JFrame {
     	button2.setBounds(145, 66, 140, 37);
     	
     	
-    	frame.setTitle("날짜별 검색");
+    	frame.setTitle("카테고리 검색");
     	frame.setResizable(false);
     	frame.setVisible(true);
     	frame.setLocationRelativeTo(null);
