@@ -34,6 +34,7 @@ CREATE TABLE incomeexpense( --수입,지출
 CREATE SEQUENCE ie_seq;
 --DROP SEQUENCE ie_seq;
 
+-- 테이블 예시 삽입
 INSERT INTO USERINFO (USERINFO_ID,USERINFO_PASSWORD,USERINFO_PHONE,USERINFO_NAME)
       values('momo','1234','01012341234','김모모');
 INSERT INTO USERINFO (USERINFO_ID,USERINFO_PASSWORD,USERINFO_PHONE,USERINFO_NAME)
@@ -76,8 +77,3 @@ DROP TABLE INCOMEEXPENSE ;
 DROP TABLE ACCOUNT; 
 DROP TABLE USERINFO ;
 DROP SEQUENCE ie_seq;
-
-SELECT * FROM INCOMEEXPENSE WHERE USERINFO_ID = 'momo' AND IE_CATEGORY LIKE '생활비';
-SELECT decode(ie_division,'E','지출','I','수입'), ie_time, ie_price, ie_category, ie_memo, account_num, ie_idx FROM INCOMEEXPENSE WHERE USERINFO_ID = 'momo' AND IE_CATEGORY LIKE '%생%';
-SELECT decode(ie_division,'E','지출','I','수입'), ie_time, ie_price, ie_category, ie_memo, account_num, ie_idx 
-FROM INCOMEEXPENSE WHERE USERINFO_ID = 'momo' AND IE_DIVISION = 'I'
