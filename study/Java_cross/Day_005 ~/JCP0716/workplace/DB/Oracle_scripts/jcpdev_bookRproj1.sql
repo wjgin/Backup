@@ -47,8 +47,8 @@ SELECT * FROM "MEMBER" ;
 -- INSERT data to book table
 INSERT INTO BOOK VALUES ('A1101', '코스모스', '칼세이건', '사이언스북스', '2006-12-01');
 INSERT INTO BOOK VALUES ('B1101', '해커스토익', '이해커', '해커스랩', '2018-7-10');
-INSERT INTO BOOK VALUES ('C1101', '푸른 사자', '와니니', '이현 창비', '2015-6-20');
-INSERT INTO BOOK VALUES ('A1102', '페스트 알베르트', '까뮈', '민음사', '2011-3-1');
+INSERT INTO BOOK VALUES ('C1101', '푸른 사자와 니니', '이현 ', '창비', '2015-6-20');
+INSERT INTO BOOK VALUES ('A1102', '페스트', '알베르트 까뮈', '민음사', '2011-3-1');
 
 SELECT * FROM BOOK ;
 
@@ -98,7 +98,9 @@ SELECT IDX, STUNAME, COUNT(BCODE)  from rent GROUP BY IDX, STUNAME ORDER BY IDX 
 
 
 -- 회원별 연체 집계
-SELECT m.IDX, m.STUNAME, NVL(cnt, 0) FROM "MEMBER" m, (SELECT idx, COUNT(*) cnt  FROM BOOKRENT b WHERE state = 'T' GROUP BY idx) rcnt
+SELECT m.IDX, m.STUNAME, NVL(cnt, 0) 
+FROM "MEMBER" m, 
+	(SELECT idx, COUNT(*) cnt  FROM BOOKRENT b WHERE state = 'T' GROUP BY idx) rcnt
 	WHERE m.IDX = rcnt.idx(+)
 	ORDER BY m.IDX ;
 
