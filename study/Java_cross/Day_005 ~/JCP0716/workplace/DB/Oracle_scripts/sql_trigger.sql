@@ -8,6 +8,19 @@ BEGIN
 END secure_employees;	-- 트리거의 끝
 
 
+
+CREATE OR REPLACE PROCEDURE HR.secure_dml
+IS
+BEGIN
+  IF TO_CHAR (SYSDATE, 'HH24:MI') NOT BETWEEN '08:00' AND '18:00' OR TO_CHAR (SYSDATE, 'DY') IN ('SAT', 'SUN') 
+        THEN 
+       		RAISE_APPLICATION_ERROR (-20205, 'You may only make changes during normal office hours');
+  END IF;
+END secure_dml;
+
+
+
+
 TRIGGER update_job_history
   AFTER UPDATE OF job_id, department_id ON employees
   -- 이벤트: employees 테이블에 job_id, department_id 컬럼에 update가 생기 후에 begin ~ end 실행
@@ -17,17 +30,6 @@ BEGIN
                   :old.job_id, :old.department_id);
 END;
 
-
-
-
-CREATE OR REPLACE PROCEDURE HR.secure_dml
-IS
-BEGIN
-  IF TO_CHAR (SYSDATE, 'HH24:MI') NOT BETWEEN '08:00' AND '18:00'
-        OR TO_CHAR (SYSDATE, 'DY') IN ('SAT', 'SUN') THEN
-	RAISE_APPLICATION_ERROR (-20205, 'You may only make changes during normal office hours');
-  END IF;
-END secure_dml;
 
 
 
@@ -99,10 +101,9 @@ CREATE OR REPLACE TRIGGER del_trigger
   AFTER DELETE ON MEMBER
   FOR EACH ROW
 BEGIN
-  del_member_pro(:old.idx, :old.stuname, :OLD.email, :old.tel, :old.password); -- MEMBER 테이블의 삭제 전 컬럼을 인자로 전달하기
-  -- INSERT INTO delmember 
-  --	VALUES(:old.idx, :old.stuname, :OLD.email, :old.tel, :old.password); -- 프로세서없이 바로 삽입
-
+	  del_member_pro(:old.idx, :old.stuname, :OLD.email, :old.tel, :old.password); -- MEMBER 테이블의 삭제 전 컬럼을 인자로 전달하기
+--    INSERT INTO delmember 
+--  		VALUES(:old.idx, :old.stuname, :OLD.email, :old.tel, :old.password); -- 프로세서없이 바로 삽입
 END;
 
 

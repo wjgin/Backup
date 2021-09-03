@@ -6,7 +6,7 @@ CREATE TABLE member (
 	email varchar(20)NOT NULL,
 	tel varchar(20),
 	password varchar(10),
-	CONSTRAINT member_PK PRIMARY KEY (idx)
+	CONSTRAINT member_PK2 PRIMARY KEY (idx)
 ); 
 
 CREATE TABLE book (
@@ -15,7 +15,7 @@ CREATE TABLE book (
 	writer varchar(20),
 	publisher varchar(20),
 	cdate DATE,
-	CONSTRAINT book_PK PRIMARY KEY (bcode)
+	CONSTRAINT book_PK2 PRIMARY KEY (bcode)
 ); 
 
 CREATE TABLE bookrent (
@@ -25,7 +25,7 @@ CREATE TABLE bookrent (
 	exp_date DATE NOT NULL ,
 	state char(1) DEFAULT 'F',
 	return_date DATE,
-	CONSTRAINT bookrent_PK PRIMARY KEY (idx, bcode)
+	CONSTRAINT bookrent_PK2 PRIMARY KEY (idx, bcode)
 ); 
 
 DROP TABLE BOOKRENT ;
@@ -60,6 +60,8 @@ INSERT INTO BOOKRENT VALUES ('2', 'C1101', '2020-09-12', '2020-09-26', 'T', '202
 INSERT INTO BOOKRENT VALUES ('3', 'A1102', '2020-10-04', '2020-10-18', 'F', NULL);
 INSERT INTO BOOKRENT VALUES ('3', 'B1101', '2020-09-03', '2020-09-17', 'F', '2020-09-17');
 INSERT INTO BOOKRENT VALUES ('4', 'C1101', '2020-10-02', '2020-10-16', 'F', NULL );
+
+COMMIT;
 
 SELECT * FROM BOOKRENT;
 

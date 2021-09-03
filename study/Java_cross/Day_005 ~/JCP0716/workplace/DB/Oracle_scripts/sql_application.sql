@@ -120,6 +120,68 @@ SELECT * FROM BOOKRENT b ;
 -- 프로시저에서 첫 줄 업데이트가 완료되고 두번째 업데이트에서 오류가 난다면 자동으로 rollback 됨
 
 
+-- SQL응용 시험
+--문제 1 =============================================
+--1)
+CREATE OR REPLACE PROCEDURE search_book(	
+	v_code book#.bcode%TYPE	
+)
+IS 
+	v_row book#%rowtype;
+BEGIN
+	SELECT * INTO v_row
+	FROM "BOOK#" WHERE bcode = v_code;
+	INSERT INTO tbltemp VALUES v_row;
+	EXCEPTION
+	when no_data_found THEN NULL;
+END ;
+
+--2)
+BEGIN
+	search_book('A1101');
+END;
+
+SELECT * FROM TBLTEMP;
 
 
 
+--문제 2 =============================================
+--1)
+CREATE OR REPLACE TRIGGER backup_member
+	AFTER DELETE ON MEMBER#
+	FOR EACH ROW 
+	BEGIN 
+		INSERT INTO DELMEMBER VALUES(:old.idx, :old.stuname, :OLD.email, :old.tel, :old.password);
+	END;
+
+--2)
+CREATE TABLE delmember AS SELECT * FROM "MEMBER" WHERE IDX = 0;
+
+--3)
+ALTER TABLE DELMEMBER ADD del_date DATE DEFAULT sysdate;
+
+--4)
+CREATE OR REPLACE TRIGGER backup_member
+	AFTER DELETE ON MEMBER#
+	FOR EACH ROW 
+	BEGIN 
+		INSERT INTO DELMEMBER VALUES(:old.idx, :old.stuname, :OLD.email, :old.tel, :old.password, sysdate);
+	END;
+
+--5)
+DELETE FROM "MEMBER#" WHERE IDX = 5;
+
+
+SELECT * FROM "MEMBER#";
+SELECT * FROM DELMEMBER;
+
+
+--문제 3 =============================================
+--1)
+CREATE USER dev1 IDENTIFIED BY 9876;
+
+--2)
+GRANT resource, CONNECT TO dev1;
+
+--3)
+conn sys/1234 AS sysdba;
