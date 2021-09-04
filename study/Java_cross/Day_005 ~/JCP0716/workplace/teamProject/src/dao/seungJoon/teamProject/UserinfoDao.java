@@ -115,6 +115,7 @@ public class UserinfoDao {
 					+ " userinfo_password = ?";
 			ResultSet rs = null;
 			UserinfoVo vo;
+			long start = System.currentTimeMillis();
 			try {
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setNString(1, id);
@@ -132,6 +133,8 @@ public class UserinfoDao {
 				}
 				OracleConnectionUtil.close(conn);
 			}
+			long end = System.currentTimeMillis();
+			System.out.println("connection time = " + (end - start));
 			return false;	
 		}//id pw 검사 end
 	
