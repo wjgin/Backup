@@ -78,11 +78,12 @@ public class SelectAllGui extends javax.swing.JFrame {
 		// jTable1 생성
 		model = new DefaultTableModel(data, columns);
 		jTable1 = new javax.swing.JTable(model);
-		// jTable1 sort
+		jScrollPane1.setViewportView(jTable1);
+		
+		// jTable1 컬럼 별 정렬
 		TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(jTable1.getModel());
 		jTable1.setRowSorter(sorter);
 
-		jScrollPane1.setViewportView(jTable1);
 
 		jButton1.setText("등록");
 		jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -197,7 +198,6 @@ public class SelectAllGui extends javax.swing.JFrame {
 		setLocationRelativeTo(null);
 		setResizable(false);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		
 
 	}// </editor-fold>
 
@@ -216,14 +216,15 @@ public class SelectAllGui extends javax.swing.JFrame {
 	private void jButton2ActionPerformed(java.awt.event.ActionEvent evt, String id) {
 		InexDao dao = InexDao.getInstance();
 
-		// 가게부 리스트를 2차원 배열 data로 매핑
+		// 새 list를 가져오기
 		rows = dao.getListById(id);
 		columns = new String[] { "수입|지출", "날짜", "금액", "분류", "메모", "계좌번호" , "IDX"};
 		data = rows.stream().toArray(String[][]::new);
 
-		// jTable1 생성
+		// 새 모델 생성 후 테이블 생성
 		model = new DefaultTableModel(data, columns);
 		jTable1 = new javax.swing.JTable(model);
+		
 		// jTable1 sort
 		TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(jTable1.getModel());
 		jTable1.setRowSorter(sorter);
