@@ -1,0 +1,52 @@
+td {
+    /* td 선택자 : 모든 td 태그에 적용되는 내용*/
+    text-align: center;
+}
+table {
+    width: 70%;
+    /*태그 요소의 외부 여백*/
+    margin-left: 30px;
+    margin-right: 5px;
+    border-spacing: 10px;
+    /* border-collapse: collapse;  -> 칸 사이 간격 없애기*/ 
+}
+th {
+    color: white;
+    background-color: brown;
+}
+td, th {
+    border: 1px solid gray;
+    /*태그 요소 내부 여백*/
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+caption { /* 글꼴 크기는 16px 기본, 비율 : %, em*/
+    font-size: 1.2em;
+}
+
+/* 선택자 class  사용 기호 : .*/
+/* 모든 클래스 name을 선택 */
+.name {
+    color: tomato;
+}
+/* td  태그의 name 을 선택, 더 작은 선택자 우선 */
+td.name {
+    color: aqua;
+}
+
+/*div 태그의 자식 태그 p 선택*/
+/* 외에도 여러가지 형식으로 선택자 선택 가능 */
+idv > p { 
+    color: blue;
+}
+
+p {
+    color: red;
+}
+
+/* 추가 설명
+color : r, g, b 3가지 색상을 조합(0~255까지)
+    자주 사용하는 색상은 이름이 존재
+    #OOOOOO -> OO 을 16진수로  표현(0~255) white: #fff, black: #000000
+table 에서 border-spacing : 테이블 칸(cell) 사이의 간격
+*/

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        table {
+            /* 테이블 칸 당 경계 없애기 */
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        /* th, td태그 왼쪽 정렬, 상하좌우 패딩 8px */
+        th, td {
+            text-align: left;
+            padding: 8px;
+        }
+        /* 테이블 당 n번째 tr태그(짝수) 선택 */
+        tr:nth-child(even) {
+            background-color: #D6EEEE;
+        }
+    </style>
+    <title>day2-4 선택자 연습</title>
+</head>
+
+<body>
+<!-- https://www.w3schools.com/html/tryit.asp?filename=tryhtml_table_zebra -->
+    <h2>Zebra Striped Table</h2>
+    <p>For zebra-striped tables, use the nth-child() selector and add a background-color to all even (or odd) table
+        rows:</p>
+
+    <table>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Points</th>
+        </tr>
+        <tr>
+            <td>Peter</td>
+            <td>Griffin</td>
+            <td>$100</td>
+        </tr>
+        <tr>
+            <td>Lois</td>
+            <td>Griffin</td>
+            <td>$150</td>
+        </tr>
+        <tr>
+            <td>Joe</td>
+            <td>Swanson</td>
+            <td>$300</td>
+        </tr>
+        <tr>
+            <td>Cleveland</td>
+            <td>Brown</td>
+            <td>$250</td>
+        </tr>
+    </table>
+
+    <table>
+        <tr>
+            <td>두번째</td>
+            <td>테이블</td>
+        </tr>
+        <tr>
+            <td>색상</td>
+            <td>확인용</td>
+        </tr>
+    </table>
+</body>
+
+</html>
