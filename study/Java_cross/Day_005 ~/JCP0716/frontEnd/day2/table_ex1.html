@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>dya2-2 Table</title>
+</head>
+
+<body>
+    <!--
+        table : 표(행 row, 열 column)
+        table 태그 : 테이블 생성 태그
+            tr : row 생성
+                td : 행 안에서 열(col) 생성
+     -->
+    <!-- width를 % 로 설정하면 부모 태그를 기준으로 비율 설정 -->
+    <table style="width: 70%;">
+        <!--테이블의 제목-->
+        <caption style="border: 1px solid gray;">우리반 연락처</caption>
+        <!--
+             td 대신에 제목 열 일때, th 
+            th : 가운데 정렬, 굵은 글씨
+        -->
+        <tr>
+            <!--style 속성으로 디자인 프로퍼티 설정하기-->
+            <th style="width: 20%; color: blueviolet;">번호</th>
+            <th style="width: 30%;">이름</th>
+            <th style="width: 50%;">연락처</th>
+        </tr>
+        <tr>
+            <td style="border: 1px solid gray;">1</td>
+            <td style="border: 1px solid gray;">사나</td>
+            <td style="border: 1px solid gray;">010-1234-7898</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>미나</td>
+            <td>010-4567-3215</td>
+        </tr>
+    </table>
+</body>
+
+</html>
