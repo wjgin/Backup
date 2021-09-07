@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>day2-5 talble span(칸 합치기)</title>
+    <style>
+        table {
+            width: 400px;
+            height: 300px;
+            border-collapse: collapse;
+            text-align: center;
+            /* marginL: auto의 경우 수평 중심 */
+            margin: auto;
+        }
+        td{
+            /* td 하나의 폭을 정해주지 않으면 내용에 따라서 변화함 */
+            width: 100px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <!-- td 합치기(span): 옆 칸과 합치기 colspan, 아래 칸과 합치기 rowspan -->
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td rowspan="2">3</td>
+            <td>4</td>
+        </tr>
+        <tr>
+            <td colspan="2">5</td>
+            <td rowspan="2">6</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td colspan="2">8</td>
+        </tr>
+    </table>
+</body>
+</html>

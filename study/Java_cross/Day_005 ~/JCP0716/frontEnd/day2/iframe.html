@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>day2-7 iframe</title>
+</head>
+<body>
+    <!-- inline frame 의 약자 : 현재 문서에 다른 html 문서를 포함시킴 -->
+    <!-- src에 포함시킬 문서를 포함:: url(파일, 도메인 등...) -->
+    <iframe src="./use_idselector.html" frameborder="0" 
+    style="width: 100%; height: 400px;"></iframe>
+    <!-- 자식의 height를 %로 사용할 경우 부모의 height를 지정해준다. -->
+
+    <!-- http:// ~ url 주소도 가능 -->
+    <!-- 보안상의 이유로 deny 되어있음 -->
+    <iframe src="https://www.naver.com" frameborder="0"></iframe>
+    <!-- w3schools.com -->
+    <iframe src="https://www.w3schools.com" frameborder="0"></iframe>
+
+    <!-- a 태그에서 iframe 문서 설정 -->
+    <p>
+        <!-- 링크 설정 : 페이지 이동, target 속성으로 보여질 위치 설정 -->
+        <a href="table_span.html" target="menu1">다른 예제 보기</a>
+        <iframe src="" frameborder="0" name = "menu1" style="width: 100%; height: 400px;"></iframe>
+        <!-- src에 href 주소를 삽입 시켜 보여줌 -->
+    </p>
+    <!-- 다른 사이트에서 가져오기 : 공유 링크 -->
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/AX7BcBD8-BA" 
+    title="YouTube video player" frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+     allowfullscreen></iframe>
+
+     <iframe width="560" height="315" 
+     src="https://www.youtube.com/embed/CZrEcslERe8?start=1" 
+     title="YouTube video player" frameborder="0" 
+     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+     allowfullscreen></iframe>
+
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d101044.0747406366!2d126.69269385890176!3d37.68146359922162!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357c853b6ae59e23%3A0x16a3db596d25316d!2z6rOg7JaR7IucIOydvOyCsA!5e0!3m2!1sko!2skr!4v1630998346381!5m2!1sko!2skr"
+    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+
+
+</body>
+</html>
