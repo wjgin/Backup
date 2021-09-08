@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>day3-4 member register</title>
+    <link rel="stylesheet" href="member.css">
+</head>
+
+<body>
+    <div style="width: 70%; margin: auto;">
+        <h3>회원 등록</h3>
+        <!-- 새로운 데이터를 저장하는 동작과 관련될 때는 url 창에 데이터를 표시 안함 : POST
+        특정 정보 조회는 url에 파라미터 표시 : GET -->
+        <!-- mothd = "POST" : url 정보표시 없음 -->
+        <form method="POST" action="">
+            <table style="width: 100%; margin: auto;">
+                <tr>
+                    <td class="col1">이름</td>
+                    <td><input type="text" name="name"></td>
+                </tr>
+                <tr>
+                    <td class="col1">패스워드</td>
+                    <td><input type="password" name="password"></td>
+                </tr>
+                <tr>
+                    <td class="col1">이메일</td>
+                    <td><input type="email" name="email"></td>
+                </tr>
+                <tr>
+                    <td class="col1">나이</td>
+                    <td><input type="text" name="age"></td>
+                </tr>
+                <tr>
+                    <td class="col1">주소</td>
+                    <td>
+                        <!-- 선택 리스트 -->
+                        <select name="address">
+                            <!-- option 태그 안에 문자열 : 화면, value : 서버 전송 값 -->
+                            <option value="서울">서울</option>
+                            <option value="인천">인천</option>
+                            <option value="대전">대전</option>
+                            <option value="광주">광주</option>
+                            <option value="부산">부산</option>
+                        </select>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col1">성별</td>
+                    <td>
+                        <input type="radio" name="gender" value="male" id="male">
+                        <label for="male">남자</label>
+                        <input type="radio" name="gender" value="female" id="female">
+                        <label for="female">여자</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col1">취미</td>
+                    <!-- 여러개를 복수로 선택할 수 있는 체크박스 -->
+                    <!-- 서버로 전송시 배열로 처리 => name을 동일하게 -->
+                    <td>
+                        <input type="checkbox" name="hobby" value="축구" id="football">
+                        <label for="football">축구 </label>
+                        <!--라벨을 선택하면 체크박스 선택-->
+                        <input type="checkbox" name="hobby" value="농구" id="baketball">
+                        <label for="baketball">농구</label>
+                        <input type="checkbox" name="hobby" value="스키" id="ski">
+                        <label for="ski">스키</label>
+                        <input type="checkbox" name="hobby" value="달리기" id="running">
+                        <label for="running">달리기</label>
+                    </td>
+                </tr>
+                <tr>
+
+                    <td colspan="2">
+                        <div class="button">
+                            <input type="submit" value="가입하기">
+                            <input type="reset" value="다시쓰기">
+                        </div>
+                    </td>
+                </tr>
+
+            </table>
+        </form>
+    </div>
+</body>
+
+</html>
