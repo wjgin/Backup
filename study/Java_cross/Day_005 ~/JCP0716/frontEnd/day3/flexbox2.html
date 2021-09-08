@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>day3-2 flexbox로 nav 메뉴 반응형 만들기</title>
+    <style>
+        /* a태그 모양 바꾸기 */
+        a {
+            text-decoration: none;
+            color: white;
+        }
+
+        .container li {
+            list-style: none;
+            font-size: 1.2em;
+            padding: 8px 12px;
+            margin: 0px 10px
+        }
+
+        /* hover : 마우스가 올라갔을 경우 */
+        .container li:hover {
+            background-color: tomato;
+            list-style: none;
+            font-size: 1.2em;
+            border-radius: 3px;
+            padding: 8px 12px;
+            margin: 0px 10px
+        }
+
+        .container {
+            background-color: brown;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            padding: 8px 0px;
+        }
+
+        /* 반응형으로 레이아웃 변경(해상도에 따른 변경) 
+         해상도 폭이 768 미만이 되었을 때,*/
+        @media screen and (max-width: 768px) {
+            .container {
+                background-color: brown;
+                padding: 8px 0px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav> <!-- 의미(semantic)태그, 동작을 담당하지는 않음-->
+        <!-- 메뉴 구성은 ul, li 태그를 사용 -->
+        <ul class="container">
+            <li><a href="">Facebook</a></li>
+            <li><a href="">Instagram</a></li>
+            <li><a href="">Kakao</a></li>
+            <li><a href="">Twitter</a></li>
+            <li><a href="">About</a></li>
+        </ul>
+    </nav>
+</body>
+
+</html>

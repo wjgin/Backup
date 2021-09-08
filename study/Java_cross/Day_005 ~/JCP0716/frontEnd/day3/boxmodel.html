@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+(1) 요소(태그)가 문서에서 차지하는 너비 : width + 좌패딩 + 우패딩 + 테두리*2 + 좌마진 + 우마진
+(2) 눈에 보이는 box 크기의 너비 : width(컨텐츠너비) + 좌패딩 + 우패딩 + 테두리*2
+연습 1 : https://www.w3schools.com/css/tryit.asp?filename=trycss_boxmodel
+연습2 : https://www.w3schools.com/css/tryit.asp?filename=trycss_boxmodel_width
+
+padding, margin 단축 속성 : 위/아래  좌/우 (8px 12px) , 위/아래/좌/우(10px)
+
+참고 : box-sizing: border-box; 속성을 설정하면 width 속성이 설정된 값에 좌우패딩과 테두리 값을 포함하여
+          box 모델 계산을 쉽게 할 수 있다. 
+          https://www.w3schools.com/css/tryit.asp?filename=trycss3_box-sizing_old   는 속성 설정 이전 
+          https://www.w3schools.com/css/tryit.asp?filename=trycss3_box-sizing_new  는 속성 설정 이후
+
+-->
+
+
+    <!-- 
+  CSS : box model  심화   https://www.w3schools.com/css/css3_flexbox.asp
+           flexbox 반응형 레이아웃을 쉽게 만들 수 있게 한다.
+           ::주요 속성::  정리해 보세요.
+ -->
+
+    <h2>Flex 컨테이너에 적용하는 속성들</h2>
+    <dl>
+        <dt>
+            display: flex;
+        </dt>
+        <dd>
+            Flex 컨테이너에 display: flex;를 적용하는 속성
+        </dd>
+        <dt>
+            flex-direction
+        </dt>
+        <dd>
+            row: 아이템들을 가로 방향 배치<br>
+            row-reverse : row 방향의 반대 방향 배치<br>
+            column : 세로 방향 배치<br>
+            column-reverse : 세로 방향 역순 배치
+        </dd>
+        <dt>
+            flex-wrap
+        </dt>
+        <dd>
+            컨테이너가 더 이상 공간이 없을 때, 아이템을 한줄 넘기는 속성<br>
+            flex-wrap: nowrap; 넘기지 않음<br>
+            flex-wrap: wrap; 아래로 넘김<br>
+            flex-wrap: wrap-reverse; 위로 넘김
+        </dd>
+        <dt>
+            flex-flow
+        </dt>
+        <dd>
+            flex-direction과 flex-flow를 함께 지정 가능한 속성<br>
+            flex-flow: row wrap;<br>
+            flex-direction: row;<br>
+            flex-wrap: wrap;
+        </dd>
+        <dt>
+            justify-content
+        </dt>
+        <dd>
+            메인축 방향을 정렬 하는 속성 <br>
+            justify-content: flex-start;<br>
+            justify-content: flex-end; <br>
+            justify-content: center; <br>
+            justify-content: space-between; <br>
+            justify-content: space-around; <br>
+            justify-content: space-evenly; 
+        </dd>
+        <dt>
+            align-items
+        </dt>
+        <dd>
+            align-items: stretch; <br>
+            align-items: flex-start; <br>
+            align-items: flex-end; <br>
+            align-items: center; <br>
+            align-items: baseline;
+        </dd>
+    </dl>
+
+</body>
+
+</html>
