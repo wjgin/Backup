@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <h1 style="text-align: center;"><q>토글 버튼 만들기</q></h1>
+
+    <img id="bulb" src="../images/pic_bulboff.gif" onclick="bulbToggle()" ;
+        style="display: block; margin: auto; cursor: pointer;">
+    <div style="display: flex; justify-content: center;">
+        <button onclick=bulbOn()>💡켜기</button>
+        <button onclick=bulbOff()>💡끄기</button>
+    </div>
+    <p style="text-align: center;">현재 전구의 상태 :
+        <em id="state" style="color: black ; font-size: 1.2em;">OFF</em>
+    </p>
+
+    <script>
+        let state = "off";
+        const bulbEm = document.getElementById('state');
+
+        function bulbOn() {
+            document.getElementById('bulb').src = '../images/pic_bulbon.gif';
+            state = "on";
+            bulbEm.innerHTML = "ON";
+            bulbEm.style.color = "red";
+        }
+        function bulbOff() {
+            document.getElementById('bulb').src = '../images/pic_bulboff.gif';
+            state = "off";
+            bulbEm.innerHTML = "OFF";
+            bulbEm.style.color = "black";
+        }
+
+        function bulbToggle() {
+            if (state === "off") {
+                bulbOn();
+                state = "on";
+            } else if (state === "on") {
+                bulbOff();
+                state = "off";
+            }
+        }
+    </script>
+
+
+
+</body>
+
+</html>

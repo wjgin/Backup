@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>exam</title>
+    <style>
+        h1 {
+            text-align: center;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+        }
+        table td {
+            border: 1px solid black;
+        }
+        .firstRow {
+            background-color: rgb(188, 140, 233);
+        }
+        #textChangeButton:hover{
+            color:rgb(129, 16, 235);
+        }
+        #devil {
+            display: block;
+            margin: auto;
+        }
+        #textCursor {
+            display: none;
+        }
+    </style>
+</head>
+   <!-- 요구사항 : 버튼을 클릭하면 사용자로 부터 문자열을 입력 받음 prompt 사용
+        입력받은 문자열로 STring method로 table tb 태그 안에 결과 보여주기
+    -->
+<body>
+    <h1>문자열 메소드 확인하기</h1>
+    <p>현재 문자 : <em id="text"></em><em id="textCursor">👈</em> </p>
+    <div class="container">
+        <table>
+            <tr class="firstRow">
+                <td> 문자열 길이 확인
+                    <button onclick="showLength()">😆</button>
+                </td>
+                <td>단어 위치 찾기(앞에서)
+                    <button onclick="askIndexOf()">😁</button>
+                </td>
+                <td>단어 위치 찾기(뒤에서)
+                    <button onclick="askLastIndexOf()">😁</button>
+                </td>
+                <td>문자열 추출하기
+                    <button onclick="askSubstr()" style="cursor: pointer;">😀</button>
+                </td>
+
+            </tr>
+            <tr>
+                <td id="length">결과 확인...</td>
+                <td id="indexOf">결과 확인...</td>
+                <td id="lastIndexOf">결과 확인...</td>
+                <td id="substr">결과 확인...</td>
+            </tr>
+            <tr></tr>
+        </table>
+        <button id="textChangeButton" onclick="changeText()">문자 변경하기</button>
+    </div>
+    <button id="devil" onclick="devilRun()">😈</button>
+
+ 
+    <script src="./js5_exam.js"></script>
+
+</body>
+
+</html>

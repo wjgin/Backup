@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <h1>문자열 메소드 확인</h1>
+</head>
+
+<body>
+    <!-- 문자열 메소드 -->
+    <script>
+        let text = "I am JavaScript sam";
+
+        document.write('기본 문자 : ' + text);
+        document.write('<br>');
+        document.write('문자열 길이 : ' + text.length);
+        document.write('<br>');
+        document.write('단어의 위치 찾기 : ' + text.indexOf('am'));
+        document.write('<br>');
+        document.write('단어의 위치 찾기(반대로) : ' + text.lastIndexOf('am'));
+        document.write('<br>');
+        document.write('문자열 추출 index(0 ~ 4) : ' + text.substr(0, 5));
+        document.write('<br>');
+        document.write('문자열 변환 : ' + text.replace('JavaScript', 'js'));
+    </script>
+</body>
+
+</html>

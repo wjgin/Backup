@@ -7,8 +7,6 @@
         {
             "type": "pwa-chrome",
             "request": "launch",
-            "name": "Open iframe.html",
-            "file": "d:\\Desktop\\PJ\\study\\Java_cross\\Day_005 ~\\JCP0716\\frontEnd\\day2\\iframe.html"
         }
     ]
 }
