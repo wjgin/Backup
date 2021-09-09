@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>자바스크립트 예제 #1</title>
+    <script>
+        document.write('<h1>javascript</h1>');
+        document.write('자바스크립트 알아보기')
+        
+    </script>
+</head>
+<body>
+    <hr>
+    <h2>Welcome!</h2>
+    <script>
+       document.write('My name is 홍길동');
+
+       // 자바스크립트의 대화상자(다이얼로그) 함수, 다른 스크립트보다 먼저 실행
+    //    alert('나이를 알려주세요.'); 
+
+    function yourinfo() {
+            // alert('항수로 경고창 출력 해보기');
+            // prompt('prompt 다이얼로그로 입력 받기');
+
+            // 변수로 입력 받아보기
+            var myprompt = prompt('반려동물 이름을 입력하세요.');
+            // document.write(myprompt); // prompt로 입력받은 값을 화면에 출력
+            document.getElementById('animal').innerHTML = myprompt;
+            console(myprompt);  // 콘솔 창에 출력
+        }
+    </script>
+
+<button onclick="alert('경고창 입니다.');">alert 버튼</button>
+<button onclick="yourinfo()">반려동물 이름 입력</button>
+<p>반려동물 이름은? <span id = "animal">?</span></p>
+
+</body>
+</html>
