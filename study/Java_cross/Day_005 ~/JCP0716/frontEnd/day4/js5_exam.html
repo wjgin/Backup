@@ -3,37 +3,71 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>exam</title>
+    <title>exam-이우진</title>
     <style>
         h1 {
             text-align: center;
         }
+
         .container {
             display: flex;
             flex-direction: column;
             text-align: center;
         }
+
         table td {
             border: 1px solid black;
         }
+
         .firstRow {
             background-color: rgb(188, 140, 233);
         }
-        #textChangeButton:hover{
-            color:rgb(129, 16, 235);
+
+        #textChangeButton:hover {
+            color: rgb(129, 16, 235);
         }
+
         #devil {
             display: block;
             margin: auto;
         }
+
         #textCursor {
+            display: none;
+        }
+        #b1:hover{
+            cursor: pointer;
+        }
+        #b2:hover{
+            cursor: pointer;
+        }
+        #b3:hover{
+            cursor: pointer;
+        }
+        #b4:hover{
+            cursor: pointer;
+        }
+        #p1 {
+            display: none;
+        }
+
+        #p2 {
+            display: none;
+        }
+
+        #p3 {
+            display: none;
+        }
+
+        #p4 {
             display: none;
         }
     </style>
 </head>
-   <!-- 요구사항 : 버튼을 클릭하면 사용자로 부터 문자열을 입력 받음 prompt 사용
+<!-- 요구사항 : 버튼을 클릭하면 사용자로 부터 문자열을 입력 받음 prompt 사용
         입력받은 문자열로 STring method로 table tb 태그 안에 결과 보여주기
     -->
+
 <body>
     <h1>문자열 메소드 확인하기</h1>
     <p>현재 문자 : <em id="text"></em><em id="textCursor">👈</em> </p>
@@ -41,16 +75,16 @@
         <table>
             <tr class="firstRow">
                 <td> 문자열 길이 확인
-                    <button onclick="showLength()">😆</button>
+                    <button id="b1" onclick="showLength()">😆</button>
                 </td>
                 <td>단어 위치 찾기(앞에서)
-                    <button onclick="askIndexOf()">😁</button>
+                    <button id="b2" onclick="askIndexOf()">😁</button>
                 </td>
                 <td>단어 위치 찾기(뒤에서)
-                    <button onclick="askLastIndexOf()">😁</button>
+                    <button id="b3" onclick="askLastIndexOf()">😁</button>
                 </td>
                 <td>문자열 추출하기
-                    <button onclick="askSubstr()" style="cursor: pointer;">😀</button>
+                    <button id="b4" onclick="askSubstr()" style="cursor: pointer;">😀</button>
                 </td>
 
             </tr>
@@ -65,9 +99,144 @@
         <button id="textChangeButton" onclick="changeText()">문자 변경하기</button>
     </div>
     <button id="devil" onclick="devilRun()">😈</button>
-    <div></div>
- 
-    <script src="./js5_exam.js"></script>
+    <div>
+        <div id="p1">
+            <h2>String.length</h2>
+            <p>length 속성은 UTF-16 코드 유닛을 기준으로 문자열의 길이를 나타냅니다.</p>
+        </div>
+        <div id="p2">
+            <h2>String.prototype.indexOf()</h2>
+            <p>indexOf() 메서드는 배열에서 지정된 요소를 찾을 수 있는 첫 번째 인덱스를 반환하고 존재하지 않으면 -1을 반환합니다.</p>
+        </div>
+        <div id="p3">
+            <h2>String.prototype.lastIndexOf()</h2>
+            <p>lastIndexOf() 메서드는 주어진 값과 일치하는 부분을 fromIndex로부터 역순으로 탐색하여, 최초로 마주치는 인덱스를 반환합니다. 일치하는 부분을 찾을 수 없으면 -1을
+                반환합니다.</p>
+        </div>
+        <div id="p4">
+            <h2>String.prototype.substr()</h2>
+            <p>substr() 메서드는 문자열에서 특정 위치에서 시작하여 특정 문자 수 만큼의 문자들을 반환합니다.</p>
+        </div>
+    </div>
+
+
+
+    <script>
+        let text = "I am JavaScript sam";
+        let textContent = document.getElementById('text');
+        let textChangeButton = document.getElementById('textChangeButton');
+        textContent.innerHTML = text;
+        
+        // 문자열 메소드 버튼
+        function showLength() {
+            document.getElementById('length').innerHTML = text.length;
+        }
+
+        function askIndexOf() {
+            let pos = prompt("찾을 단어를 입력하세요.")
+            let result = text.indexOf(pos)
+            if (result == -1) {
+                document.getElementById('indexOf').innerHTML = "결과가 없어요...😫"
+            } else {
+
+                document.getElementById('indexOf').innerHTML = result;
+            }
+        }
+
+
+        function askLastIndexOf() {
+            let pos = prompt("찾을 단어를 입력하세요.(뒤에서부터 찾아요.)")
+            let result = text.lastIndexOf(pos)
+            if (result == -1) {
+                document.getElementById('lastIndexOf').innerHTML = "결과가 없어요...😫"
+            } else {
+
+                document.getElementById('lastIndexOf').innerHTML = result;
+            }
+        }
+
+        function askSubstr() {
+            let start = Number(prompt("시작 index"));
+            let end = Number(prompt("끝 index"));
+            let result = text.substr(start, end + 1);
+            console.log(result);
+            if (start < 0 || end >= text.length || start > end) {
+                document.getElementById('substr').innerHTML = '범위를 넘어가요...😫';
+            } else if (isNaN(start) || isNaN(end)) {
+                document.getElementById('substr').innerHTML = "숫자만 입력해주세요...😯";
+            } else {
+                document.getElementById('substr').innerHTML = result;
+            }
+        }
+
+        function changeText() {
+            text = prompt("바꿀 문자를 입력해주세요.");
+            textContent.innerHTML = text;
+        }
+
+        function devilRun() {
+            document.write("<canvas id = 'myCanvas'></canvas>");
+            let canvas = document.getElementById('myCanvas');
+            let ctx = canvas.getContext('2d');
+            let fontSize = '50px';
+            canvas.style.width = window.innerWidth;
+            canvas.style.height = window.innerHeight;
+            ctx.font = fontSize + ' serif';
+            canvas.style.border = '1px solid black';
+
+            let x = canvas.width / 2;
+            let y = canvas.height / 2;
+            let dx = 2;
+            let dy = 2;
+
+            // 실행
+            setInterval(draw, 10);
+
+            // 그리기
+            function draw() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.fillText("😈", x, y);
+
+                // 벽 충돌 시
+                if (x + dx > canvas.width - 50 || x + dx < -20) dx = -dx;
+                else if ((y + dy > canvas.height) || (y + dy < 50)) dy = -dy;
+
+                // 윈도우, 텍스트 위치 재구성
+                canvas.style.width = window.innerWidth;
+                canvas.style.height = window.innerHeight;
+                x += dx;
+                y += dy;
+            }
+
+        }
+
+        // 문자 변경하기 hover 이벤트
+        textChangeButton.addEventListener('mouseout', () => {
+            document.getElementById('textCursor').style.display = 'none';
+        })
+        textChangeButton.addEventListener('mouseover', () => {
+            document.getElementById('textCursor').style.display = 'inline';
+        })
+
+        for (let i = 1; i <= 4; i++) {
+            let b = 'b' + String(i);
+            let p = 'p' + String(i);
+            let bId = document.getElementById(b);
+            let pId = document.getElementById(p);
+            bId.addEventListener('mouseover', () => {
+                pId.style.display = 'block';
+            })
+        }
+        for (let i = 1; i <= 4; i++) {
+            let b = 'b' + String(i);
+            let p = 'p' + String(i);
+            let bId = document.getElementById(b);
+            let pId = document.getElementById(p);
+            bId.addEventListener('mouseout', () => {
+                pId.style.display = 'none';
+            })
+        }
+    </script>
 
 </body>
 
