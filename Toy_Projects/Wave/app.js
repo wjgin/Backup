@@ -2,7 +2,7 @@ import {
     WaveGroup
 } from './wavegroup.js';
 
-// App class 생성
+// App class 정의
 class App {
     constructor() {
         // canvas element 생성
@@ -11,11 +11,11 @@ class App {
         this.ctx = this.canvas.getContext('2d');
         // 생성한 canvas elemnet를 HTML body에 추가
         document.body.appendChild(this.canvas);
-
+        // waveGroup 객체 생성
         this.waveGroup = new WaveGroup();
 
         // 창의 크기가 바뀔때마다 resize 함수 재실행
-        // 호출 방법과 관련없에 bind함수 사용하여 resize함수 호출, 기본 값은 false
+        // 호출 방법과 관련없이 bind함수 사용하여 resize함수 호출, 기본 값은 false
         window.addEventListener('resize', this.resize.bind(this), false);
         // 기본으로 resize함수를 실행
         this.resize();
