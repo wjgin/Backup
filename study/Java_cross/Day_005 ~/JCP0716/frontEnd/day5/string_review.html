@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>String method</title>
+</head>
+
+<body>
+    <!-- string method : 메소드 실행한 후 원본 문자열의 변경 여부 
+        => 새로운 문자열을 생성한다.-->
+
+    <script>
+        // 변수 선언시 var 사용 x.
+        // 변수의 값이 재할당(대입문)될 경우, let. 재할당이 없을 경우, const
+        let str = "Apple, Banna, Kiwi";
+        const result = str.toUpperCase(); // => 새로운 문자열 생성
+        console.log(result);
+        str = "Mango";
+
+    </script>
+
+    <!-- string method
+    substring, slice, substr 비교 : slice 메소드는 마이너스 값을 갖는다. -1은 문자열 가장 마지막 인덱스
+ -->
+    <script>
+        // slice 메소드
+        let str2 = "Apple, Banana, Kiwi";
+        console.log(str2.slice(-4));
+        console.log(str2.slice(-12, -6));
+        console.log(str2.substr(-12, 3)); // substr => -12인덱스부터 3개
+    </script>
+    <!-- 정규식 -->
+    <script>
+        console.log("정규식");
+        let text = "Please visit Microsoft and Microsoft!";
+        let newText = text.replace(/Microsoft/g, "W3Schools"); // Microsoft 찾기 global 
+        console.log(newText);
+        console.log(text.replace(/Microsoft/i, "W3Schools"));  // Microsoft 찾기 ignoreCase
+        newText = text.replace(/MICROSOFT/i, "W3Schools"); // i 일 경우 대소문자 구문 없음
+        console.log(newText);
+    </script>
+
+</body>
+
+</html>

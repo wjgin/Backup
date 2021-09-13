@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul id="result">
+
+    </ul>
+
+
+    <script>
+        // "템플릿 문자열 테스트 : `` 기호 사용, 표현식${}을 이용해 변수 값 포함 가능"
+        // 문자열을 긁어올 때, 유용
+        const str = `!
+        like
+        java script`;   // multi line 문자열, 콘솔과 코드에서 사용가능
+        // document.write(str); 적용안됨
+        
+        // 멀티라인을 html에 삽입시 일렬로 삽입
+        document.getElementById("result").innerHTML = str;
+        // $표현식 용 상수
+        const fruit = 'Lemon';
+        // 멀티라인 상수
+        const result = `<li>Apple</li>
+        <li>Banana</li>
+        <li>Mango</li>
+        <li>${fruit}</li>`; // 표현식 삽입
+        // 멀티라인 상수 html에 삽입
+        document.getElementById("result").innerHTML = result;
+    </script>
+</body>
+
+</html>
