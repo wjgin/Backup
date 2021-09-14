@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>document.forms example</title>
+</head>
+
+<body>
+    <!-- document.form 객체는 form 태그를 담고 있는 HTMLCollection -->
+    <form id="가군">
+        <!-- form 요소 -->
+        <input type="button" onclick="alert(document.forms[0].id);" value="가군's form" /> <!-- elements[0]-->
+        <input type="button" onclick="alert(document.forms[0].elements[1].value);" value="form[0]의 요소 index = 1" />
+    </form>
+
+    <form id="나군">
+        <input type="button" onclick="alert(document.forms[1].id);" value="나군's form" /> <!-- forms[1].elements[0]-->
+    </form>
+
+    <form id="다군">
+        <input type="button" onclick="alert(document.forms[2].id);" value="다군's form" />
+    </form>
+
+    <form action="" name="frmUser">
+        <!-- form[index].elements[index] => index 지정이 헷갈릴 수 있어 name으로 대체 -->
+        이름 : <input type="text" name="user">
+        이메일 : <input type="text" name="email">
+        <button onclick="data_read()">send</button>
+    </form>
+
+    <script>
+        function data_read() {
+            console.log("1 form, elements 속성 값 이용해서 가져오기")
+            const $user1 = document.forms[3].elements[0];
+            const $email1 = document.forms[3].elements[1];
+            console.log($user1.value);
+            console.log($email1.value);
+
+            console.log("2 name 속성 값 이용해서 가져오기")
+            const $user2 = document.frmUser.user; // 객체
+            const $email2 = document.frmUser.email; // 객체
+            console.log($user2.value);
+            console.log($email2.value);
+
+            // 우효성 검사 => 사용자 입력 값을 서버에 전송 전에 확인
+            if ($user2.value.length < 3) {
+                alert('이름은 3글자 이상 입니다.');
+            }
+        }
+
+        // console.log(document.forms);
+    </script>
+</body>
+
+</html>

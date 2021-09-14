@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #work {
+            width: 100%;
+            margin: auto;
+            text-align: center;
+            background-color: rgb(187, 113, 255);
+        }
+        #work th{
+            font-size: 1.5em;
+        }
+        .td1{
+            background-color: rgb(203, 156, 248);
+        }
+        .td2{
+            background-color: rgb(234, 212, 255);
+        }
+        .td1, .td2 {
+            font-size: 1.2rem;
+        }
+        
+        tr,
+        td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 문제: 아래 2개 배열의 값으로 화면에 보기 좋은 UI를 만들어보기 -->
+    <table id="work">
+        <th colspan="2">시간표🕗</th>
+    </table>
+    <script>
+        // 객체 배열
+        const works = [{ time: '09:00', todo: '수업🏫' },
+        { time: '11:00', todo: '과제✍' },
+        { time: '12:30', todo: '점심식사🍱' },
+        { time: '14:00', todo: '주간회의👨‍👩‍👦‍👦' },
+        { time: '16:45', todo: '자료조사✅' }];
+        /*
+        1) 배열 forEach 메소드 사용
+        2) table안의 tr 태그는 createElement 사용
+        3) td 태그의 내용은 배열의 객체 프로퍼티 활용 => 템플릿 문자열
+        4) 자식 요소 추가 appendChild
+        */
+        works.forEach((val) => {
+            let $tr = document.createElement('tr');
+            $tr.innerHTML = `<td class = 'td1'>${val.time}</td><td class = 'td2'>${val.todo}</td>`;
+            document.getElementById('work').appendChild($tr);
+        })
+
+        
+
+           
+
+    </script>
+</body>
+
+</html>
