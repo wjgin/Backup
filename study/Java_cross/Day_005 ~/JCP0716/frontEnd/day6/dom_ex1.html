@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+    <style>
+        /* em => 부모기준 rem => root 기준 */
+        .init {
+            font-size: 1em;
+            color: blue;
+        }
+        .small_blue1 {
+            font-size: 0.5rem;
+            color: blue;
+        }
+        .small_blue2 {
+            font-size: 0.7em;
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>오늘의 과일</h3>
+    <ul>
+        <li id="apple">사과 🍎</li>
+        <li id="banana">바나나🍌</li>
+        <li id="orange">오렌지🍊</li>
+    </ul>
+    <ul id="fruit">
+        <li><span>레몬🍋</span></li>
+
+    </ul>
+    <button onclick="init()">글꼴 초기화</button>
+    <button onclick="red()">글꼴 색상변경 : RED</button>
+    <button onclick="lager()">글꼴 크기 변경 : 120% </button>
+    <button onclick="small_blue1()">small_blue1 </button>
+    <button onclick="small_blue2()">small_blue2 </button>
+
+    <script>
+        const $banana = document.getElementById('banana');              //요소 1개만 찾아옵니다.
+        $banana.innerHTML = "Banana";
+
+        //요소 여러개를 찾아오는 메소드
+        const $list = document.getElementsByTagName('li');                //요소 4개 있습니다. -> HTML컬렉션 객체타입을 생성합니다. 
+        console.log($list);
+        //배열로 변환이 필요합니다. [...] 기호 스프레드 연산자 
+        [...$list].forEach(function (item) {     //배열객체로 foreach : $list 를 구성하는 배열요소가 li 요소 객체 입니다.
+            item.style.color = 'green';
+        });
+
+        function red() {
+            [...$list].forEach(function (fruit) {        // 컬렉션 객체를 배열로 변환  , 콜백함수 매개변수는 순서의 의미가 있고 변수명은 임의로 작성.
+                fruit.style.color = 'red';
+            });
+        }
+        document.getElementsByClassName
+        function lager() {
+            [...$list].forEach((fruit) => fruit.style.fontSize = '1.2em');// 화살표 함수 사용할수 있습니다.
+        }
+
+        function init() {
+            [...$list].forEach((fruit) => fruit.className = 'init');
+        }
+
+        function small_blue1() {
+            const $lemon = document.querySelector("li>span"); // css 선택자로 요소를 가져옴
+            $lemon.className = "small_blue1"
+        }
+        function small_blue2() {
+            const $lemon = document.querySelector("li>span"); // css 선택자로 요소를 가져옴
+            $lemon.className = "small_blue2"
+        }
+        /*  DOM 메소드 :  1)document.getElementById ,  2)document.getElementsByTagName , 3)document.getElementsByClassName
+                                     HTML Collection 타입으로 리턴하는 것은 2) ,3) 번입니다.
+                                     4) document.querySelector 메소드 : 인자를 css 선택자 #banana, .fruit, li > span  등 css 선택자 지정(상위 첫 번째만)
+                                      => querySelectorAll : 모든 인자를 가져옴
+        */
+    </script>
+</body>
+
+</html>

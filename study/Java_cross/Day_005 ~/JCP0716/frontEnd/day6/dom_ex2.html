@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="main">
+        <h4>오늘의 주제</h4>
+        <ul>
+            <li>트와이스</li>
+            <li>소녀시대</li>
+            <li>원더걸스</li>
+        </ul>
+        <ul>
+            <li>사나</li>
+            <li>나연</li>
+            <li>다현</li>
+            <li>미나</li>
+        </ul>
+
+    </div>
+    <button onclick="new_child()">새로운 리스트</button>
+    <script>
+        const $main = document.getElementById('main');
+        console.log($main.childNodes);  // 줄 바꿈 문자 #text 포함
+        console.log($main.children);    // 줄 바꿈 문자 #text 미포함
+        console.log($main.firstChild);  // 줄 바꿈 문자 #text 포함
+        console.log($main.firstElementChild);   // h4
+        console.log($main.lastElementChild);   // ul
+        console.log($main.childElementCount);   // 3
+
+        const $child = $main.firstElementChild;
+        console.log($child.innerHTML);  // 첫 번째 자식(h4)의 내용
+        console.log($child.nextElementSibling); //  형제 요소 찾기
+        console.log($child.nextElementSibling.innerHTML); //  형제 요소의 내용
+
+        // 자식 노드 추가
+        const $new = `<li>smartTv</li>
+            <li>audio</li>
+            <li>radio</li>
+            <li>ipad</li>`;
+
+        let new_child = function () {
+            const $ul = document.createElement('ul') // 새로운 요소 생성
+            $ul.innerHTML = $new; // 새로 생성한 ul 태그에 $new html 내용 삽입
+            $main.appendChild($ul); // $main div에 $ul 자식 추가
+            $ul.className = 'item'; // ul의 클래스 변경
+            $ul.classList.add('item2'); // 클래스 추가
+        }
+    </script>
+</body>
+
+</html>
