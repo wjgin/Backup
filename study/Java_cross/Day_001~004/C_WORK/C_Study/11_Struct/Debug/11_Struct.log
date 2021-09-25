@@ -1,4 +1,0 @@
-﻿  1102_struct_ptr.c
-D:\바탕화면\PJ\study\Java_cross\Day_001~004\C_WORK\C_Study\11_Struct\1102_struct_ptr.c(31,5): warning C4101: 'p1' :참조되지 않은 지역 변수입니다.
-D:\바탕화면\PJ\study\Java_cross\Day_001~004\C_WORK\C_Study\11_Struct\1102_struct_ptr.c(32,9): warning C4101: 'p2' :참조되지 않은 지역 변수입니다.
-  11_Struct.vcxproj -> D:\바탕화면\PJ\study\Java_cross\Day_001~004\C_WORK\C_Study\Debug\11_Struct.exe
