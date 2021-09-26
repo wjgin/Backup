@@ -2,7 +2,7 @@
 <sample>
 	<customer>
 		<name name="name" id="name">한국이</name>
-		<age>25</age>
+		<age value = "나이">25</age>
 		<address>서울</address>
 	</customer>
 </sample>
