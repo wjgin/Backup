@@ -37,12 +37,16 @@ public class XmlParsing {
 		// customer 태그 하위 노드 리스트들의 내용을 출력
 		for(int i = 0; i < childList.getLength(); i++) {
 			Node item = childList.item(i);
+			System.out.println(item.getNodeValue());
 			if(item.getNodeType() == Node.ELEMENT_NODE) { // 노드의 타입이 Element일 경우(공백이 아닌 경우)
 				System.out.println(item.getNodeName());
-				System.out.println(item.getNodeValue());
+				System.out.println(item.getChildNodes().item(0).getNodeValue());
 				System.out.println(item.getTextContent());
+			} else {
+				System.out.println("공백 입니다.");
 			}
 		}
+		
 	}
 
 }
