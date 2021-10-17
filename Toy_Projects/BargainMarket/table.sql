@@ -13,10 +13,11 @@ create table users (
 	id varchar(20) not null unique,	-- 아이디
 	pw varchar(20) not null,		-- 비밀번호
 	email varchar(20),				-- 이메일
-	proidx varchar(20),				-- 전문가 번호(카테고리 번호)
+	proIdx varchar(20),				-- 전문가 번호(카테고리 번호)
+	kakaoId long,					-- 카카오 아이디
 	primary key(idx)
 );
-
+select * from users where id='user1' and pw='pass'	;
 -- 글 테이블
 create table writing (
 	idx int auto_increment,				-- 글 번호
