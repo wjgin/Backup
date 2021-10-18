@@ -10,7 +10,8 @@
 	crossorigin="anonymous"></script>
 <script src="main.js" defer></script>
 <script>
-let email = false
+//let email = false
+let email = true
 
 /* form 전송 체크 */
 	function validCheck() {
@@ -45,7 +46,7 @@ let email = false
 	<%@ include file="../header.jsp"%>
 
 	<div class="field">
-		<form action="" method="post" name="fieldRegist" 
+		<form action="myFieldRegist.do" method="post" name="fieldRegist" 
 			onsubmit="return validCheck()">
 			<!-- 본문 content -->
 			<table>
@@ -71,16 +72,16 @@ let email = false
 			<table>
 				<tr>
 					<td><input type="text" placeholder="회사 이메일을 입력하세요"></td>
-					<td><input type="button" value="전송"></td>
+					<td class="ml"><input type="button" value="전송"></td>
 				</tr>
 				
 				<tr>
 					<td><input type="text" placeholder="인증번호 입력"></td>
-					<td><input type="button" value="확인"></td>
+					<td class="ml"><input type="button" value="확인"></td>
 				</tr>
 			</table>
 
-			<input type=submit>
+			<input type=submit value="제출">
 		</form>
 	</div>
 	
