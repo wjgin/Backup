@@ -1,5 +1,6 @@
 package dao;
 
+import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
@@ -57,5 +58,12 @@ public class UsersDao {
 		return result;
 	}
 	
-	
+	// 유저 전문가 번호 가져오기
+	public Users proIdxInfo(String userId) {
+		Users dto = new Users();
+		SqlSession mapper = sqlFactory.openSession();
+		dto = mapper.selectOne("users.proIdxInfo", userId);
+		mapper.close();
+		return dto;
+	}
 }

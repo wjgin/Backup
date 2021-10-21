@@ -9,10 +9,14 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.CommentDao;
+import dao.JjimDao;
+import dao.UsersDao;
 import dao.WritingDao;
 import dto.Writing;
 import dto.Comment;
+import dto.Jjim;
 import dto.SessionDto;
+import dto.Users;
 
 public class MypageAction implements Action {
 
@@ -32,6 +36,16 @@ public class MypageAction implements Action {
 		CommentDao cdao = CommentDao.getInstance();
 		List<Comment> clist = cdao.selectById(userId);
 		request.setAttribute("clist", clist);
+		
+		JjimDao jdao = JjimDao.getInstance();
+		List<Jjim> jlist = jdao.selectById(userId);
+		request.setAttribute("jlist", jlist);
+		
+		UsersDao udao = UsersDao.getInstance();
+		Users udto = new Users();
+		udto = udao.proIdxInfo(userId);
+		request.setAttribute("udto", udto);
+		request.setAttribute("userId", userId);
 		
 		ActionForward forward = new ActionForward();
 		forward.isRedirect = false;

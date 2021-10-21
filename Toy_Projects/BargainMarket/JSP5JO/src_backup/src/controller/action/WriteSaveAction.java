@@ -14,60 +14,46 @@ import dao.WritingDao;
 import dto.Gallery;
 import dto.Writing;
 
-public class WriteSaveAction implements Action  {
-	
+public class WriteSaveAction implements Action {
+
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
 
-		request.setCharacterEncoding("UTF-8");
-		
-		String subject = (String)request.getAttribute("subject");
-		String categoryIdx = (String)request.getAttribute("categoryIdx");
-		String userId = (String)request.getAttribute("userId");
-		String content = (String)request.getAttribute("content");
-		
-		System.out.println(subject);
-		System.out.println(categoryIdx);
-		System.out.println(userId);
-		System.out.println(content);
-		
-		Writing dto = new Writing();
-		dto.setSubject(subject);
-		dto.setCategoryIdx(categoryIdx);
-		dto.setUserId(userId);
-		dto.setContent(content);
-		
 		GalleryDao gdao = GalleryDao.getInstance();
-		String path="d:\\dektop\\upload";
-		
-		int size=5*1024*1024;
-		
+		String path = "d:\\desktop\\upload"; 
+
+		int size = 10 * 1024 * 1024; // 10MByte, 최대파일크기
 		try {
-			MultipartRequest muti = new MultipartRequest
-					(request, path, size, "UTF-8", new DefaultFileRenamePolicy());
+			// 업로드된 파일을 받을 수 있는 MultipartRequest타입의 request 객체 생성
+			MultipartRequest multi_request = new MultipartRequest(request, path, size, "UTF-8",
+					new DefaultFileRenamePolicy());
+
+			String title = multi_request.getParameter("title");
+			String filename = multi_request.getFilesystemName("pic");	
+			String categoryIdx = multi_request.getParameter("Category");
+			String subject = multi_request.getParameter("subject");
+			String userId = multi_request.getParameter("userId");
+			String content = multi_request.getParameter("content");
 			
-			String title = "test";
-			String filename = muti.getFilesystemName("fileName");
+			WritingDao wdao = WritingDao.getInstance();
+			Writing wdto = new Writing();
 			
-			Gallery gdto = new Gallery(0,title, filename);
+			wdto.setCategoryIdx(categoryIdx);
+			wdto.setSubject(subject);
+			wdto.setUserId(userId);
+			wdto.setContent(content);
 			
-			gdao.insert(gdto);
+			wdao.insert(wdto);
 			
-		}catch (Exception e) {
-			System.out.println(e.getMessage());
+			Gallery vo = new Gallery(0, title, filename);
+			gdao.insert(vo); // 업로드한 파일을 테이블 컬럼 값으로 저장.
+		} catch (Exception e) {
+			// e.printStackTrace();
+			System.out.println("gallery 오류 : " + e.getMessage());
 		}
-		
-		
-		WritingDao dao = WritingDao.getInstance();
-		dao.insert(dto);
-		
-		ActionForward forward = new ActionForward();
-		forward.isRedirect = true;
-		forward.url="index.do";
-		return forward;
+
+		return new ActionForward(true, "index.do");
 	}
-	
-		
+
 }
