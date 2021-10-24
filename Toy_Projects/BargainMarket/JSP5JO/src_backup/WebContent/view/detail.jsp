@@ -10,6 +10,17 @@
 <head>
 <meta charset="UTF-8">
 <title>글 상세보기</title>
+<style type="text/css">
+pre{
+	white-space: pre-wrap;	
+}
+li {
+	list-style: none;
+}
+p {
+	text-align: right;
+}
+</style>
 </head>
 <body>
 	<%@ include file="../header.jsp"%>
@@ -20,19 +31,17 @@
 		<div style="width: 80%; margin: auto; max-width: 700px;">
 			<ul id="main">
 				<li>
+						<h3>카테고리: ${bean.name}</h3>
+						<p>
+						<time>작성날짜 : <fmt:formatDate value="${bean.wdate}" type="both" /></time>
+						</p>
+						<!-- pattern="yyyy-MM-dd HH:mm:ss , type= date,time,both -->
+					
 					<ul class="row">
 						<li>제목</li>
 						<li>${bean.subject}</li>
 						<li>사용자id</li>
 						<li>${bean.userId}</li>
-					</ul>
-
-					<ul class="row">
-						<li>카테고리</li>
-						<li>${bean.categoryIdx}</li>
-						<li>작성날짜</li>
-						<li><fmt:formatDate value="${bean.wdate}" type="both" /></li>
-						<!-- pattern="yyyy-MM-dd HH:mm:ss , type= date,time,both -->
 					</ul>
 				</li>
 
@@ -70,7 +79,7 @@
 						</li>
 						<li>
 							<ul class="row2">
-								<li><textarea rows="5" cols="80" name="context"
+								<li><textarea rows="5" cols="80" name="content"
 										style="resize: none;" placeholder="댓글을 작성하세요." class="input"
 										required></textarea></li>
 								<li><input type="submit" value="저장" class="button small">
@@ -84,7 +93,10 @@
 			<!-- 작성된 댓글 목록 -->
 			<hr class="line">
 			<div>
-				<span>댓글</span> <span>[${bean.commentCount}]</span> <span></span>
+				<span>댓글</span> <span>[${bean.commentCount}]</span> 
+				<c:if test="${sessionScope.user == null}">
+					<br><span>댓글 작성은 로그인 후 이용 가능 합니다.</span>
+				</c:if>
 			</div>
 			<div>
 				<ul>
@@ -92,22 +104,21 @@
 						<li>
 							<ul>
 								<li>${cmt.userId}</li>
-								<li>${cmt.wdate}</li>
-								<li><a
-									href="javascript:deleteCmt('${cmt.idx}','${bean.idx}','${page}')">삭제</a></li>
+								<li>
+									<!-- 댓글 작성자만 수정, 삭제가 가능하도록 --> 
+									<c:if test="${cmt.userId eq sessionScope.user.id}">
+										<a onclick="deleteCmt(${cmt.idx}, ${bean.idx}, ${page})">삭제</a>
+									</c:if>
+								</li>
 							</ul>
 						</li>
-						<li><pre>${cmt.content }</pre></li>
+						<li><pre>${cmt.content}</pre></li>
 					</c:forEach>
 				</ul>
 			</div>
 
 		</div>
-		<!-- 댓글 작성자만 수정, 삭제가 가능하도록 -->
-		<c:if test="${cmt.userId} == ${userId}">
-			<a href="#">수정</a>
-			<a href="javascript:deleteCmt('${cmt.idx}','${bean.idx}', '${page})">삭제</a>
-		</c:if>
+
 	</section>
 
 	<script type="text/javascript">
@@ -116,13 +127,11 @@
 		}
 
 		// 댓글 삭제
-		function deleteCmt(cmtidx, idx, page) {
-			console.log(cmtidx);
-			console.log(idx);
+		function deleteCmt(cmtIdx, writingIdx, page) {
 			const yn = confirm('댓글을 삭제하시겠습니까?');
 			if (yn) {
-				location.href = 'comment.do?del=&cmtidx=' + cmtidx + "&idx="
-						+ idx + "&page=" + page;
+				location.href = 'comment.do?del=&cmtIdx=' + cmtIdx
+						+ "&writingIdx=" + writingIdx + "&page=" + page;
 			} else {
 				alert('댓글 삭제 취소합니다.');
 			}

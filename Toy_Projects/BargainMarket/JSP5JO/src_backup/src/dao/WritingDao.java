@@ -115,7 +115,7 @@ public class WritingDao {
 		mapper.close();
 	}
 
-	// getList
+	// 글 리스트
 	public List<Writing> getList(Map<String, Integer> map) {
 		List<Writing> list = null;
 		SqlSession mapper = factory.openSession();
@@ -123,7 +123,7 @@ public class WritingDao {
 		mapper.close();
 		return list;
 	}
-
+	
 	// 1개 행 조회
 	public Writing getOne(int idx) {
 		SqlSession mapper = factory.openSession();
@@ -139,5 +139,13 @@ public class WritingDao {
 		mapper.commit();
 		mapper.close();
 		return n;
+	}
+	
+	// 카테고리 이름 가져오기
+	public String getCategoryName(String idx) {
+		SqlSession mapper = factory.openSession();
+		String name = mapper.selectOne("writing.getCategoryName", idx);
+		mapper.close();
+		return name;
 	}
 }

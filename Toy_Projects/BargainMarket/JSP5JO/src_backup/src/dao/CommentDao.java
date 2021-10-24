@@ -42,7 +42,7 @@ public class CommentDao {
 	// idx로 한개 행 조회
 	public Comment getOne(int idx) {
 		SqlSession mapper = factory.openSession();
-		Comment dto = mapper.selectOne("selectByIdx", idx);
+		Comment dto = mapper.selectOne("comment.selectByIdx", idx);
 		mapper.close();
 		return dto;
 	}
@@ -50,14 +50,14 @@ public class CommentDao {
 	// 테이블 데이터 행의 개수 조회
 	public int getCount() {
 		SqlSession mapper = factory.openSession();
-		int cnt = mapper.selectOne("getCount");
+		int cnt = mapper.selectOne("comment.getCount");
 		mapper.close();
 		return cnt;
 	}
 
 	public void insert(Comment dto) {
 		SqlSession mapper = factory.openSession();
-		mapper.insert("freeboard.insert", dto);
+		mapper.insert("comment.insert", dto);
 		mapper.commit();
 		mapper.close();
 	}

@@ -21,17 +21,15 @@ public class CommentAction implements Action {
 		CommentDao dao = CommentDao.getInstance();
 		
 		int pageNo = Integer.parseInt(request.getParameter("page"));
-		int writingIdx;
-		
+		int writingIdx = Integer.parseInt(request.getParameter("writingIdx"));
+
+		// 댓글 삭제
 		if (request.getParameter("del") != null) {
-			int cmtidx = Integer.parseInt(request.getParameter("cmtidx"));
-			int idx = Integer.parseInt(request.getParameter("idx"));
-			dao.delete(cmtidx);
-			writingIdx = idx;
-		} else {
+			int cmtIdx = Integer.parseInt(request.getParameter("cmtIdx"));
+			dao.delete(cmtIdx);
+		} else { // 댓글 삽입
 			String userId = request.getParameter("userId");
 			String content = request.getParameter("content");
-			writingIdx = Integer.parseInt(request.getParameter("writingIdx"));
 
 			Comment dto = new Comment(0, writingIdx, userId, content);
 			dao.insert(dto);

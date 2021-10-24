@@ -17,7 +17,7 @@
 	<select id="getList" parameterType="int" resultType="Comment">
 		select * from comment where writingIdx =#{writingIdx}
 	</select>
-
+	
 	<select id="selectById" resultType="Comment" parameterType="String">
 		select * from comment where userId=#{userId}
 	</select>

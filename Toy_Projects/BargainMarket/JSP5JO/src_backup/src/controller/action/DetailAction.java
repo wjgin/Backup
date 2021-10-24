@@ -21,14 +21,17 @@ public class DetailAction implements Action {
 		// 글 상세
 		int idx = Integer.parseInt(request.getParameter("idx"));
 		int page = Integer.parseInt(request.getParameter("page"));
-
-		WritingDao dao = WritingDao.getInstance();
 		
-		Writing bean = dao.getOne(idx);
-
+		WritingDao dao = WritingDao.getInstance();
 		CommentDao cdao = CommentDao.getInstance();
+		
+		// 글 가져오기
+		Writing bean = dao.getOne(idx);
+		
+		// 댓글 리스트 가져오기
 		List<Comment> cmts = cdao.getList(idx);
 
+		// 요청 전달
 		request.setAttribute("cmtlist", cmts);
 		request.setAttribute("bean", bean);
 		request.setAttribute("page", page);
