@@ -18,21 +18,25 @@ public class ListAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		WritingDao dao = WritingDao.getInstance();
+		
 
 		// 카테고리 인자 가져오기
 		String categoryIdx = request.getParameter("cate");
 
+		WritingDao dao = WritingDao.getInstance();
+
 		// page 설정
 		int pageSize = 10;
 		int pageNo;
+		
 		if (request.getParameter("page") == null)
 			pageNo = 1;
 		else
 			pageNo = Integer.parseInt(request.getParameter("page")); // page = 1, 2, 3, 4 ...
-		PageDto pageDto = new PageDto(pageNo, dao.getCount(), pageSize); // 페이지 처리에 필요한 객체
+		
+		PageDto pageDto = new PageDto(pageNo, dao.getCountByCategory(categoryIdx), pageSize); // 페이지 처리에 필요한 객체
 		int startNo = pageDto.getStartNo();
-
+		
 		// 인자 map에 추가
 		Map<String, Object> map = new HashMap<>();
 		map.put("idx", categoryIdx);
@@ -45,6 +49,7 @@ public class ListAction implements Action {
 		// 리스트 및 페이지 객체 전달
 		request.setAttribute("list", list);
 		request.setAttribute("pageDto", pageDto);
+		request.setAttribute("categoryIdx", categoryIdx);
 
 		ActionForward forward = new ActionForward();
 		forward.setUrl("view/list.jsp");
