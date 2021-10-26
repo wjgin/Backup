@@ -38,7 +38,7 @@ public class MypageAction implements Action {
 			List<Writing> wlist = wdao.selectById(userId);
 			request.setAttribute("wlist", wlist);
 
-			// 내가 쓴 댓글 리스트 가졍괴
+			// 내가 쓴 댓글 리스트 가져오기
 			CommentDao cdao = CommentDao.getInstance();
 			List<Comment> clist = cdao.selectById(userId);
 			request.setAttribute("clist", clist);
@@ -47,12 +47,16 @@ public class MypageAction implements Action {
 			List<Writing> jlist = wdao.selectJjimById(userId);
 			request.setAttribute("jlist", jlist);
 
-			// user 정보 가져오기
+			// user 전문가 등록 정보 가져오기
 			UsersDao udao = UsersDao.getInstance();
 			Users udto = new Users();
-			udto = udao.proIdxInfo(userId);
-			udto.setId(userId);
-			request.setAttribute("user", udto);
+			
+			// pro 정보가 존재할 경우
+			if(udao.proIdxInfo(userId) != null) {
+				udto = udao.proIdxInfo(userId);
+				udto.setId(userId);
+			}
+			request.setAttribute("userProInfo", udto);
 
 			// 내가 쓴 1:1상담 글 가져오기
 			WritingDao hdao = WritingDao.getInstance();

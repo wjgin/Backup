@@ -12,8 +12,7 @@
 <header>
 	<!-- 메인 로고 -->
 	<nav class="navbar">
-		<ul class="navbar__logo">
-			<!-- <li><i class="fab fa-apple"></i></li> -->
+		<ul class="navbar__logo  <c:if test="${sessionScope.user != null}">login</c:if>">
 			<li><img src="img/logo.png" alt="logo" width="30px"></li>
 			<li><a href="index.do">Kkakdugi-Market</a></li>
 		</ul>
@@ -21,7 +20,7 @@
 		<!-- 네비게이션 항목 -->
 		<ul class="navbar__menu">
 			<li class="cate">
-				<a href="#">카테고리</a>
+				<a href="category.do?cate=all&page=1">카테고리</a>
 				<ul class="navbar__submenu">
 					<li><a href="category.do?cate=1">의류/악세서리</a></li>
 					<li><a href="category.do?cate=2">스포츠/레저</a></li>
@@ -60,7 +59,7 @@
 			
 			<!-- 로그인 상태 -->
 			<c:if test="${sessionScope.user != null}">
-				<li>${user.name}(${user.email})님
+				<li>${sessionScope.user.name}(${sessionScope.user.email})님
 				<li>
 				<li id="mypage"><a href="mypage.do">마이페이지</a></li>
 				<li><a href="logout.do"><i class="fas fa-sign-out-alt"></i></a></li>

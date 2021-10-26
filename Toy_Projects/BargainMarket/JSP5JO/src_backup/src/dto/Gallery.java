@@ -11,5 +11,4 @@ public class Gallery {
 	private int pno;
 	private int idx;
 	private String fileName;
-	
 }
