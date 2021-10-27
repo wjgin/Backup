@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import controller.action.Action;
 import controller.action.ActionForward;
 import controller.action.CommentAction;
+import controller.action.DeleteAction;
 import controller.action.DetailAction;
 import controller.action.FindIdAction;
 import controller.action.FindPwAction;
@@ -20,12 +21,14 @@ import controller.action.HelpWriteAction;
 import controller.action.IdCheckAction;
 import controller.action.IndexActioin;
 import controller.action.JjimAction;
+import controller.action.KakaoLoginAction;
 import controller.action.ListAction;
 import controller.action.LogoutAction;
 import controller.action.MyFieldAction;
 import controller.action.MyFieldRegistAction;
 import controller.action.MypageAction;
 import controller.action.RegistAction;
+import controller.action.RegistMoveAction;
 import controller.action.SearchAction;
 import controller.action.SignInAction;
 import controller.action.WriteAction;
@@ -71,8 +74,14 @@ public class FrontController extends HttpServlet {
 			Action action = new SignInAction();
 			forward = action.execute(request, response);
 		} else if (spath.equals("/regist.do")) {
-			forward.setRedirect(false);
-			forward.setUrl("view/regist.jsp");
+			Action action = new RegistMoveAction();
+			forward = action.execute(request, response);
+		} else if (spath.equals("/registSave.do")) {
+			Action action = new RegistAction();
+			forward = action.execute(request, response);
+		} else if (spath.equals("/kakaoLogin.do")) {
+			Action action = new KakaoLoginAction();
+			forward = action.execute(request, response);
 		} else if (spath.equals("/idCheck.do")) {
 			Action action = new IdCheckAction();
 			forward = action.execute(request, response);
@@ -114,6 +123,9 @@ public class FrontController extends HttpServlet {
 			forward = action.execute(request, response);
 		} else if (spath.equals("/jjim.do")) {
 			Action action = new JjimAction();
+			forward = action.execute(request, response);
+		} else if (spath.equals("/delete.do")) {
+			Action action = new DeleteAction();
 			forward = action.execute(request, response);
 		}
 
